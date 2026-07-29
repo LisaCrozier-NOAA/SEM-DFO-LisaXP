@@ -1,0 +1,26 @@
+Indicator,Node2,Hyp,Type,Support,mean_Positive,Count,Explanation,order
+X07_DFA_cpue_IntSprJunHW,Abundance,Positive,DFA,1,100,400,Better NCC survival carries through AK stage,0
+X06_Lmu_IntSprJunH,Growth,Positive,Straggler,1,93.3,15,Bigger is better,0.5
+X06_DFA_IGF_mu,Growth,Positive,DFA,0.25,25.575,375,"Positive & significant (1B, 1C) or negative but NS (1A)",0.5
+X05_DFA_abundSardine,Competitor,Negative,DFA,1,0,317,Competitor (tracking herring / fewer sardines = more food for salmon),0.75
+X04_marketsquid_GAM,Competitor,Negative,Straggler,0,100,13,Investigate neighborhood relationships further,0.75
+X01_DFA_sumPreyOfPrey_planktonJun,PreyNCC,Positive,DFA,1,100,57,Direct trophic support (more food = more growth),1
+X09_DFA_HakeAge5Plus,PredNCC,Negative,DFA,1,0,314,Direct predator,2
+X11_Harbor_seal_CR,PredNCC,Negative,Straggler,0,100,24,Investigate neighborhood relationships further,2
+X12_copepodCom_EGoA,PreyAK,Positive,Straggler,1,100,85,Direct trophic support (cold-water lipid-rich copepod signal),3
+X13_gadid_WAI,PreyAK,Positive,Straggler,1,100,29,Gadids in puffin chick diet,3
+X12_DFA_biomassEuphShelfSum,PreyAK,Positive,DFA,0,0,122,"Ecosystem proxy (krill ~ pos PDO, Evans et al 2023)",3
+X13_DFA_WGOA_DFA_seabirds,PreyAK,Positive,DFA,0,0,40,Birds have improved since ~2008,3
+X12_copepodBiomass_WGoA,PreyAK,Positive,Straggler,0,0,96,"many small copepods, sum of small and large copepods S of Seward AK",3
+X12_copepodCom_WGoA,PreyAK,Positive,Straggler,0,0,11,"loads neg on lower trophic DFA, so pos on mid-trophic DFA, ratio of large copepods to (small+large)",3
+X13_ammod_WAI,PreyAK,Positive,Straggler,0,0,13,"Sandlance in puffin chick diet, negligible since 2010",3
+X13_hexagram_EAI,PreyAK,Positive,Straggler,0,0,11,"Tufted puffin chick diet, similar to seabird DFA",3
+X13_pollockBiomassGoAage3plus_predAK,PreyAK,Positive,Straggler,0,0,11,"No real reason limited to 3+, 1+ in WGOA_DFA_midTrophic",3
+X10_DFA_ssl.est.wholerange_2yrLead,PredAK,Negative,DFA,1,10,20,Direct predator,4
+X15_DFA_sleeperSharkBSAI_predAK,PredAK,Negative,DFA,1,0,169,Direct predator (deepwater top-down consumer),4
+X10_Californian_s_l_2yrLead_WS,PredAK,Negative,Straggler,1,0,11,Direct predator,4
+X10_Harbour_s_2yrLead_WS,PredAK,Negative,Straggler,1,0,35,Direct predator,4
+X15_ArrowtoothFlounderBiomass_predAK,PredAK,Negative,Straggler,1,5.6,18,Direct predator (deepwater top-down consumer),4
+X15_halibutBiomassAge8plus_2yrLead_predAK,PredAK,Negative,Straggler,0.5,44.1,28,Ecosystem proxy (Halibut declines in warm water favor competitors),4
+X15_PacificCodBiomass_predAK,PredAK,Negative,Straggler,0,95.85,23,"Ecosystem proxy (Pcod had negative response to heat wave, favored other predators)",4
+X15_sablefishBiomass_predAK,PredAK,Negative,Straggler,0,100,16,"Delay in responding to MHW, low in 2015",4

@@ -1,0 +1,24 @@
+Indicator,Node2,Hyp,Type,Support,mean_Positive,Count,Explanation,order
+X07_DFA_cpue_IntSprJunHW,Abundance,Positive,DFA,1,100,400,Better NCC survival carries through AK stage,0
+X06_Lmu_IntSprJunH,Growth,Positive,Straggler,1,85.4,36,Bigger is better,0.5
+X06_DFA_IGF_mu,Growth,Positive,DFA,0.5,40.35,364,"Positive & significant (1B, 1C) or negative but NS (1A)",0.5
+X05_DFA_abundSardine,Competitor,Negative,DFA,1,0,327,Competitor (tracking herring / fewer sardines = more food for salmon),0.75
+X13_DFA_WGOA_DFA_midTrophic,Competitor,Negative,DFA,1,0,21,"MidTrophic = shrimp/jellyfish, potential competitors, and neg loading of lower Trophic larval fish",0.75
+X14_pinkSalmon,Competitor,Negative,Straggler,1,5.9,17,Competitor (more pink salmon = less food for Chinook salmon),0.75
+X01_DFA_sumPreyOfPrey_planktonJun,PreyNCC,Positive,DFA,1,100,65,Direct trophic support (more food = more growth),1
+X09_DFA_HakeAge5Plus,PredNCC,Negative,DFA,1,0,209,Direct predator,2
+X08_Loons_8_WS,PredNCC,Negative,Straggler,0,100,94,Coincidence (Loon population co-trending with CPUE),2
+X08_commonMurre_JSOES,PredNCC,Negative,Straggler,0,100,80,Ecosystem proxy (Murre ~ Habitat Compression Index),2
+X12_copepodCom_EGoA,PreyAK,Positive,Straggler,1,100,51,Direct trophic support (cold-water lipid-rich copepod signal),3
+X12_DFA_biomassEuphShelfSum,PreyAK,Positive,DFA,0,0,110,"Ecosystem proxy (krill ~ pos PDO, Evans et al 2023)",3
+X13_DFA_WGOA_DFA_seabirds,PreyAK,Positive,DFA,0,27.3,11,Investigate neighborhood relationships further,3
+X12_copepodBiomass_WGoA,PreyAK,Positive,Straggler,0,3.08,83,"loads neg on lower trophic DFA, so pos on mid-trophic DFA, sum of small and large copepods S of Seward AK",3
+X12_copepodCom_WGoA,PreyAK,Positive,Straggler,0,0,14,ratio of large copepods to (small+large),3
+X13_hexagram_EAI,PreyAK,Positive,Straggler,0,0,12,"Tufted puffin chick diet, similar to seabird DFA",3
+X10_DFA_ssl.est.wholerange_2yrLead,PredAK,Negative,DFA,1,33.3,12,Direct predator (deepwater top-down consumer),4
+X15_DFA_sleeperSharkBSAI_predAK,PredAK,Negative,DFA,1,0,68,Direct predator (deepwater top-down consumer),4
+X10_Harbour_s_2yrLead_WS,PredAK,Negative,Straggler,1,0,32,Direct predator,4
+X15_ArrowtoothFlounderBiomass_predAK,PredAK,Negative,Straggler,1,9.1,11,Direct predator (deepwater top-down consumer),4
+X10_Harbor_seal_CR_2yrLead,PredAK,Negative,Straggler,0,100,254,Spurious (Noisy / high missing data; trend-rider on short series),4
+X15_PacificCodBiomass_predAK,PredAK,Negative,Straggler,0,100,12,"Ecosystem proxy (Pcod had negative response to heat wave, favored other predators)",4
+X15_halibutBiomassAge8plus_2yrLead_predAK,PredAK,Negative,Straggler,0,92.3,24,Ecosystem proxy (Halibut declines in warm water favor competitors),4

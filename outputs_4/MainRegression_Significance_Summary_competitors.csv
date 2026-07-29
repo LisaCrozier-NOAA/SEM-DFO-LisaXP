@@ -1,0 +1,41 @@
+H,Hypothesis,Path,Prediction,Support,Model,N_All,Sig_All,Pos_All,Neg_All,Sig_100,Pos_100,Neg_100,Pct_Supported_100,N_Competitors_100
+H1,Early marine survival predicts SAR,Abundance -> SAR,Positive,NS,DAG1C_long,46648,78.8,99.7,0.29999999999999716,6,99,1,99,0
+H1,Early marine survival predicts SAR,Abundance -> SAR,Positive,Yes,DAG1A_long,46648,100,100,0,100,100,0,100,0
+H1,Early marine survival predicts SAR,Abundance -> SAR,Positive,Yes,DAG1A_short,188160,94.2,100,0,100,100,0,100,0
+H1,Early marine survival predicts SAR,Abundance -> SAR,Positive,Yes,DAG1B_long,46648,100,100,0,100,100,0,100,0
+H1,Early marine survival predicts SAR,Abundance -> SAR,Positive,Yes,DAG1B_short,188160,88.5,100,0,85,100,0,100,0
+H1,Early marine survival predicts SAR,Abundance -> SAR,Positive,Yes,DAG1C_short,188160,62.5,99,1,100,100,0,100,0
+H2,Bigger is better,Growth -> Abundance,Positive,NS,DAG1A_long,46648,7.1,28.6,71.4,1,0,100,0,0
+H2,Bigger is better,Growth -> Abundance,Positive,NS,DAG1A_short,188160,5.8,32.5,67.5,6,46,54,46,0
+H3,Bigger is better,Growth -> SAR,Positive,NS,DAG1B_long,46648,46.4,84.9,15.099999999999994,43,58,42,58,0
+H3,Bigger is better,Growth -> SAR,Positive,Yes,DAG1B_short,188160,28.1,81.2,18.799999999999997,54,72,28,72,0
+H3,Bigger is better,Growth -> SAR,Positive,Yes,DAG1C_long,46648,38,82.6,17.400000000000006,97,99,1,99,0
+H3,Bigger is better,Growth -> SAR,Positive,Yes,DAG1C_short,188160,26.3,76.5,23.5,100,99,1,99,0
+H3_ak,Bigger is better,PreyAK -> SAR,Positive,Flipped Sign,DAG1A_long,46648,30.5,40.8,59.2,67,18,82,20,14
+H3_ak,Bigger is better,PreyAK -> SAR,Positive,Flipped Sign,DAG1A_short,188160,32.2,39.7,60.3,65,30,70,19,17
+H3_ak,Bigger is better,PreyAK -> SAR,Positive,Flipped Sign,DAG1B_long,46648,34.9,33.7,66.3,84,11,89,14,7
+H3_ak,Bigger is better,PreyAK -> SAR,Positive,Flipped Sign,DAG1B_short,188160,38.9,36.3,63.7,70,24,76,21,9
+H3_ak,Bigger is better,PreyAK -> SAR,Positive,Flipped Sign,DAG1C_short,188160,38,38.3,61.7,77,11,89,35,26
+H3_ak,Bigger is better,PreyAK -> SAR,Positive,Yes,DAG1C_long,46648,33,37.2,62.8,62,77,23,74,13
+H4,More prey improves salmon growth,PreyNCC -> Growth,Positive,Yes,DAG1A_long,46648,55.9,64.7,35.3,100,1,99,99,100
+H4,More prey improves salmon growth,PreyNCC -> Growth,Positive,Yes,DAG1A_short,188160,35.7,56,44,100,36,64,100,64
+H4,More prey improves salmon growth,PreyNCC -> Growth,Positive,Yes,DAG1B_long,46648,55.9,64.7,35.3,100,7,93,93,100
+H4,More prey improves salmon growth,PreyNCC -> Growth,Positive,Yes,DAG1B_short,188160,35.7,56,44,100,29,71,100,71
+H5,AK predators reduce survival,PredAK -> SAR,Negative,Flipped Sign,DAG1A_short,188160,26.1,53.1,46.9,100,85,15,15,0
+H5,AK predators reduce survival,PredAK -> SAR,Negative,Flipped Sign,DAG1B_long,46648,21,49.5,50.5,54,56,44,44,0
+H5,AK predators reduce survival,PredAK -> SAR,Negative,Flipped Sign,DAG1B_short,188160,35.4,49.2,50.8,100,69,31,31,0
+H5,AK predators reduce survival,PredAK -> SAR,Negative,Flipped Sign,DAG1C_short,188160,35.5,47.5,52.5,100,96,4,4,0
+H5,AK predators reduce survival,PredAK -> SAR,Negative,NS,DAG1A_long,46648,17.6,58.7,41.3,46,50,50,50,0
+H5,AK predators reduce survival,PredAK -> SAR,Negative,Yes,DAG1C_long,46648,20.9,49.4,50.6,64,35,65,65,0
+H5,NCC predators reduce early marine survival,PredNCC -> Abundance,Negative,Flipped Sign,DAG1A_short,188160,37.1,67.5,32.5,100,67,33,33,0
+H5,NCC predators reduce early marine survival,PredNCC -> Abundance,Negative,Flipped Sign,DAG1B_short,188160,30,70,30,100,59,41,41,0
+H5,NCC predators reduce early marine survival,PredNCC -> Abundance,Negative,Flipped Sign,DAG1C_short,188160,33.3,64.3,35.7,100,99,1,1,0
+H5,NCC predators reduce early marine survival,PredNCC -> Abundance,Negative,Yes,DAG1A_long,46648,35.3,50,50,100,28,72,72,0
+H5,NCC predators reduce early marine survival,PredNCC -> Abundance,Negative,Yes,DAG1B_long,46648,28.6,57.1,42.9,90,33,67,67,0
+H5,NCC predators reduce early marine survival,PredNCC -> Abundance,Negative,Yes,DAG1C_long,46648,28.6,47.9,52.1,97,1,99,99,0
+H6,Alternative prey improves salmon survival,PreyNCC -> Abundance,Positive,NS,DAG1C_long,46648,12.6,49.6,50.4,0,67,33,36,93
+H6,Alternative prey improves salmon survival,PreyNCC -> Abundance,Positive,NS,DAG1C_short,188160,11.9,50,50,0,65,35,64,51
+H7,PreyNCC have indirect effect on SAR,PreyNCC -> SAR,Positive,Yes,DAG1C_long,46648,29,49,51,93,41,59,60,93
+H7,PreyNCC have indirect effect on SAR,PreyNCC -> SAR,Positive,Yes,DAG1C_short,188160,33.4,51.9,48.1,69,38,62,63,51
+H8,NCC predators reduce survival beyond JSOES cpue,PredNCC -> SAR,Negative,Yes,DAG1C_long,46648,31.2,42.3,57.7,99,1,99,99,0
+H8,NCC predators reduce survival beyond JSOES cpue,PredNCC -> SAR,Negative,Yes,DAG1C_short,188160,30.3,49.3,50.7,99,1,99,99,0

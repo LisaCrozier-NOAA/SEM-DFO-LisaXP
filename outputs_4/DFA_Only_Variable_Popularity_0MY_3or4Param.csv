@@ -1,0 +1,16 @@
+Predictors,P3_MY0,P4_MY0,Total_Selection_Count
+X12_DFA_biomassEuphShelfSum,35,56,91
+X13_DFA_WGOA_DFA_seabirds,35,52,87
+X09_DFA_HakeAge5Plus,40,45,85
+X07_DFA_cpue_IntSprJunHW,35,32,67
+X11_DFA_Harbour_p_WS,25,42,67
+X03_DFA_comMurreDietHerrSard_Yaquina_NCC,22,41,63
+X08_DFA_DC_corm_3_WS,23,33,56
+X06_Lmu_IntSprJunH,20,33,53
+X09_DFA_ChinAbundSnakeFall,13,18,31
+X10_DFA_ssl.est.wholerange_2yrLead,11,11,22
+X15_DFA_sleeperSharkBSAI_predAK,11,11,22
+X02_DFA_SeaNettle_,9,8,17
+X06_DFA_IGF_mu,9,7,16
+X13_DFA_WGOA_DFA_midTrophic,6,8,14
+X05_DFA_abundSardine,6,3,9

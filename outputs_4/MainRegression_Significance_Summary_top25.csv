@@ -1,0 +1,15 @@
+model_id,path_label,Total_Models_Evaluated,Signif_Overall,Pct_Signif_Overall,Top_100_Evaluated,Signif_In_Top_100,Pct_Signif_In_Top_100
+DAG1A_long,Abundance -> SAR,46648,46648,100,25,25,100
+DAG1A_short,Abundance -> SAR,188160,177159,94.2,25,25,100
+DAG1B_long,Abundance -> SAR,46648,46631,100,25,25,100
+DAG1B_short,Abundance -> SAR,188160,166435,88.5,25,21,84
+DAG1C_long,Abundance -> SAR,46648,36736,78.8,25,2,8
+DAG1C_short,Abundance -> SAR,188160,117530,62.5,25,25,100
+DAG1A_long,Growth -> Abundance,46648,3332,7.1,25,0,0
+DAG1A_short,Growth -> Abundance,188160,10976,5.8,25,1,4
+DAG1B_long,Growth -> SAR,46648,21633,46.4,25,16,64
+DAG1B_short,Growth -> SAR,188160,52940,28.1,25,16,64
+DAG1C_long,Growth -> SAR,46648,17712,38,25,25,100
+DAG1C_short,Growth -> SAR,188160,49531,26.3,25,25,100
+DAG1C_long,PreyNCC -> Abundance,46648,5880,12.6,25,3,12
+DAG1C_short,PreyNCC -> Abundance,188160,22400,11.9,25,0,0

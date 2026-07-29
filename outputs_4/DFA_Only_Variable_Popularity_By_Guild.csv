@@ -1,0 +1,16 @@
+Predictors,Guild,P3_MY0,P3_MY5,P4_MY0,P4_MY5,Total_Selection_Count
+X06_Lmu_IntSprJunH,Growth,20,0,33,0,53
+X09_DFA_ChinAbundSnakeFall,Growth,13,0,18,0,31
+X06_DFA_IGF_mu,Growth,9,0,7,0,16
+X07_DFA_cpue_IntSprJunHW,Abundance,35,0,32,0,67
+X13_DFA_WGOA_DFA_seabirds,PreyNCC,35,0,52,0,87
+X09_DFA_HakeAge5Plus,PreyNCC,40,0,45,0,85
+X03_DFA_comMurreDietHerrSard_Yaquina_NCC,PreyNCC,22,0,41,0,63
+X08_DFA_DC_corm_3_WS,PreyNCC,23,0,33,0,56
+X02_DFA_SeaNettle_,PreyNCC,9,0,8,0,17
+X05_DFA_abundSardine,PreyNCC,6,0,3,0,9
+X11_DFA_Harbour_p_WS,PredNCC,25,0,42,0,67
+X10_DFA_ssl.est.wholerange_2yrLead,PredNCC,11,0,11,0,22
+X13_DFA_WGOA_DFA_midTrophic,PredNCC,6,0,8,0,14
+X12_DFA_biomassEuphShelfSum,PreyAK,35,0,56,0,91
+X15_DFA_sleeperSharkBSAI_predAK,PreyAK,11,0,11,0,22
