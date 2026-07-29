@@ -1,0 +1,48 @@
+---
+title: "Dynamic Factor Analysis"
+author: "Doug Jackson, QEDA Consulting, LLC"
+date: "05jun25"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: '2'
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+```{r setupReport, echo=FALSE, results="hide"}
+
+# Run this from the Terminal: 
+# Rscript -e "rmarkdown::render('./plotDFAs.Rmd', output_file='/Users/djackson/Documents/QEDA/NWFSC/ECOTRAN/programs/analyzeAKindices/output/DFA/plotDFAs.pdf')"
+
+####################################################################################################
+# Constants
+####################################################################################################
+workingDir <- "/Users/djackson/Documents/QEDA/NWFSC/ECOTRAN/programs/analyzeAKindices"
+
+####################################################################################################
+# Functions
+####################################################################################################
+
+####################################################################################################
+# Run
+####################################################################################################
+setwd(workingDir)
+
+plotList <- readRDS(file.path(workingDir, "output", "DFA", "plotList.rds"))
+```
+
+```{r, plots, echo=FALSE, results="asis", fig.height=4}
+cat("\\pagebreak\n\n")
+index <- 1
+for(thisPlot in plotList) {
+    cat("##", thisPlot$labels$title, "\n\n")
+    suppressWarnings(plot(thisPlot))
+    
+    if(index%%2==0) {
+        cat("\\pagebreak")
+    }
+    cat("\n\n")
+    index <- index + 1
+}
+```

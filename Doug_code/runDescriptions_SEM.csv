@@ -1,0 +1,14 @@
+﻿name,description,primary outputs,location
+2024_08_15_SEM,removed AK indicators from predator node; removed Bongo.sd.Jun; prescribed 3 cond1 clusters and 6 predator clusters,clustering/correlation analyses (analyzeIndicators_2000.pdf); SEM outputs for model with Northern conditions node (/north) and predator node (/predator),https://drive.google.com/drive/folders/1KDsBEaZDp6zNVpzhWeKbW_7xA9JZseDa?usp=drive_link
+2024_09_03_SEM,experiment with dropping/including indicators to see if there's a pattern in the error messages,SEM messages for different sets of indicators (2024_09_03_exploreModels.xlsx); SEM results with new numInd column (2024_09_03_SEMresultsByClus.csv),https://drive.google.com/drive/folders/1RaDK1BrTcmUEFO97eVXY-S4_O3v5jcUH?usp=drive_link
+2024_12_21_SEM,north model with new indicators from Lisa with extended time series (indicators incorrectly included in both north and predator nodes),"SEMresultsByClus.csv, modList.rds",https://drive.google.com/file/d/1FG-faYw3uWwgUrU4M8QmNCArwWBL0P6z/view?usp=drive_link
+2024_12_23_SEM,north model with new indicators from Lisa with extended time series (corrected),"SEMresultsByClus.csv, modList.rds",https://drive.google.com/file/d/1K4flJyz203DCkMESRNT5aV59qeuBhSwv/view?usp=drive_link
+2025_01_07_SEM,pred model with new indicators from Lisa,"SEMresultsByClus.csv, parameterEstimates.csv, modList.rds",https://drive.google.com/file/d/1laRLx4WSGdD2DpNHtl7dB_mUQnmmf4ke/view?usp=drive_link
+2025_02_11_SEM,scratch,,
+2025_02_11b_SEM,"no DFA; DFA1; or DFA1 and DFA2, as appropriate on a per-indicator basis","SEMresultsByClus.csv, modList.rds",
+2025_02_11c_SEM,just DFA1 for clusters for which DFA is possible and at least DFA1 contributes,"SEMresultsByClus.csv, modList.rds",
+2025_02_11d_SEM,"DFA1 and DFA2 for all clusters, even those for which only DFA1 contributes","SEMresultsByClus.csv, modList.rds",
+2025_02_12a_SEM,"no DFA; DFA1; or DFA1 and DFA2, as appropriate on a per-indicator basis","SEMresultsByClus.csv, modList.rds",https://drive.google.com/file/d/15UjJ7UivI2cemH-a7ipoAiE5kd8Vu8Ax/view?usp=drive_link
+2025_02_12b_SEM,just DFA1 for clusters for which DFA is possible and at least DFA1 contributes,"SEMresultsByClus.csv, modList.rds",https://drive.google.com/file/d/15UjJ7UivI2cemH-a7ipoAiE5kd8Vu8Ax/view?usp=drive_link
+2025_02_12c_SEM,"DFA1 and DFA2 for all clusters, even those for which only DFA1 contributes","SEMresultsByClus.csv, modList.rds",https://drive.google.com/file/d/15UjJ7UivI2cemH-a7ipoAiE5kd8Vu8Ax/view?usp=drive_link
+2025_07_28_SEM,"shiftPoorFitting_28jul25 guilds; guildsB (DAG1) model, short and long; guildsC (DAG2) model, short and long",,

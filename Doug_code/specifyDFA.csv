@@ -1,0 +1,25 @@
+dendID,dendClusID,useDFA1,useDFA2,Notes
+clusPrey,1,Y,Y,DFA1 and DFA2 contribute
+clusPrey,2,Y,Y,only DFA1 contributes
+clusPrey,3,Y,Y,DFA1 and DFA2 contribute
+clusPrey,4,Y,Y,only DFA1 contributes
+clusPrey,5,Y,Y,only DFA1 contributes
+clusPrey,6,,,neither DFA contributes
+clusCond1,1,Y,Y,only DFA1 contributes
+clusCond1,2,,,only one indicator
+clusCond2,1,,,only one indicator
+clusNorth,1,Y,Y,only DFA1 contributes
+clusNorth,2,Y,Y,DFA1 and DFA2 contribute
+clusNorth,3,,,only one indicator
+clusNorth,4,Y,Y,only DFA1 contributes
+clusNorth,5,Y,Y,only DFA1 contributes
+clusNorth,6,Y,Y,DFA1 and DFA2 contribute
+clusNorth,7,,,only one indicator
+clusNorth,8,,,neither DFA contributes
+clusNorth,9,Y,Y,only DFA1 contributes
+clusPred,1,Y,Y,DFA1 and DFA2 contribute
+clusPred,2,Y,Y,only DFA1 contributes
+clusPred,3,Y,Y,only DFA1 contributes
+clusPred,4,,,neither DFA contributes
+clusPred,5,,,only one indicator
+clusPred,6,Y,Y,only DFA1 contributes

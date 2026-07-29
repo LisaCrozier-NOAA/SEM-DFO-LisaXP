@@ -1,0 +1,71 @@
+indicator,dir,file,label,timeCol,labelCol,valueCol
+CA Market Squid - NCC,CCIEAdataDir,cciea_EI_FBN,Market squid,time,species_group,mean_density
+Jack mackerel - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,Jack mackerel,year,timeseries,index
+Juvenile chum - NCC,CCIEAdataDir,cciea_EI_FBN,Juvenile chum,time,species_group,mean_density
+Northern anchovy - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,Northern anchovy,year,timeseries,index
+Pacific Pompano - NCC,CCIEAdataDir,cciea_EI_FBN,Pompano,time,species_group,mean_density
+Pacific chub mackerel - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,Pacific chub mackerel,year,timeseries,index
+Pacific hake - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,Pacific hake,year,timeseries,index
+Pacific herring - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,Pacific herring,year,timeseries,index
+Pacific sardine - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,Pacific sardine,year,timeseries,index
+Pacific spiny dogfish - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,Pacific spiny dogfish,year,timeseries,index
+Pyrosomes - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,Pyrosome,year,timeseries,index
+Subyearling Chinook - NCC,CCIEAdataDir,cciea_EI_FBN,Subyearling Chinook,time,species_group,mean_density
+Surfsmelt - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,Surf smelt,year,timeseries,index
+Whitebait smelt - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,Whitebait smelt,year,timeseries,index
+YOY Pacific hake - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,YOY Pacific hake,year,timeseries,index
+YOY rockfish - NCC,rawDataDir,Crozier_Forage_NCC_JSOES_prevalence_2025_2.9.26,YOY Rockfish (spp.),year,timeseries,index
+Yearling Chinook - NCC,CCIEAdataDir,cciea_EI_FBN,Yearling Chinook,time,species_group,mean_density
+Yearling Coho - NCC,CCIEAdataDir,cciea_EI_FBN,Yearling Coho,time,species_group,mean_density
+Yearling sockeye - NCC,CCIEAdataDir,cciea_EI_FBN,Juvenile sockeye,time,species_group,mean_density
+Aequorea Water Jelly - NCC,CCIEAdataDir,cciea_EI_FBN,Aequorea Water Jelly,time,species_group,mean_density
+Aurelia Moon Jelly - NCC,CCIEAdataDir,cciea_EI_FBN,Moon jelly,time,species_group,mean_density
+Chrysaora Sea Nettle - NCC,CCIEAdataDir,cciea_EI_FBN,Chrysaora Sea Nettle,time,species_group,mean_density
+Phacellophora Egg yolk jelly - NCC,CCIEAdataDir,cciea_EI_FBN,Egg yolk jelly,time,species_group,mean_density
+Cassin's auklet density - NWFSC,CCIEAdataDir,cciea_B_AS_DENS,"Cassins auklet (No CC, Summer)",time,species_cohort,density_anomaly
+Common murre density - NWFSC,CCIEAdataDir,cciea_B_AS_DENS,"Common murre (No CC, Summer)",time,species_cohort,density_anomaly
+Sooty shearwater density - NWFSC,CCIEAdataDir,cciea_B_AS_DENS,"Sooty shearwater (No CC, Summer)",time,species_cohort,density_anomaly
+DI Rhinoceros auklet diet - Anchovy - NoCC,CCIEAdataDir,cciea_B_AS_DIET,Northern anchovy (No CC Rhinoceros auklet),time,diet_species_cohort,percent_diet
+DI Rhinoceros auklet diet - Herring - NoCC,CCIEAdataDir,cciea_B_AS_DIET,Pacific herring (No CC Rhinoceros auklet),time,diet_species_cohort,percent_diet
+DI Rhinoceros auklet diet - Rockfish - NoCC,CCIEAdataDir,cciea_B_AS_DIET,Rockfish juveniles (No CC Rhinoceros auklet),time,diet_species_cohort,percent_diet
+DI Rhinoceros auklet diet - Sandlance - NoCC,CCIEAdataDir,cciea_B_AS_DIET,Sandlance (No CC Rhinoceros auklet),time,diet_species_cohort,percent_diet
+DI Rhinoceros auklet diet - Smelt - NoCC,CCIEAdataDir,cciea_B_AS_DIET,Smelts (No CC Rhinoceros auklet),time,diet_species_cohort,percent_diet
+YH Common murre diet - Flatfish - NoCC,CCIEAdataDir,cciea_B_AS_DIET,Smelts (No CC Rhinoceros auklet),time,diet_species_cohort,percent_diet
+YH Common murre diet - Herring/Sardines - NoCC,CCIEAdataDir,cciea_B_AS_DIET,Herring/sardine (No CC YH Common murre),time,diet_species_cohort,percent_diet
+YH Common murre diet - Rockfish - NoCC,CCIEAdataDir,cciea_B_AS_DIET,Rockfish juveniles (No CC YH Common murre),time,diet_species_cohort,percent_diet
+YH Common murre diet - Sandlance - NoCC,CCIEAdataDir,cciea_B_AS_DIET,Pacific sandlance (No CC YH Common murre),time,diet_species_cohort,percent_diet
+YH Common murre diet - Smelt - NoCC,CCIEAdataDir,cciea_B_AS_DIET,Smelts (No CC YH Common murre),time,diet_species_cohort,percent_diet
+Crab landing WA,CCIEAdataDir,cciea_AC_landings,Crab WA,time,indicator,landings
+Habitat compression index - 43.5-48N,CCIEAdataDir,cciea_OC_HCI_annual,Monthly Habitat Compression Index over 43.5-48N,time,region,hci
+Chinook abundance Lower Columbia,CCIEAdataDir,cciea_SM_ORWA_CH_ABND,Lower Columbia R,time,population,abundance_anomaly
+Chinook abundance Snake fall,CCIEAdataDir,cciea_SM_ORWA_CH_ABND,Snake Fall,time,population,abundance_anomaly
+Chinook abundance Snake spr-sum,CCIEAdataDir,cciea_SM_ORWA_CH_ABND,Snake Spr-Sum,time,population,abundance_anomaly
+Chinook abundance Upper Columbia spr,CCIEAdataDir,cciea_SM_ORWA_CH_ABND,UpperColumbia Spr,time,population,abundance_anomaly
+Chinook abundance Willamette spr,CCIEAdataDir,cciea_SM_ORWA_CH_ABND,Willamette Spr,time,population,abundance_anomaly
+Chinook condition L Columbia Age Div,CCIEAdataDir,cciea_SM_ORWA_CH_CND,LowerCR,time,population,cond_age_div
+Chinook condition L Columbia Pct Nat,CCIEAdataDir,cciea_SM_ORWA_CH_CND,LowerCR,time,population,cond_pct_nat
+Chinook condition L Columbia Pop GR,CCIEAdataDir,cciea_SM_ORWA_CH_CND,LowerCR,time,population,cond_pop_gr
+Coho abundance Lower Columbia,CCIEAdataDir,cciea_SM_ORWA_CO_ABND,Lower Columbia Coho,time,population,abundance_anomaly
+Coho condition Lower Columbia Pct Nat,CCIEAdataDir,cciea_SM_ORWA_CO_CND,LowerCR,time,population,cond_pct_nat
+Coho condition Lower Columbia Pop GR,CCIEAdataDir,cciea_SM_ORWA_CO_CND,LowerCR,time,population,cond_pop_gr
+Chinook condition Snake fall Age Div,CCIEAdataDir,cciea_SM_ORWA_CH_CND,SnakeFall,time,population,cond_age_div
+Chinook condition Snake fall Pct Nat,CCIEAdataDir,cciea_SM_ORWA_CH_CND,SnakeFall,time,population,cond_pct_nat
+Chinook condition Snake fall Pop GR,CCIEAdataDir,cciea_SM_ORWA_CH_CND,SnakeFall,time,population,cond_pop_gr
+Chinook condition Snake spr-sum Age Div,CCIEAdataDir,cciea_SM_ORWA_CH_CND,SnakeSpSu,time,population,cond_age_div
+Chinook condition Snake spr-sum Pct Nat,CCIEAdataDir,cciea_SM_ORWA_CH_CND,SnakeSpSu,time,population,cond_pct_nat
+Chinook condition Snake spr-sum Pop GR,CCIEAdataDir,cciea_SM_ORWA_CH_CND,SnakeSpSu,time,population,cond_pop_gr
+Chinook condition Up Col spr Age Div,CCIEAdataDir,cciea_SM_ORWA_CH_CND,UpperCRSpr,time,population,cond_age_div
+Chinook condition Up Col spr Pct Nat,CCIEAdataDir,cciea_SM_ORWA_CH_CND,UpperCRSpr,time,population,cond_pct_nat
+Chinook condition Up Col spr Pop GR,CCIEAdataDir,cciea_SM_ORWA_CH_CND,UpperCRSpr,time,population,cond_pop_gr
+Chinook condition Willamette Age Div,CCIEAdataDir,cciea_SM_ORWA_CH_CND,Willamette,time,population,cond_age_div
+Chinook condition Willamette Pct Nat,CCIEAdataDir,cciea_SM_ORWA_CH_CND,Willamette,time,population,cond_pct_nat
+Chinook condition Willamette Pop GR,CCIEAdataDir,cciea_SM_ORWA_CH_CND,Willamette,time,population,cond_pop_gr
+Salmon commercial landings OR,CCIEAdataDir,cciea_AC_landings,Salmon commercial OR,time,indicator,landings
+Salmon commercial landings WA,CCIEAdataDir,cciea_AC_landings,Salmon commercial WA,time,indicator,landings
+Salmon commercial landings coastwide,CCIEAdataDir,cciea_AC_landings,Salmon commercial coastwide,time,indicator,landings
+Salmon recreational landings OR,CCIEAdataDir,cciea_AC_landings,Salmon recreational OR,time,indicator,landings
+Salmon recreational landings WA,CCIEAdataDir,cciea_AC_landings,Salmon recreational WA,time,indicator,landings
+Salmon recreational landings coastwide,CCIEAdataDir,cciea_AC_landings,Salmon recreational coastwide,time,indicator,landings
+Salmon revenue OR,CCIEAdataDir,cciea_AC_revenue,Salmon CA,time,indicator,revenue
+Salmon revenue WA,CCIEAdataDir,cciea_AC_revenue,Salmon WA,time,indicator,revenue
+Salmon revenue coastwide,CCIEAdataDir,cciea_AC_revenue,Salmon coastwide,time,indicator,revenue
