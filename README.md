@@ -43,6 +43,7 @@ Priority is to implement literature-guided causal mechanisms first, then reconci
 - `Ferris-DFAIndicators-goa/data/WGOA_EcoState_Data_Jan2023.csv`
 - `Ferris-DFAIndicators-goa/data/EGOA_metadata.csv`
 - `Ferris-DFAIndicators-goa/data/WGOA_metadata.csv`
+- `Ferris-DFAIndicators-goa/MARSS results/climate_trends.csv` (climate DFA/MARSS trend outputs)
 
 These files are annual time step (with seasonal indicator summaries embedded where relevant) and should be used to construct mechanistic functional indices before mapping into SEM latent structure.
 
@@ -53,7 +54,7 @@ These files are annual time step (with seasonal indicator summaries embedded whe
 
 ## SEM structure notes (critical)
 
-- Latent nodes include: `PreyNCC`, `PreyAK`, `PredNCC`, `PredAK`, salmon-condition nodes, and `SAR`.
+- Latent nodes include: `PreyNCC`, `PreyAK`, `PredNCC`, `PredAK`, salmon nodes (`Growth`, `Abundance`), and `SAR`.
 - Salmon guild labels include `06.Cond1NCC` and `07.Cond2NCC`; `07.Cond2NCC` is expected to remain in the model.
 - `guilds.excludecol.csv` is the source of truth for current node assignments.
 
@@ -61,7 +62,7 @@ These files are annual time step (with seasonal indicator summaries embedded whe
 
 1. Harmonize indicator names across `guilds.excludecol.csv`, `indicators.csv`, and `var_lookup_NCC_AK.SAR.csv` using `shortName` as canonical key.
 2. Build annual Alaska mechanistic design table from Ferris GOA raw datasets + metadata.
-3. Use SST as primary warm forcing (start with spring/summer SST); treat depth-temperature compression indices as future enhancement.
+3. Use SST as primary warm forcing (start with spring/summer SST). Run `climate_trends.csv` as an alternate/composite warm-state forcing sensitivity.
 4. Construct mechanistic predation indices (SSL and shark) and map outputs into `PreyAK`/`PredAK` pathways.
 5. Refit/evaluate SEM with lag/sensitivity tests emphasizing mechanistic sign consistency.
 
@@ -78,7 +79,7 @@ I_SSL_t    = SSL_t * p_salmon_t * C_t
 
 Where:
 - `F_t` = preferred forage availability index (capelin/sand lance-focused).
-- `W_t` = warm-state index (SST-based initially).
+- `W_t` = warm-state index (SST-based initially; compare with climate DFA trend from `climate_trends.csv`).
 - `C_t` = encounter/compression modifier (start simple; improve later with depth/habitat metrics).
 - `m > 1` for Type III switching behavior.
 
@@ -105,7 +106,7 @@ Use as `PredAK` candidate input or as a diagnostic composite during sensitivity 
 ## Sensitivity/evaluation priorities
 
 - Test lags (0–2 years).
-- Sensitivity over `m`, `Q10`, SST season choice, and forage weighting.
+- Sensitivity over `m`, `Q10`, SST season choice, warm-state choice (SST vs climate DFA trend), and forage weighting.
 - Prioritize theory-consistent directionality over strict short-term fit if discrepancies occur.
 
 ## Session handoff / restart checklist
@@ -114,6 +115,6 @@ Before ending a session, preserve continuity by updating this README with:
 
 1. Any revised formulas (SSL/shark/composite).
 2. Final variable mappings selected for `PreyAK` and `PredAK`.
-3. Chosen SST season(s), lag structure, and sensitivity bounds.
+3. Chosen SST season(s), warm-state forcing selection, lag structure, and sensitivity bounds.
 4. Files/scripts added or modified for preprocessing and index generation.
 5. Outstanding data gaps or assumptions to resolve next.
