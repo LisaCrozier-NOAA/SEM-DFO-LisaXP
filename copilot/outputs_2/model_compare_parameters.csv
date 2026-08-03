@@ -1,0 +1,8 @@
+model,parameter,estimate
+M1_temp_only,k0,-87.37198048350659
+M1_temp_only,kT,-71.50479157209823
+M2_temp_plus_forage,k0,-107.11892684482048
+M2_temp_plus_forage,kT,-87.3635986531365
+M2_temp_plus_forage,kF,3.0234317195136363e-4
+M2_temp_plus_forage,a,0.6467877735049395
+M2_temp_plus_forage,b,0.35321222649506046
