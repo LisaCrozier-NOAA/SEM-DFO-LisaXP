@@ -1,20 +1,3 @@
-# Phase 1 Alaska predator/prey mechanistic indices
-# Repo: LisaCrozier-NOAA/SEM-DFO-LisaXP
-# Date: 2026-07-30
-#
-# Purpose
-#   1) Harmonize indicator naming across mapping files
-#   2) Build annual hybrid-source design table (GOA raw + SEM + shark assessment + climate trend)
-#   3) Construct mechanistic indices:
-#        - SSL Type III prey-switching index
-#        - Salmon shark metabolic predation index
-#        - Composite PredAK index
-#   4) Export SEM-ready outputs for downstream modeling
-#
-# Notes
-#   - Uses strict salmon proxies from SEM: x07_* (juvenile), x16_* (adult/SAR proxy provided by user)
-#   - Keeps assumptions transparent and parameterized
-#   - If candidate auto-detection is imperfect, set manual picks explicitly
 
 suppressPackageStartupMessages({
   library(tidyverse)
@@ -39,7 +22,7 @@ path_egoa_meta   <- "Ferris-DFAIndicators-goa/data/EGOA_metadata.csv"
 path_wgoa_meta   <- "Ferris-DFAIndicators-goa/data/WGOA_metadata.csv"
 path_clim_trend  <- "Ferris-DFAIndicators-goa/MARSS results/climate_trends.csv"
 
-out_dir          <- "copilot/outputs"
+out_dir          <- "copilot/outputs_2"
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 
 # ---------------------------
@@ -96,29 +79,6 @@ safe_scale <- function(x) {
   if (is.na(s) || s == 0) return(rep(0, length(x)))
   as.numeric(scale(x))
 }
-
-# ---------------------------
-# 3) Build canonical indicator dictionary-----
-# ---------------------------
-stop_if_missing(guilds, "guilds", c("short_name"))
-stop_if_missing(inds,   "indicators", c("short_name"))
-
-dict <- guilds %>%
-  select(any_of(c("short_name", "semnode", "guild"))) %>%
-  distinct() %>%
-  left_join(inds, by = "short_name", suffix = c("_guild", "_ind"))
-
-lookup_cols <- names(lookup)
-if (!"short_name" %in% lookup_cols) {
-  cand <- c("shortname", "short_name_model", "short_name_sem")
-  hit <- cand[cand %in% lookup_cols]
-  if (length(hit) > 0) lookup <- lookup %>% rename(short_name = all_of(hit[1]))
-}
-if ("short_name" %in% names(lookup)) {
-  dict <- dict %>% left_join(lookup, by = "short_name")
-}
-
-write_csv(dict, file.path(out_dir, "phase1_indicator_dictionary.csv"))
 
 # ---------------------------
 # 4) Build annual source tables-------
@@ -183,12 +143,12 @@ message("Candidates by source:\n",
         "Shark (shark+sem): ", paste(shark_cands, collapse=", "), "\n",
         "Salmon (sem): ", paste(salmon_cands, collapse=", "))
 
-# ---------------------------
-# 6) Manual picks (edit here if needed)
-# ---------------------------
-col_sst    <- pick1(sst_cands)            # from ak_yr
-col_ssl    <- pick1(ssl_cands)            # from ak_yr
-col_shark  <- pick1(shark_cands_shark)    # prefer shark table
+# # ---------------------------
+# # 6) Manual picks (edit here if needed)
+# # ---------------------------
+# col_sst    <- pick1(sst_cands)            # from ak_yr
+# col_ssl    <- pick1(ssl_cands)            # from ak_yr
+# col_shark  <- pick1(shark_cands_shark)    # prefer shark table
 
 # User-specified salmon columns
 col_salmon_juv   <- "x07_dfa_cpue_int_spr_jun_hw"
@@ -277,94 +237,3 @@ if (nrow(clim_tr) > 0 && "year" %in% names(clim_tr)) {
   design$W_clim <- NA_real_
 }
 
-# ---------------------------
-# 8) Mechanistic indices
-# ---------------------------
-# Parameters (tune in sensitivity runs)
-m     <- 2.0
-alpha <- 1.0
-beta  <- 0.8
-Q10   <- 2.0
-T_ref <- mean(design$SST_raw, na.rm = TRUE)
-
-design <- design %>%
-  mutate(
-    W_sst   = safe_scale(SST_raw),
-    W_use   = W_sst,   # swap to W_clim for alternate forcing if desired
-    SSL_z   = safe_scale(SSL_raw),
-    Shark_z = safe_scale(Shark_raw),
-    Sal_z   = safe_scale(Salmon_raw),
-    F_z     = safe_scale(F_raw)
-  )
-
-# Shift scaled salmon/forage to positive support for Hill function
-Nsalmon <- pmax(1e-6, design$Sal_z - min(design$Sal_z, na.rm = TRUE) + 1)
-F_t     <- pmax(1e-6, design$F_z   - min(design$F_z, na.rm = TRUE) + 1)
-
-# Modifiers (simple placeholders for now)
-C_t <- rep(1, nrow(design))                  # SSL compression modifier
-O_t <- pmax(0.2, 1 + 0.3 * design$W_use)     # shark overlap modifier
-
-# SSL Type III switching index
-p_salmon <- (Nsalmon^m) / ((Nsalmon^m) + (alpha * F_t * exp(-beta * design$W_use))^m)
-I_SSL    <- design$SSL_z * p_salmon * C_t
-
-# Shark metabolic predation index
-M_t      <- Q10^((design$SST_raw - T_ref)/10)
-I_Shark  <- design$Shark_z * M_t * O_t
-
-# Composite PredAK candidate
-I_PredAK <- safe_scale(I_SSL) + safe_scale(I_Shark)
-
-ak_idx <- design %>%
-  transmute(
-    year,
-    SST_raw,
-    W_sst,
-    W_clim,
-    W_use,
-    F_raw,
-    SSL_raw,
-    Shark_raw,
-    Salmon_raw,
-    p_salmon_ssl = p_salmon,
-    I_SSL,
-    M_shark = M_t,
-    I_Shark,
-    I_PredAK
-  )
-
-# ---------------------------
-# 9) Save outputs
-# ---------------------------
-write_csv(ak_idx, file.path(out_dir, "phase1_AK_mechanistic_indices.csv"))
-
-sem_plus <- sem_yr %>% left_join(ak_idx, by = "year")
-write_csv(sem_plus, file.path(out_dir, "sem_master_data_plus_phase1_indices.csv"))
-
-# NA diagnostics
-na_diag <- tibble(
-  column = names(ak_idx),
-  n_na   = map_int(ak_idx, ~sum(is.na(.x))),
-  pct_na = round(100 * n_na / nrow(ak_idx), 2)
-)
-write_csv(na_diag, file.path(out_dir, "phase1_index_na_diagnostics.csv"))
-
-# simple plot
-diag_long <- ak_idx %>%
-  select(year, W_sst, p_salmon_ssl, I_SSL, I_Shark, I_PredAK) %>%
-  pivot_longer(-year, names_to = "series", values_to = "value")
-
-p <- ggplot(diag_long, aes(year, value, color = series)) +
-  geom_line(linewidth = 0.8) +
-  theme_bw() +
-  labs(title = "Phase 1 Mechanistic Index Diagnostics", x = "Year", y = "Value")
-
-ggsave(file.path(out_dir, "phase1_index_diagnostics.png"), p, width = 10, height = 6, dpi = 150)
-
-message("Done. Files written to: ", out_dir, "\n",
-        "- phase1_indicator_dictionary.csv\n",
-        "- phase1_AK_mechanistic_indices.csv\n",
-        "- sem_master_data_plus_phase1_indices.csv\n",
-        "- phase1_index_na_diagnostics.csv\n",
-        "- phase1_index_diagnostics.png")

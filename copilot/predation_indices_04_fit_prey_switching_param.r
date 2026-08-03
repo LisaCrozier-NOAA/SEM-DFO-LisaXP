@@ -6,6 +6,13 @@
 # Q10 <- 2.0
 # p_switch <- plogis(k0 + kW * design$W_use - kF * design$F_z)
 
+# SSL switching: increases with T_use and decreases with forage F_z
+p_switch <- plogis(k0 + kT * dat$sst - kF * dat$forage)
+
+C_t   <- rep(1, nrow(data_selected))
+I_SSL <- data_selected$SSL_z * p_switch * C_t
+
+
 # For mainline model going forward:
 #   
 #   k0 = 0

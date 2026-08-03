@@ -1,3 +1,6 @@
+#shutting down Day 1"
+save.image("copilot/Day_1/pred.indices.day1.rdata")
+
 suppressPackageStartupMessages({
   library(tidyverse)
   library(broom)
