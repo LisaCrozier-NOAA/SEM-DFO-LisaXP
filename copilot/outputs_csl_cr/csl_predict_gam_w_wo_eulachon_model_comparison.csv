@@ -1,0 +1,3 @@
+"Model","Formula","EDF","Deviance_Explained","Adj_R2","Scale_Dispersion","REML_Score","QAIC","Delta_QAIC"
+"With Eulachon","s(week) + s(eulachon) + offset(log_scale)",8.08,"61.8%",0.722,126.175502994946,445.321752350846,NA,NA
+"Without Eulachon (Week Only)","s(week) + offset(log_scale)",4.74,"58.8%",0.697,129.744461633893,444.308797923147,NA,NA

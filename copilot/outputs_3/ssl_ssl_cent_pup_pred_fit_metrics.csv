@@ -1,0 +1,8 @@
+metric,value
+n,24
+sse,23
+rmse,0.9789450103725609
+r2,0
+cor_y_yhat,0.023809483225713954
+optim_convergence,0
+optim_value,23

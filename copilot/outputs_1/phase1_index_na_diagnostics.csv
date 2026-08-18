@@ -1,0 +1,15 @@
+column,n_na,pct_na
+year,0,0
+SST_raw,83,68.6
+W_sst,83,68.6
+W_clim,68,56.2
+W_use,83,68.6
+F_raw,70,57.85
+SSL_raw,69,57.02
+Shark_raw,95,78.51
+Salmon_raw,97,80.17
+p_salmon_ssl,97,80.17
+I_SSL,97,80.17
+M_shark,83,68.6
+I_Shark,95,78.51
+I_PredAK,97,80.17

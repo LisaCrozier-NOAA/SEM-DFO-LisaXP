@@ -1,0 +1,16 @@
+variable,group
+sst_wgoa_coastwatch_junjulaug,selected_sst
+bts_egoa_temp_sum_1to5m,temp
+bts_egoa_temp_sum_195to205m,temp
+ll_egoa_temp_sum_246to255m,temp
+secm_temp_sum_10m,temp
+bts_wgoa_temp_sum_1to5m,temp
+bts_wgoa_temp_sum_195to205m,temp
+ll_wgoa_temp_sum_246to255m,temp
+swln_temp_fall_0to10m,temp
+swln_temp_spr_0to10m,temp
+swln_temp_fall_176to226m,temp
+swln_temp_spr_176to226m,temp
+adfg_lmesh_temp_summ_bttm,temp
+pdo_djf,pdo
+enso_dj,enso

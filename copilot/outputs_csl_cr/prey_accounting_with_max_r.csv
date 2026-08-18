@@ -1,0 +1,20 @@
+"Candidate_Metric","Assigned_Category","Max_R"
+"sardine_northern_bmass_jake","Cluster 1: Correlated with Hake (|r| > 0.58)",0.97
+"herring_bmass_jake","Cluster 1: Correlated with Hake (|r| > 0.58)",0.938
+"abund_sardine_doug","Cluster 1: Correlated with Hake (|r| > 0.58)",0.924
+"abund_herring_doug","Cluster 1: Correlated with Hake (|r| > 0.58)",0.866
+"hake_age5plus_2025_doug","Cluster 1: Correlated with Hake (|r| > 0.58)",0.755
+"hake_cpue_jake","Cluster 1: Correlated with Hake (|r| > 0.58)",0.588
+"hake_fishery_wa_2025_doug","Cluster 1: Correlated with Hake (|r| > 0.58)",0.586
+"sardine_gam_2025_doug","Cluster 2: Correlated with Sardine (|r| > 0.58)",0.89
+"anchovy_northern_bmass_jake","Cluster 2: Correlated with Sardine (|r| > 0.58)",0.854
+"x05_herring_gam_doug","Cluster 2: Correlated with Sardine (|r| > 0.58)",0.822
+"sardine_ncc_doug","Cluster 2: Correlated with Sardine (|r| > 0.58)",0.805
+"jack_mackerel_bmass_jake","Cluster 3: Correlated with Sitka Herring (|r| > 0.58)",0.836
+"x09_dfa_hake_age5plus_doug","FINAL 1: Hake Anchor",1
+"x05_dfa_abund_sardine_doug","FINAL 2: Sardine Anchor",1
+"sitka_herring_e_go_a_doug","FINAL 3: Sitka Herring Anchor",1
+"x05_herring_ncc_doug","FINAL 4: NCC Herring Anchor",1
+"x05_anchovy_gam_doug","FINAL 5: Executive Anchovy Choice",1
+"pacificmackerel_gam_2025_doug","Uncorrelated / Low Correlation (< 0.58)",0.702
+"jackmackerel_gam_2025_doug","Uncorrelated / Low Correlation (< 0.58)",0.699

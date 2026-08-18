@@ -1,0 +1,176 @@
+forage_set_id,forage_label
+1,stka_herr_matbiom
+2,crg_herr_matbiom
+3,mid_il_capelin
+4,pav_capelin_cpue
+5,x13_ammod_wai
+6,ammod_eai
+7,capelin_w_go_a
+8,sitka_herring_e_go_a
+9,abund_herring
+10,est_abund_herring_recruits
+11,stka_herr_matbiom + crg_herr_matbiom
+12,stka_herr_matbiom + mid_il_capelin
+13,stka_herr_matbiom + pav_capelin_cpue
+14,stka_herr_matbiom + x13_ammod_wai
+15,stka_herr_matbiom + ammod_eai
+16,stka_herr_matbiom + capelin_w_go_a
+17,stka_herr_matbiom + sitka_herring_e_go_a
+18,stka_herr_matbiom + abund_herring
+19,stka_herr_matbiom + est_abund_herring_recruits
+20,crg_herr_matbiom + mid_il_capelin
+21,crg_herr_matbiom + pav_capelin_cpue
+22,crg_herr_matbiom + x13_ammod_wai
+23,crg_herr_matbiom + ammod_eai
+24,crg_herr_matbiom + capelin_w_go_a
+25,crg_herr_matbiom + sitka_herring_e_go_a
+26,crg_herr_matbiom + abund_herring
+27,crg_herr_matbiom + est_abund_herring_recruits
+28,mid_il_capelin + pav_capelin_cpue
+29,mid_il_capelin + x13_ammod_wai
+30,mid_il_capelin + ammod_eai
+31,mid_il_capelin + capelin_w_go_a
+32,mid_il_capelin + sitka_herring_e_go_a
+33,mid_il_capelin + abund_herring
+34,mid_il_capelin + est_abund_herring_recruits
+35,pav_capelin_cpue + x13_ammod_wai
+36,pav_capelin_cpue + ammod_eai
+37,pav_capelin_cpue + capelin_w_go_a
+38,pav_capelin_cpue + sitka_herring_e_go_a
+39,pav_capelin_cpue + abund_herring
+40,pav_capelin_cpue + est_abund_herring_recruits
+41,x13_ammod_wai + ammod_eai
+42,x13_ammod_wai + capelin_w_go_a
+43,x13_ammod_wai + sitka_herring_e_go_a
+44,x13_ammod_wai + abund_herring
+45,x13_ammod_wai + est_abund_herring_recruits
+46,ammod_eai + capelin_w_go_a
+47,ammod_eai + sitka_herring_e_go_a
+48,ammod_eai + abund_herring
+49,ammod_eai + est_abund_herring_recruits
+50,capelin_w_go_a + sitka_herring_e_go_a
+51,capelin_w_go_a + abund_herring
+52,capelin_w_go_a + est_abund_herring_recruits
+53,sitka_herring_e_go_a + abund_herring
+54,sitka_herring_e_go_a + est_abund_herring_recruits
+55,abund_herring + est_abund_herring_recruits
+56,stka_herr_matbiom + crg_herr_matbiom + mid_il_capelin
+57,stka_herr_matbiom + crg_herr_matbiom + pav_capelin_cpue
+58,stka_herr_matbiom + crg_herr_matbiom + x13_ammod_wai
+59,stka_herr_matbiom + crg_herr_matbiom + ammod_eai
+60,stka_herr_matbiom + crg_herr_matbiom + capelin_w_go_a
+61,stka_herr_matbiom + crg_herr_matbiom + sitka_herring_e_go_a
+62,stka_herr_matbiom + crg_herr_matbiom + abund_herring
+63,stka_herr_matbiom + crg_herr_matbiom + est_abund_herring_recruits
+64,stka_herr_matbiom + mid_il_capelin + pav_capelin_cpue
+65,stka_herr_matbiom + mid_il_capelin + x13_ammod_wai
+66,stka_herr_matbiom + mid_il_capelin + ammod_eai
+67,stka_herr_matbiom + mid_il_capelin + capelin_w_go_a
+68,stka_herr_matbiom + mid_il_capelin + sitka_herring_e_go_a
+69,stka_herr_matbiom + mid_il_capelin + abund_herring
+70,stka_herr_matbiom + mid_il_capelin + est_abund_herring_recruits
+71,stka_herr_matbiom + pav_capelin_cpue + x13_ammod_wai
+72,stka_herr_matbiom + pav_capelin_cpue + ammod_eai
+73,stka_herr_matbiom + pav_capelin_cpue + capelin_w_go_a
+74,stka_herr_matbiom + pav_capelin_cpue + sitka_herring_e_go_a
+75,stka_herr_matbiom + pav_capelin_cpue + abund_herring
+76,stka_herr_matbiom + pav_capelin_cpue + est_abund_herring_recruits
+77,stka_herr_matbiom + x13_ammod_wai + ammod_eai
+78,stka_herr_matbiom + x13_ammod_wai + capelin_w_go_a
+79,stka_herr_matbiom + x13_ammod_wai + sitka_herring_e_go_a
+80,stka_herr_matbiom + x13_ammod_wai + abund_herring
+81,stka_herr_matbiom + x13_ammod_wai + est_abund_herring_recruits
+82,stka_herr_matbiom + ammod_eai + capelin_w_go_a
+83,stka_herr_matbiom + ammod_eai + sitka_herring_e_go_a
+84,stka_herr_matbiom + ammod_eai + abund_herring
+85,stka_herr_matbiom + ammod_eai + est_abund_herring_recruits
+86,stka_herr_matbiom + capelin_w_go_a + sitka_herring_e_go_a
+87,stka_herr_matbiom + capelin_w_go_a + abund_herring
+88,stka_herr_matbiom + capelin_w_go_a + est_abund_herring_recruits
+89,stka_herr_matbiom + sitka_herring_e_go_a + abund_herring
+90,stka_herr_matbiom + sitka_herring_e_go_a + est_abund_herring_recruits
+91,stka_herr_matbiom + abund_herring + est_abund_herring_recruits
+92,crg_herr_matbiom + mid_il_capelin + pav_capelin_cpue
+93,crg_herr_matbiom + mid_il_capelin + x13_ammod_wai
+94,crg_herr_matbiom + mid_il_capelin + ammod_eai
+95,crg_herr_matbiom + mid_il_capelin + capelin_w_go_a
+96,crg_herr_matbiom + mid_il_capelin + sitka_herring_e_go_a
+97,crg_herr_matbiom + mid_il_capelin + abund_herring
+98,crg_herr_matbiom + mid_il_capelin + est_abund_herring_recruits
+99,crg_herr_matbiom + pav_capelin_cpue + x13_ammod_wai
+100,crg_herr_matbiom + pav_capelin_cpue + ammod_eai
+101,crg_herr_matbiom + pav_capelin_cpue + capelin_w_go_a
+102,crg_herr_matbiom + pav_capelin_cpue + sitka_herring_e_go_a
+103,crg_herr_matbiom + pav_capelin_cpue + abund_herring
+104,crg_herr_matbiom + pav_capelin_cpue + est_abund_herring_recruits
+105,crg_herr_matbiom + x13_ammod_wai + ammod_eai
+106,crg_herr_matbiom + x13_ammod_wai + capelin_w_go_a
+107,crg_herr_matbiom + x13_ammod_wai + sitka_herring_e_go_a
+108,crg_herr_matbiom + x13_ammod_wai + abund_herring
+109,crg_herr_matbiom + x13_ammod_wai + est_abund_herring_recruits
+110,crg_herr_matbiom + ammod_eai + capelin_w_go_a
+111,crg_herr_matbiom + ammod_eai + sitka_herring_e_go_a
+112,crg_herr_matbiom + ammod_eai + abund_herring
+113,crg_herr_matbiom + ammod_eai + est_abund_herring_recruits
+114,crg_herr_matbiom + capelin_w_go_a + sitka_herring_e_go_a
+115,crg_herr_matbiom + capelin_w_go_a + abund_herring
+116,crg_herr_matbiom + capelin_w_go_a + est_abund_herring_recruits
+117,crg_herr_matbiom + sitka_herring_e_go_a + abund_herring
+118,crg_herr_matbiom + sitka_herring_e_go_a + est_abund_herring_recruits
+119,crg_herr_matbiom + abund_herring + est_abund_herring_recruits
+120,mid_il_capelin + pav_capelin_cpue + x13_ammod_wai
+121,mid_il_capelin + pav_capelin_cpue + ammod_eai
+122,mid_il_capelin + pav_capelin_cpue + capelin_w_go_a
+123,mid_il_capelin + pav_capelin_cpue + sitka_herring_e_go_a
+124,mid_il_capelin + pav_capelin_cpue + abund_herring
+125,mid_il_capelin + pav_capelin_cpue + est_abund_herring_recruits
+126,mid_il_capelin + x13_ammod_wai + ammod_eai
+127,mid_il_capelin + x13_ammod_wai + capelin_w_go_a
+128,mid_il_capelin + x13_ammod_wai + sitka_herring_e_go_a
+129,mid_il_capelin + x13_ammod_wai + abund_herring
+130,mid_il_capelin + x13_ammod_wai + est_abund_herring_recruits
+131,mid_il_capelin + ammod_eai + capelin_w_go_a
+132,mid_il_capelin + ammod_eai + sitka_herring_e_go_a
+133,mid_il_capelin + ammod_eai + abund_herring
+134,mid_il_capelin + ammod_eai + est_abund_herring_recruits
+135,mid_il_capelin + capelin_w_go_a + sitka_herring_e_go_a
+136,mid_il_capelin + capelin_w_go_a + abund_herring
+137,mid_il_capelin + capelin_w_go_a + est_abund_herring_recruits
+138,mid_il_capelin + sitka_herring_e_go_a + abund_herring
+139,mid_il_capelin + sitka_herring_e_go_a + est_abund_herring_recruits
+140,mid_il_capelin + abund_herring + est_abund_herring_recruits
+141,pav_capelin_cpue + x13_ammod_wai + ammod_eai
+142,pav_capelin_cpue + x13_ammod_wai + capelin_w_go_a
+143,pav_capelin_cpue + x13_ammod_wai + sitka_herring_e_go_a
+144,pav_capelin_cpue + x13_ammod_wai + abund_herring
+145,pav_capelin_cpue + x13_ammod_wai + est_abund_herring_recruits
+146,pav_capelin_cpue + ammod_eai + capelin_w_go_a
+147,pav_capelin_cpue + ammod_eai + sitka_herring_e_go_a
+148,pav_capelin_cpue + ammod_eai + abund_herring
+149,pav_capelin_cpue + ammod_eai + est_abund_herring_recruits
+150,pav_capelin_cpue + capelin_w_go_a + sitka_herring_e_go_a
+151,pav_capelin_cpue + capelin_w_go_a + abund_herring
+152,pav_capelin_cpue + capelin_w_go_a + est_abund_herring_recruits
+153,pav_capelin_cpue + sitka_herring_e_go_a + abund_herring
+154,pav_capelin_cpue + sitka_herring_e_go_a + est_abund_herring_recruits
+155,pav_capelin_cpue + abund_herring + est_abund_herring_recruits
+156,x13_ammod_wai + ammod_eai + capelin_w_go_a
+157,x13_ammod_wai + ammod_eai + sitka_herring_e_go_a
+158,x13_ammod_wai + ammod_eai + abund_herring
+159,x13_ammod_wai + ammod_eai + est_abund_herring_recruits
+160,x13_ammod_wai + capelin_w_go_a + sitka_herring_e_go_a
+161,x13_ammod_wai + capelin_w_go_a + abund_herring
+162,x13_ammod_wai + capelin_w_go_a + est_abund_herring_recruits
+163,x13_ammod_wai + sitka_herring_e_go_a + abund_herring
+164,x13_ammod_wai + sitka_herring_e_go_a + est_abund_herring_recruits
+165,x13_ammod_wai + abund_herring + est_abund_herring_recruits
+166,ammod_eai + capelin_w_go_a + sitka_herring_e_go_a
+167,ammod_eai + capelin_w_go_a + abund_herring
+168,ammod_eai + capelin_w_go_a + est_abund_herring_recruits
+169,ammod_eai + sitka_herring_e_go_a + abund_herring
+170,ammod_eai + sitka_herring_e_go_a + est_abund_herring_recruits
+171,ammod_eai + abund_herring + est_abund_herring_recruits
+172,capelin_w_go_a + sitka_herring_e_go_a + abund_herring
+173,capelin_w_go_a + sitka_herring_e_go_a + est_abund_herring_recruits
+174,capelin_w_go_a + abund_herring + est_abund_herring_recruits
+175,sitka_herring_e_go_a + abund_herring + est_abund_herring_recruits
