@@ -1,0 +1,43 @@
+esu,year,n_released,mean,sd,lbd,ubd
+Snake River Spring/Summer Chinook,1998,7917,0.0441,0.0098,0.0297,0.0626
+Snake River Spring/Summer Chinook,1999,18558,0.0537,0.0135,0.0373,0.0751
+Snake River Spring/Summer Chinook,2000,11810,0.0965,0.0122,0.0753,0.1204
+Snake River Spring/Summer Chinook,2001,8845,0.1717,0.0247,0.1316,0.2208
+Snake River Spring/Summer Chinook,2002,30617,0.0491,0.0064,0.0379,0.0618
+Snake River Spring/Summer Chinook,2003,28150,0.0655,0.009,0.0498,0.0829
+Snake River Spring/Summer Chinook,2004,4816,0.1021,0.0156,0.0741,0.1328
+Snake River Spring/Summer Chinook,2005,5935,0.0798,0.0127,0.0575,0.1054
+Snake River Spring/Summer Chinook,2006,5570,0.0894,0.0143,0.0638,0.1178
+Snake River Spring/Summer Chinook,2007,23830,0.0497,0.0065,0.0381,0.0626
+Snake River Spring/Summer Chinook,2008,11425,0.0615,0.0091,0.0454,0.0794
+Snake River Spring/Summer Chinook,2009,17396,0.1177,0.0164,0.0893,0.1504
+Snake River Spring/Summer Chinook,2010,38441,0.0909,0.013,0.0684,0.1172
+Snake River Spring/Summer Chinook,2011,6557,0.0714,0.0113,0.051,0.0935
+Snake River Spring/Summer Chinook,2012,17929,0.0622,0.0095,0.0456,0.081
+Snake River Spring/Summer Chinook,2013,16167,0.0518,0.0085,0.0371,0.0685
+Snake River Spring/Summer Chinook,2014,14828,0.1013,0.0183,0.0712,0.1376
+Snake River Spring/Summer Chinook,2015,20245,0.1822,0.0305,0.1316,0.2434
+Snake River Spring/Summer Chinook,2016,21874,0.0613,0.0112,0.0423,0.0837
+Snake River Spring/Summer Chinook,2017,13151,0.0194,0.0029,0.0141,0.0251
+Snake River Spring/Summer Chinook,2018,11174,0.019,0.0032,0.0132,0.0255
+Upper Columbia River Spring Chinook,1998,726,0.0621,0.0204,0.0308,0.0984
+Upper Columbia River Spring Chinook,1999,1325,0.0329,0.0102,0.0165,0.0514
+Upper Columbia River Spring Chinook,2000,1123,0.0718,0.016,0.0434,0.1036
+Upper Columbia River Spring Chinook,2001,1230,0.1811,0.0286,0.1304,0.2378
+Upper Columbia River Spring Chinook,2002,20493,0.0488,0.0067,0.0372,0.0624
+Upper Columbia River Spring Chinook,2003,30723,0.0516,0.0072,0.0394,0.0658
+Upper Columbia River Spring Chinook,2004,9533,0.0869,0.0129,0.0647,0.1133
+Upper Columbia River Spring Chinook,2005,2518,0.0713,0.0138,0.0469,0.0988
+Upper Columbia River Spring Chinook,2006,731,0.0915,0.0232,0.05,0.138
+Upper Columbia River Spring Chinook,2007,2268,0.0483,0.0105,0.0292,0.0688
+Upper Columbia River Spring Chinook,2008,1662,0.0545,0.0123,0.0329,0.0793
+Upper Columbia River Spring Chinook,2009,2064,0.0663,0.0117,0.0451,0.0899
+Upper Columbia River Spring Chinook,2010,5972,0.0643,0.0096,0.047,0.0836
+Upper Columbia River Spring Chinook,2011,704,0.0924,0.0228,0.0513,0.1374
+Upper Columbia River Spring Chinook,2012,3227,0.0346,0.0073,0.0214,0.0491
+Upper Columbia River Spring Chinook,2013,3112,0.0396,0.009,0.0235,0.0575
+Upper Columbia River Spring Chinook,2014,2297,0.0812,0.0161,0.0527,0.113
+Upper Columbia River Spring Chinook,2015,5943,0.1096,0.0185,0.0781,0.1465
+Upper Columbia River Spring Chinook,2016,5939,0.0501,0.0093,0.0342,0.069
+Upper Columbia River Spring Chinook,2017,4622,0.0219,0.0042,0.0142,0.0303
+Upper Columbia River Spring Chinook,2018,3370,0.0194,0.0044,0.0113,0.028
