@@ -22,7 +22,7 @@ suppressPackageStartupMessages({
 # ---------------------------
 # 0) Paths
 # ---------------------------
-path_sem   <- "outputs_4/sem_master_data.csv"
+path_sem   <- "data_Lisa/sem_master_data.csv"
 path_shark <- "data_Lisa/AKshark.table19.3_2022assess.csv"
 
 path_egoa  <- "Ferris-DFAIndicators-goa/data/EGOA_EcoState_Data_Jan2023.csv"
@@ -110,6 +110,7 @@ shark_yr <- to_annual_numeric(shark_joined, "shark_joined")
 # ---------------------------
 # 6) Write outputs
 # ---------------------------
+write_csv(ak_yr,    file.path("data_Lisa/ak_yr.csv"))
 write_csv(ak_yr,    file.path(out_dir, "ak_yr.csv"))
 write_csv(sem_yr,   file.path(out_dir, "sem_yr.csv"))
 write_csv(shark_yr, file.path(out_dir, "shark_yr.csv"))

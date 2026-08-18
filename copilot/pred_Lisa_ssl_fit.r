@@ -19,7 +19,7 @@
 
 #CLIMATE DATA----
   sst<-ak_yr %>% select(year,contains("sst"),contains("pdo"),contains("enso")) %>%
-    filter(year>=1998,year<2021) %>%
+    filter(year>=1998,year<=2021) %>%
     mutate(across(-year,scale))  %>%
   relocate(sst_wgoa_coastwatch_junjulaug, .after=year)
   head(sst)
@@ -63,7 +63,7 @@
         
    #Look at what Doug is using, pretty steep     
           matplot(ssl.orig$year,scale(ssl.orig[,-1]),type='l',col=1:(ncol(ssl.orig)-1),ylim=c(-2,3))
-              matlines(ssl.dfa$ssl.yr,scale(ssl.dfa$x10_dfa_ssl_est_wholerange_2yr_lead)+1,lwd=3,col=5)
+            #  matlines(ssl.dfa$ssl.yr,scale(ssl.dfa$x10_dfa_ssl_est_wholerange_2yr_lead)+1,lwd=3,col=5)
               mylegend=c("raw data from Eric","chasco model","DFA all mammals")
               legend("topleft",legend=mylegend,col=1:length(mylegend),lty=1,bty='n')
               
@@ -78,7 +78,7 @@
         #merge w/ eric modeled sst whole range
                
              ssl.all<-   left_join(ssl.orig, ssl.ak,join_by(year)) %>%
-               filter(year>=1998,year<2021) %>%
+               filter(year>=1998,year<=2021) %>%
                 mutate(across(-year,scale)) 
                 head(ssl.all)
              
@@ -96,7 +96,7 @@
               
               forage <- ak_yr %>% 
                 select(year, contains("capelin"), contains("herr")) %>%
-                filter(year >= 1998, year < 2021) %>%
+                filter(year >= 1998, year <= 2021) %>%
                 mutate(across(-year, ~as.numeric(scale(.)))) %>%
                 rowwise() %>%
                 mutate(
@@ -126,7 +126,7 @@
               names(ssl.dat)
               summary(ssl.dat)
               
-              write.csv(ssl.dat,"copilot/outputs_2/ssl.dat.csv")
+              write.csv(ssl.dat,"copilot/outputs_2/ssl.dat.csv",row.names = FALSE)
               
               cand_ssl=names(ssl.all)[-1];cand_ssl
               cand_forage=c("capelin.avg","herr.avg");cand_forage
