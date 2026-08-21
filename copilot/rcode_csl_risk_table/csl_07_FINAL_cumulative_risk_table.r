@@ -141,5 +141,7 @@ print(
 
 # Export complete table
 write.csv(csl_risk_table_classified, file.path(output_dir, "master_csl_predation_risk_table_5ocean_prey_1998_2024.csv"), row.names = FALSE)
+out_dir <- "copilot/outputs_6"
+write.csv(csl_risk_table_classified, file.path(out_dir, "master_csl_predation_risk_table_5ocean_prey_1998_2024.csv"), row.names = FALSE)
 
 cat("\nExport Complete: Saved 'master_csl_predation_risk_table_5ocean_prey_1998_2024.csv' to", output_dir, "\n")

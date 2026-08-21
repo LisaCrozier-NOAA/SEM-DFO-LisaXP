@@ -2,6 +2,8 @@
 #RESULTS
 # Save Risk Table
 write.csv(annual_absolute_risk, file.path(output_dir, "chinook_numeric_csl_exposure_risk_1998_2024.csv"), row.names = FALSE)
+out_dir <- "copilot/outputs_6"
+write.csv(annual_absolute_risk, file.path(out_dir, "chinook_numeric_csl_exposure_risk_1998_2024.csv"), row.names = FALSE)
 
 # year csl_during_chinook eulachon_during_chinook shad_during_chinook csl_threat_tier               eulachon_buffer_tier      overall_chinook_risk
 # 1  1998               582.                 161163.             1852775 Low CSL Exposure (<1k)        Substantial Buffer (>50k) LOW RISK            
