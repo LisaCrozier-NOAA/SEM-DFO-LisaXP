@@ -1,0 +1,6 @@
+"var_group","exp_sign","evaluations","raw_prop_met","aic_weighted_prop_met"
+"Index","Negative",114,0.982,1
+"Climate","Negative",114,0.886,0.934
+"Predator","Negative",456,0.469,0.754
+"Prey","Positive",678,0.617,0.711
+"Competitor","Negative",114,0.36,0.595
