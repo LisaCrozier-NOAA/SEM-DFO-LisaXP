@@ -1,5 +1,4 @@
 
-#NEED TO FIX PREY YEARS TO 2YR LEAD, OR UNLEAD THE PREDATORS
 
 # ==============================================================================
 # Script: Systematic Alternate Prey Interaction SEM Sweep
