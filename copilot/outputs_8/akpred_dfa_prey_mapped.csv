@@ -1,0 +1,12 @@
+"dfa_cols","constituent_predators","altprey1","altprey2","altprey3","is_2yrlead","altprey1_data_col","altprey2_data_col","altprey3_data_col"
+"X15.PredFishAK_4_smoothed","spinydogfishgoa_predak_2026","krill","herring","capelin","FALSE","X12_egoa.krill","X13_stka_herr_matbiom","X13_mid_il_capelin"
+"X15.PredFishAK_b_0_smoothed","spinydogfishbsai_predak_2026","krill","herring","capelin","FALSE","X12_egoa.krill","X13_stka_herr_matbiom","X13_mid_il_capelin"
+"X15.PredFishAK_0_smoothed","arrowtoothflounderbiomass_predak_2026","pollock","herring","capelin","FALSE","X13.FishPreyAK_DFA1","X13_stka_herr_matbiom","X13_mid_il_capelin"
+"X15.PredFishAK_3_smoothed","pacificcodbiomass_predak_2026","pollock","herring","capelin","FALSE","X13.FishPreyAK_DFA1","X13_stka_herr_matbiom","X13_mid_il_capelin"
+"X15.PredFishAK_b_3_smoothed","sharkcatchgoa_predak_2026","pollock","herring","capelin","FALSE","X13.FishPreyAK_DFA1","X13_stka_herr_matbiom","X13_mid_il_capelin"
+"X15.PredFishAK_1_smoothed","sablefishbiomass_predak_2026","pollock","herring","krill","FALSE","X13.FishPreyAK_DFA1","X13_stka_herr_matbiom","X12_egoa.krill"
+"X15.PredFishAK_2_smoothed","sablefishrecruitment_predak_2026","pollock","herring","krill","FALSE","X13.FishPreyAK_DFA1","X13_stka_herr_matbiom","X12_egoa.krill"
+"X15.PredFishAK_5_smoothed","halibutbiomassage8plus_2yrlead_predak_2026","pollock","herring",NA,"FALSE","X13.FishPreyAK_DFA1","X13_stka_herr_matbiom",NA
+"X15.PredFishAK_b_DFA1","sleepersharkbsai_predak_2026 | sleepersharkgoa_predak_2026","pollock","herring",NA,"FALSE","X13.FishPreyAK_DFA1","X13_stka_herr_matbiom",NA
+"X15.PredFishAK_b_1_smoothed","salmonsharkbsai_predak_2026","pollock","pink_salmon",NA,"FALSE","X13.FishPreyAK_DFA1","X14.CompAK_1_smoothed",NA
+"X15.PredFishAK_b_2_smoothed","salmonsharkgoa_predak_2026","pollock","pink_salmon",NA,"FALSE","X13.FishPreyAK_DFA1","X14.CompAK_1_smoothed",NA

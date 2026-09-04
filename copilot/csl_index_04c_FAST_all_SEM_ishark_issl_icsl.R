@@ -75,6 +75,7 @@ guild_dfas1_24yr <- guild %>%
 # 2. Extract Candidate Vector (Includes Index Terms explicitly)
 # -----------------------------------------------------------------------------
 
+ak_temp_cands <- names(guild_dfas1_24yr)[grepl("(?i)^x21_", names(guild_dfas1_24yr))]
 ak_prey_cands <- names(guild_dfas1_24yr)[grepl("(?i)^x21_|^x12_|^x13_|^x14_", names(guild_dfas1_24yr))]
 ak_pred_cands <- names(guild_dfas1_24yr)[grepl("(?i)^x10_|^x15_", names(guild_dfas1_24yr))]
 index_cands   <- names(guild_dfas1_24yr)[grepl("(?i)ishark|issl|icsl", names(guild_dfas1_24yr))]

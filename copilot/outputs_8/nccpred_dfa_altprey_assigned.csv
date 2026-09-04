@@ -1,0 +1,17 @@
+"dfa_cols","constituent_predators","altprey1","altprey2","is_2yrlead"
+"X08.PredBirdNCC_DFA1","brown_peli_1_ws_2026 | caspian_tern_2_ws_2026 | common_murre_9_ws_2026 | cormorants_4_ws_2026 | dc_corm_3_ws_2026 | fish_eating_alcids_5_ws_2026 | shearwaters_11_ws_2026 | sooty_shrw_10_ws_2026 | western_grebe_6_ws_2026 | sootyshear_jsoes_2026","market_squid","anchovy",FALSE
+"X08.PredBirdNCC_b_0_smoothed","commonmurre_jsoes_2026","market_squid","anchovy",FALSE
+"X08.PredBirdNCC_b_1_smoothed","large_gulls_7_ws_2026","hake","herring",FALSE
+"X08.PredBirdNCC_b_2_smoothed","loons_8_ws_2026","hake","herring",FALSE
+"X09.PredFishNCC_DFA1_chin_blackrockfish","chinabundsnakefall | chinabundsnakesprsum | chinabundupcolspr | blackrockfish_sa_2025 | jackmack_ncc | stripetailrockfish_2025","krill","anchovy",FALSE
+"X09.PredFishNCC_DFA1_halibut_lingcod","iphc20halibut | iphc20longnoseskate | lingcodsa_2026 | lingcod_2025","hake","herring",FALSE
+"X09.PredFishNCC_b_0_smoothed","canaryrockfish_2025","krill","anchovy",FALSE
+"X09.PredFishNCC_b_1_smoothed","chilipepper_2025","krill","anchovy",FALSE
+"X09.PredFishNCC_b_DFA1_dogfish","pacificspinydogfish_2025 | iphc20bigskate","hake","herring",FALSE
+"X09.PredFishNCC_b_DFA1_hake_mack","hakeage5plus_2025 | darkblotchedrockfish_2025 | greestripedrockfish_2025 | hakefisherywa_2025 | jackmackerel_gam_2025 | pacificmackerel_gam_2025","krill","anchovy",FALSE
+"X10.PredMammalNCC_0_smoothed","californian_s_l_2yrlead_ws_2026","hake","anchovy",TRUE
+"X10.PredMammalNCC_2_smoothed","harbour_s_2yrlead_ws_2026","hake","herring",TRUE
+"X10.PredMammalNCC_3_smoothed","northern_f_s_2yrlead_ws_2026","hake","herring",TRUE
+"X10.PredMammalNCC_DFA1_cslbonn","allsealionsbonn_2yrlead_2025","eulachon","anchovy",TRUE
+"X10.PredMammalNCC_DFA1_ssl","steller_s_l_2yrlead_ws_2026 | ssl.est.wholerange_2yrlead | allsealionsemb_2yrlead_2025","hake","herring",TRUE
+"X11.PredMammalSmolt_DFA1","harbour_p_ws_2026 | harbour_s_ws_2026","hake","herring",FALSE

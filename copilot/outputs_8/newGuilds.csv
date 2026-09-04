@@ -1,0 +1,294 @@
+"indicator","shortName","SEMnode","exclusionReason","replacementShortName","pastGuild","latestGuild","newGuild"
+"muCanMagM_NHLbiomass","muCanMagM_NHLbiomass","PreyNCC",NA,"NHLlogSum_win_05_2026","01.ZooPreyNCC",NA,NA
+"muDecapodAll_NHLbiomass","muDecapodAll_NHLbiomass","PreyNCC",NA,"NHLlogSum_win_05_2026","01.ZooPreyNCC",NA,NA
+"muFish_NHLbiomass","muFish_NHLbiomass","PreyNCC",NA,"NHLlogSum_win_05_2026","01.ZooPreyNCC",NA,NA
+"muLarCop_NHLbiomass","muLarCop_NHLbiomass","PreyNCC",NA,"NHLlogSum_win_05_2026","01.ZooPreyNCC",NA,NA
+"muPteropod_NHLbiomass","muPteropod_NHLbiomass","PreyNCC",NA,"NHLlogSum_win_05_2026","01.ZooPreyNCC",NA,NA
+"muCanMagM_NHLdensity","muCanMagM_NHLdensity","PreyNCC",NA,"NHLlogSum_win_05_2026","01.ZooPreyNCCb",NA,NA
+"muDecapodAll_NHLdensity","muDecapodAll_NHLdensity","PreyNCC",NA,"NHLlogSum_win_05_2026","01.ZooPreyNCCb",NA,NA
+"muFish_NHLdensity","muFish_NHLdensity","PreyNCC",NA,"NHLlogSum_win_05_2026","01.ZooPreyNCCb",NA,NA
+"muLarCop_NHLdensity","muLarCop_NHLdensity","PreyNCC",NA,"NHLlogSum_win_05_2026","01.ZooPreyNCCb",NA,NA
+"muPteropod_NHLdensity","muPteropod_NHLdensity","PreyNCC",NA,"NHLlogSum_win_05_2026","01.ZooPreyNCCb",NA,NA
+"Cassin's auklet density - NWFSC","cassAuk_NWFSC","PreyNCC",NA,"cassAuk_JSOES_2026","01.ZooPreyNCC_JSOES",NA,NA
+"copeBiomassNH05north","copeBiomassNH05north","PreyNCC",NA,"copeLogBiomassNorth_2026","01.ZooPreyNCC",NA,NA
+"copeBiomassNH05south","copeBiomassNH05south","PreyNCC",NA,"copeLogBiomassSouth_2026","01.ZooPreyNCC",NA,NA
+"Hyperiid_planktonJuneNCC","Hyperiid_planktonJuneNCC","PreyNCC",NA,"sumPreyOfPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"Insect_planktonJuneNCC","Insect_planktonJuneNCC","PreyNCC",NA,"sumPreyOfPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"LarCop_planktonJuneNCC","LarCop_planktonJuneNCC","PreyNCC",NA,"sumPreyOfPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"PlanktonJuneNCC","PlanktonJuneNCC","PreyNCC",NA,"sumPreyOfPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"PlanktonJuneNCC_Burke_2025","PlanktonJuneNCC_Burke_2025","PreyNCC",NA,"sumPreyOfPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"PlanktonJuneNCC_IGF","PlanktonJuneNCC_IGF","PreyNCC",NA,"sumPreyOfPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"PlanktonJuneNCC_Ruz1_2025","PlanktonJuneNCC_Ruz1_2025","PreyNCC",NA,"sumPreyOfPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"PlanktonJuneNCC_Ruz2_2025","PlanktonJuneNCC_Ruz2_2025","PreyNCC",NA,"sumPreyOfPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"Pteropod_planktonJuneNCC","Pteropod_planktonJuneNCC","PreyNCC",NA,"sumPreyOfPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"CanMagM_planktonJuneNCC","CanMagM_planktonJuneNCC","PreyNCC",NA,"sumPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"CrabMegalopae","CrabMegalopae","PreyNCC",NA,"sumPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"CrabMegalopae_2025","CrabMegalopae_2025","PreyNCC",NA,"sumPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"DecapodAll_planktonJuneNCC","DecapodAll_planktonJuneNCC","PreyNCC",NA,"sumPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"Fish_planktonJuneNCC","Fish_planktonJuneNCC","PreyNCC",NA,"sumPrey_planktonJun_2026","01.ZooPreyNCC",NA,NA
+"copeCIaxis1","copeCIaxis1","PreyNCC","selected_copeLogBiomassNorth_2026",NA,"01.ZooPreyNCC",NA,NA
+"copeCIaxis2","copeCIaxis2","PreyNCC","selected_copeLogBiomassSouth_2026",NA,"01.ZooPreyNCC",NA,NA
+"Parakeet_aukl_WS_2026","Parakeet_aukl_WS_2026","PreyNCC","straggler_NS",NA,"01.ZooPreyNCC_JSOES",NA,NA
+"Red_phal_WS_2026","Red_phal_WS_2026","PreyNCC","straggler_NS",NA,"01.ZooPreyNCC_WPbirds","01.ZooPreyNCC_WPbirds",NA
+"Red_necked_phal_WS_2026","Red_necked_phal_WS_2026","PreyNCC","straggler_NS",NA,"01.ZooPreyNCC_WPbirds_0","01.ZooPreyNCC_WPbirds_0",NA
+"Sabine_gull_WS_2026","Sabine_gull_WS_2026","PreyNCC","straggler_NS",NA,"01.ZooPreyNCC_WPbirds_1","01.ZooPreyNCC_WPbirds_1",NA
+"Cassins_auklet","cassAuk_JSOES_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_JSOES","01.ZooPreyNCC_JSOES","01.ZooPreyNCC_JSOES"
+"sumPreyOfPrey_planktonJun_2026","sumPreyOfPrey_planktonJun_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_JSOES","01.ZooPreyNCC_JSOES","01.ZooPreyNCC_JSOES"
+"sumPrey_planktonJun_2026","sumPrey_planktonJun_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_JSOES","01.ZooPreyNCC_JSOES","01.ZooPreyNCC_JSOES"
+"Cassin_s_aukl_WS_2026","Cassin_s_aukl_WS_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_JSOES_0","01.ZooPreyNCC_JSOES_0",NA
+"Habitat compression index - 43.5-48N","habCompInd","PreyNCC",NA,NA,"01.ZooPreyNCC_JSOES_1","01.ZooPreyNCC_JSOES_1",NA
+"Epac_adult_density","Epac_NHL_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_NHL","01.ZooPreyNCC_NHL","01.ZooPreyNCC_NHL"
+"Tspin_adult_density","Tspin_NHL_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_NHL","01.ZooPreyNCC_NHL","01.ZooPreyNCC_NHL"
+"copeLogBiomassNorth_2026","copeLogBiomassNorth_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_NHL","01.ZooPreyNCC_NHL","01.ZooPreyNCC_NHL"
+"copeLogBiomassSouth_2026","copeLogBiomassSouth_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_NHL","01.ZooPreyNCC_NHL","01.ZooPreyNCC_NHL"
+"NHLlogSum_win_05_2026","NHLlogSum_win_05_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_NHL_0","01.ZooPreyNCC_NHL_0",NA
+"NHLlogSum_win_15_2026","NHLlogSum_win_15_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_NHL_1","01.ZooPreyNCC_NHL_1",NA
+"NHLlogSum_win_25_2026","NHLlogSum_win_25_2026","PreyNCC",NA,NA,"01.ZooPreyNCC_NHL_2","01.ZooPreyNCC_NHL_2",NA
+"Phacellophora Egg yolk jelly - NCC","eggJel_NCC","PreyNCC",NA,"EggyolkJelly__2025","02.CompJellyNCC",NA,NA
+"Aurelia Moon Jelly - NCC","moonJel_NCC","PreyNCC",NA,"MoonJelly__2025","02.CompJellyNCC",NA,NA
+"Chrysaora Sea Nettle - NCC","seaNet_NCC","PreyNCC",NA,"SeaNettle__2025","02.CompJellyNCC",NA,NA
+"Aequorea Water Jelly - NCC","waterJel_NCC","PreyNCC",NA,"WaterJelly__2025","02.CompJellyNCC",NA,NA
+"Eggyolk.jelly__2025","EggyolkJelly__2025","PreyNCC","Daly:diff diet",NA,"02.CompJellyNCC",NA,NA
+"Water.jelly__2025","WaterJelly__2025","PreyNCC","Daly:diff diet",NA,"02.CompJellyNCC",NA,NA
+"Moon.jelly__2025","MoonJelly__2025","PreyNCC",NA,NA,"02.CompJellyNCC","02.CompJellyNCC","02.CompJellyNCC_0"
+"Pyrosoma.atlanticum__2025","PyrosomaAtlanticum__2025","PreyNCC",NA,NA,"02.CompJellyNCC","02.CompJellyNCC","02.CompJellyNCC_1"
+"Sea.nettle__2025","SeaNettle__2025","PreyNCC",NA,NA,"02.CompJellyNCC","02.CompJellyNCC","02.CompJellyNCC_2"
+"Ich.nearshore_2025","IchNear_2025","PreyNCC",NA,"IchNear_2026","03.FishPreyNCC",NA,NA
+"IchNear","IchNear","PreyNCC",NA,"IchNear_2026","03.FishPreyNCC_0",NA,NA
+"Pacific hake - NCC","hake_NCC","PreyNCC","Daly:toolate","yoyHake_JSOES_NCC","03.FishPreyNCC",NA,NA
+"YOY Pacific hake - NCC","yoyHake_JSOES_NCC","PreyNCC","Daly:toolate",NA,"03.FishPreyNCC",NA,NA
+"YH Common murre diet - Flatfish - NoCC","comMurreDietFlat_Yaquina_NCC","PreyNCC","missingdata_shortNS",NA,"03.FishPreyNCC",NA,NA
+"lag_log_abund_pacific_herring","lagAbundHerring","PreyNCC","missingdata_shortNS",NA,"03.FishPreyNCC",NA,NA
+"lag_log_abund_pacific_sardine","lagAbundSardine","PreyNCC","missingdata_shortNS",NA,"03.FishPreyNCC",NA,NA
+"DI Rhinoceros auklet diet - Anchovy - NoCC","rhinoAukDietAnch_NCC","PreyNCC","missingdata_shortNS",NA,"03.FishPreyNCC",NA,NA
+"DI Rhinoceros auklet diet - Herring - NoCC","rhinoAukDietHerr_NCC","PreyNCC","missingdata_shortNS",NA,"03.FishPreyNCC",NA,NA
+"DI Rhinoceros auklet diet - Sandlance - NoCC","rhinoAukDietSLance_NCC","PreyNCC","missingdata_shortNS",NA,"03.FishPreyNCC",NA,NA
+"DI Rhinoceros auklet diet - Smelt - NoCC","rhinoAukDietSmelt_NCC","PreyNCC","missingdata_shortNS",NA,"03.FishPreyNCC",NA,NA
+"IchNear_2026","IchNear_2026","PreyNCC",NA,NA,"03.FishPreyNCC","03.FishPreyNCC","03.FishPreyNCC_0"
+"YH Common murre diet - Herring/Sardines - NoCC","comMurreDietHerrSard_Yaquina_NCC","PreyNCC",NA,NA,"03.FishPreyNCC","03.FishPreyNCC","03.FishPreyNCC"
+"YH Common murre diet - Rockfish - NoCC","comMurreDietRock_Yaquina_NCC","PreyNCC",NA,NA,"03.FishPreyNCC","03.FishPreyNCC","03.FishPreyNCC_1"
+"YH Common murre diet - Sandlance - NoCC","comMurreDietSLance_Yaquina_NCC","PreyNCC",NA,NA,"03.FishPreyNCC","03.FishPreyNCC","03.FishPreyNCC_2"
+"YH Common murre diet - Smelt - NoCC","comMurreDietSmelt_Yaquina_NCC","PreyNCC",NA,NA,"03.FishPreyNCC","03.FishPreyNCC","03.FishPreyNCC"
+"lag_log_abund_anchovy","lagAbundAnchovy","PreyNCC",NA,NA,"03.FishPreyNCC","03.FishPreyNCC",NA
+"DI Rhinoceros auklet diet - Rockfish - NoCC","rhinoAukDietRock_NCC","PreyNCC",NA,NA,"03.FishPreyNCC","03.FishPreyNCC",NA
+"Surfsmelt - NCC","surfSmelt_NCC","PreyNCC",NA,NA,"03.FishPreyNCC","03.FishPreyNCC","03.FishPreyNCC_3"
+"Whitebait smelt - NCC","whiteBaitSmelt_NCC","PreyNCC",NA,NA,"03.FishPreyNCC","03.FishPreyNCC","03.FishPreyNCC_4"
+"YOY rockfish - NCC","yoyRock_JSOES_NCC","PreyNCC",NA,NA,"03.FishPreyNCC","03.FishPreyNCC","03.FishPreyNCC_5"
+"HakeAge1_2025","HakeAge1_2025","PreyNCC",NA,NA,"03.FishPreyNCC_0","03.FishPreyNCC_0",NA
+"Pacific chub mackerel - NCC","chubMack_NCC","PreyNCC","?_lastused:labelDoug_30may25",NA,"04.CompFishNCC",NA,NA
+"jackMackerel_BRT","jackMackerel_BRT","PreyNCC","?_lastused:labelDoug_30may25",NA,"04.CompFishNCC",NA,NA
+"CA Market Squid - NCC","marketSquid_NCC","PreyNCC","?_lastused:labelDoug_30may25",NA,"04.CompFishNCC",NA,NA
+"Juvenile chum - NCC","juvChum_NCC","PreyNCC","Daly:notcompetitor",NA,"04.CompFishNCC",NA,NA
+"Pacific Pompano - NCC","pompano_NCC","PreyNCC","straggler_NS",NA,"04.CompFishNCC",NA,NA
+"HakeAge1","HakeAge1","PreyNCC","straggler_NS",NA,"04.CompFishNCC_0",NA,NA
+"marketsquid_gam","marketsquid_GAM_2025","PreyNCC",NA,NA,"04.CompFishNCC","04.CompFishNCC",NA
+"California.market.squid__2025","CaliforniaMarketSquid__2025","PreyNCC",NA,NA,"04.CompFishNCC_0","04.CompFishNCC_0",NA
+"Pacific.pompano__2025","PacificPompano__2025","PreyNCC",NA,NA,"04.CompFishNCC_1","04.CompFishNCC_1",NA
+"Sablefish__2025","Sablefish__JSOES_2025","PreyNCC",NA,NA,"04.CompFishNCC_2","04.CompFishNCC_2",NA
+"Northern anchovy - NCC","northAnch_NCC","PreyNCC","?_lastused:labelDoug_30may25",NA,"05.ForageFishNCC",NA,NA
+"log_abund_anchovy","abundAnchovy","PreyNCC","missingdata_shortNS",NA,"05.ForageFishNCC_0",NA,NA
+"log_abund_pacific_herring","abundHerring","PreyNCC",NA,NA,"05.ForageFishNCC","05.ForageFishNCC",NA
+"log_abund_pacific_sardine","abundSardine","PreyNCC",NA,NA,"05.ForageFishNCC","05.ForageFishNCC",NA
+"sardine_gam","sardine_GAM_2025","PreyNCC",NA,NA,"05.ForageFishNCC","05.ForageFishNCC","05.ForageFishNCC"
+"Pacific sardine - NCC","sardine_NCC","PreyNCC",NA,NA,"05.ForageFishNCC","05.ForageFishNCC","05.ForageFishNCC"
+"anchovy_gam","anchovy_GAM_2025","PreyNCC",NA,NA,"05.ForageFishNCC_0","05.ForageFishNCC_0",NA
+"herring_gam","herring_GAM_2025","PreyNCC",NA,NA,"05.ForageFishNCC_1","05.ForageFishNCC_1",NA
+"Pacific herring - NCC","herring_NCC","PreyNCC",NA,NA,"05.ForageFishNCC_2","05.ForageFishNCC_2",NA
+"IGF.mu","IGF_mu","Growth",NA,"IGF_mu_2025","06.Cond1NCC",NA,NA
+"Lmu_IntSprJunH","Lmu_IntSprJunH","Growth",NA,"Lmu_IntSprJunH_2025","06.Cond1NCC",NA,NA
+"Lmu_IntSprMayH","Lmu_IntSprMayH","Growth","?_justFWeffects",NA,"06.Cond1NCC",NA,NA
+"IGF_mu_2025","IGF_mu_2025","Growth",NA,NA,"06.Cond1NCC","06.Cond1NCC","06.Cond1NCC"
+"StomFull.Jun_2025","StomFull_Jun_2025","Growth",NA,NA,"06.Cond1NCC","06.Cond1NCC","06.Cond1NCC"
+"Lmu_IntSprJunH_2025","Lmu_IntSprJunH_2025","Growth",NA,NA,"06.Cond1NCC_0","06.Cond1NCC_0",NA
+"Lmu_IntSprMayW_2025","Lmu_IntSprMayW_2025","Growth",NA,NA,"06.Cond1NCC_1","06.Cond1NCC_1",NA
+"StomFull.May_2025","StomFull_May_2025","Growth",NA,NA,"06.Cond1NCC_2","06.Cond1NCC_2",NA
+"cpue_IntSprJunH","cpue_IntSprJunH","Abundance",NA,"cpue_IntSprJunHW_2025","07.Cond2NCC",NA,NA
+"abund.sdmTMB.junIntSpr_2025","abund_sdmTMB_junIntSpr_2025","Abundance",NA,NA,"07.Cond2NCC","07.Cond2NCC","07.Cond2NCC"
+"cpue_IntSprJunHW_2025","cpue_IntSprJunHW_2025","Abundance",NA,NA,"07.Cond2NCC","07.Cond2NCC","07.Cond2NCC"
+"Common murre density - NWFSC","commonMurre_NWFSC","PredNCC",NA,"commonMurre_JSOES_2026","08.PredBirdNCC",NA,NA
+"Sooty shearwater density - NWFSC","sootyShear_NWFSC","PredNCC",NA,"sootyShear_NWFSC_JSOES_2026","08.PredBirdNCC",NA,NA
+"Brown_peli_1_WS_2026","Brown_peli_1_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC","08.PredBirdNCC","08.PredBirdNCC"
+"Caspian_tern_2_WS_2026","Caspian_tern_2_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC","08.PredBirdNCC","08.PredBirdNCC"
+"Common_murre_9_WS_2026","Common_murre_9_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC","08.PredBirdNCC","08.PredBirdNCC"
+"Cormorants_4_WS_2026","Cormorants_4_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC","08.PredBirdNCC","08.PredBirdNCC"
+"DC_corm_3_WS_2026","DC_corm_3_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC","08.PredBirdNCC","08.PredBirdNCC"
+"Fish_eating_alcids_5_WS_2026","Fish_eating_alcids_5_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC","08.PredBirdNCC","08.PredBirdNCC"
+"Shearwaters_11_WS_2026","Shearwaters_11_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC","08.PredBirdNCC","08.PredBirdNCC"
+"Sooty_shrw_10_WS_2026","Sooty_shrw_10_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC","08.PredBirdNCC","08.PredBirdNCC"
+"Western_grebe_6_WS_2026","Western_grebe_6_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC","08.PredBirdNCC","08.PredBirdNCC"
+"shearwater","sootyShear_JSOES_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC","08.PredBirdNCC","08.PredBirdNCC"
+"murre","commonMurre_JSOES_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_b_0","08.PredBirdNCC_b_0",NA
+"Large_gulls_7_WS_2026","Large_gulls_7_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_b_1","08.PredBirdNCC_b_1",NA
+"Loons_8_WS_2026","Loons_8_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_b_2","08.PredBirdNCC_b_2",NA
+"Black_legged_kitt_WS_2026","Black_legged_kitt_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess",NA,NA
+"Flesh_footed_shrw_WS_2026","Flesh_footed_shrw_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess",NA,NA
+"Marbled_mrlt_WS_2026","Marbled_mrlt_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess",NA,NA
+"Pelagic_corm_WS_2026","Pelagic_corm_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess",NA,NA
+"Red_throated_loon_WS_2026","Red_throated_loon_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess",NA,NA
+"Ring_billed_gull_WS_2026","Ring_billed_gull_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess",NA,NA
+"Tufted_puff_WS_2026","Tufted_puff_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess",NA,NA
+"Common_loon_WS_2026","Common_loon_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_0",NA,NA
+"Laysan_alba_WS_2026","Laysan_alba_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_0",NA,NA
+"Northern_fulm_WS_2026","Northern_fulm_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_1",NA,NA
+"Pigeon_guil_WS_2026","Pigeon_guil_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_2",NA,NA
+"Sooty_shrw_WS_2026","Sooty_shrw_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_3",NA,NA
+"Antarctic_skua_WS_2026","Antarctic_skua_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Brandt_s_corm_WS_2026","Brandt_s_corm_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Bullers_shrw_WS_2026","Bullers_shrw_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Common_tern_WS_2026","Common_tern_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Fork_tailed_s_p_WS_2026","Fork_tailed_s_p_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Herring_gull_WS_2026","Herring_gull_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Lesser_s_p_WS_2026","Lesser_s_p_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Long_tailed_jaeg_WS_2026","Long_tailed_jaeg_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Manx_shrw_WS_2026","Manx_shrw_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Pacific_loon_WS_2026","Pacific_loon_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Parasitic_jaeg_WS_2026","Parasitic_jaeg_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Pomarine_jaeg_WS_2026","Pomarine_jaeg_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Short_billed_gull_WS_2026","Short_billed_gull_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II",NA,NA
+"Short_tailed_shrw_WS_2026","Short_tailed_shrw_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_ess_II_0",NA,NA
+"Black_footed_alba_WS_2026","Black_footed_alba_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_hump",NA,NA
+"Bonaparte_s_gull_WS_2026","Bonaparte_s_gull_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_hump",NA,NA
+"Brown_peli_WS_2026","Brown_peli_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_hump",NA,NA
+"California_gull_WS_2026","California_gull_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_hump",NA,NA
+"DC_corm_WS_2026","DC_corm_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_hump",NA,NA
+"Pink_footed_shrw_WS_2026","Pink_footed_shrw_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_hump",NA,NA
+"Scripp_s_mrlt_WS_2026","Scripp_s_mrlt_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_hump",NA,NA
+"Thayer_s_gull_WS_2026","Thayer_s_gull_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_hump",NA,NA
+"Common_murre_WS_2026","Common_murre_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_hump_0",NA,NA
+"Arctic_tern_WS_2026","Arctic_tern_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_secular",NA,NA
+"Caspian_tern_WS_2026","Caspian_tern_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_secular",NA,NA
+"Heerman_s_gull_WS_2026","Heerman_s_gull_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_secular",NA,NA
+"Red_necked_grebe_WS_2026","Red_necked_grebe_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_secular",NA,NA
+"Ancient_mrlt_WS_2026","Ancient_mrlt_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_secular_0",NA,NA
+"G_W_western_gull_WS_2026","G_W_western_gull_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_secular_1",NA,NA
+"Rhinoceros_aukl_WS_2026","Rhinoceros_aukl_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_secular_2",NA,NA
+"Western_grebe_WS_2026","Western_grebe_WS_2026","PredNCC","notsalmonpred_or_grouped",NA,"08.PredBirdNCC_secular_3",NA,NA
+"HakeAge5Plus","HakeAge5Plus","PredNCC",NA,"HakeAge5Plus_2025","09.PredFishNCC",NA,NA
+"spotted ratfish","spottedRatfish_2025","PredNCC","?_lastused:labelLisa_16sep25",NA,"09.PredFishNCC",NA,NA
+"sablefish","sablefish_WCGFS_2025","PredNCC","?_lastused:labelLisa_21aug25",NA,"09.PredFishNCC",NA,NA
+"synwcvi_arrowtoothflounder_mature","synWCVIarrowtoothFloundMature","PredNCC","Failed completeness criterion",NA,"09.PredFishNCC",NA,NA
+"synwcvi_bigskate_all","synWCVIbigSkate","PredNCC","Failed completeness criterion",NA,"09.PredFishNCC",NA,NA
+"synwcvi_canaryrockfish_mature","synWCVIcanaryRockMature","PredNCC","Failed completeness criterion",NA,"09.PredFishNCC",NA,NA
+"synwcvi_pacificcod_mature","synWCVIcodMature","PredNCC","Failed completeness criterion",NA,"09.PredFishNCC",NA,NA
+"synwcvi_lingcod_immature","synWCVIlingcodImmature","PredNCC","Failed completeness criterion",NA,"09.PredFishNCC",NA,NA
+"synwcvi_longnoseskate_all","synWCVIlongnoseSkate","PredNCC","Failed completeness criterion",NA,"09.PredFishNCC",NA,NA
+"synwcvi_northpacific_spiny_dogfish_mature","synWCVIspinyDogMature","PredNCC","Failed completeness criterion",NA,"09.PredFishNCC",NA,NA
+"synwcvi_yellowtailrockfish_mature","synWCVIyellowTailRockMature","PredNCC","Failed completeness criterion",NA,"09.PredFishNCC",NA,NA
+"Chinook abundance Snake fall","ChinAbundSnakeFall","PredNCC",NA,NA,"09.PredFishNCC","09.PredFishNCC","09.PredFishNCC"
+"Chinook abundance Snake spr-sum","ChinAbundSnakeSprSum","PredNCC",NA,NA,"09.PredFishNCC","09.PredFishNCC","09.PredFishNCC"
+"Chinook abundance Upper Columbia spr","ChinAbundUpColSpr","PredNCC",NA,NA,"09.PredFishNCC","09.PredFishNCC","09.PredFishNCC"
+"blackRockfish_2025","blackRockfish_SA_2025","PredNCC",NA,NA,"09.PredFishNCC","09.PredFishNCC","09.PredFishNCC"
+"iphc20_pacifichalibut_all","iphc20halibut","PredNCC",NA,NA,"09.PredFishNCC","09.PredFishNCC","09.PredFishNCC"
+"iphc20_longnoseskate_all","iphc20longnoseSkate","PredNCC",NA,NA,"09.PredFishNCC","09.PredFishNCC","09.PredFishNCC"
+"Jack mackerel - NCC","jackMack_NCC","PredNCC",NA,NA,"09.PredFishNCC","09.PredFishNCC","09.PredFishNCC_0"
+"lingcodSA_2026","lingcodSA_2026","PredNCC",NA,NA,"09.PredFishNCC","09.PredFishNCC","09.PredFishNCC"
+"lingcod","lingcod_2025","PredNCC",NA,NA,"09.PredFishNCC","09.PredFishNCC","09.PredFishNCC"
+"Pacific spiny dogfish - NCC","spinyDog_NCC","PredNCC",NA,NA,"09.PredFishNCC",NA,NA
+"stripetail rockfish","stripetailRockfish_2025","PredNCC",NA,NA,"09.PredFishNCC","09.PredFishNCC","09.PredFishNCC"
+"HakeAge5Plus_2025","HakeAge5Plus_2025","PredNCC",NA,NA,"09.PredFishNCC_b","09.PredFishNCC_b","09.PredFishNCC_b"
+"Pacific spiny dogfish","PacificSpinyDogfish_2025","PredNCC",NA,NA,"09.PredFishNCC_b","09.PredFishNCC_b","09.PredFishNCC_b"
+"darkblotched rockfish","darkblotchedRockfish_2025","PredNCC",NA,NA,"09.PredFishNCC_b","09.PredFishNCC_b","09.PredFishNCC_b"
+"greenstriped rockfish","greestripedRockfish_2025","PredNCC",NA,NA,"09.PredFishNCC_b","09.PredFishNCC_b","09.PredFishNCC_b"
+"hakeFisheryWA.cpue","hakeFisheryWA_2025","PredNCC",NA,NA,"09.PredFishNCC_b","09.PredFishNCC_b","09.PredFishNCC_b"
+"iphc20_bigskate_all","iphc20bigSkate","PredNCC",NA,NA,"09.PredFishNCC_b","09.PredFishNCC_b","09.PredFishNCC_b"
+"jackmackerel_gam","jackmackerel_GAM_2025","PredNCC",NA,NA,"09.PredFishNCC_b","09.PredFishNCC_b","09.PredFishNCC_b"
+"pacificmackerel_gam","pacificmackerel_GAM_2025","PredNCC",NA,NA,"09.PredFishNCC_b","09.PredFishNCC_b","09.PredFishNCC_b"
+"canary rockfish","canaryRockfish_2025","PredNCC",NA,NA,"09.PredFishNCC_b_0","09.PredFishNCC_b_0",NA
+"chilipepper","chilipepper_2025","PredNCC",NA,NA,"09.PredFishNCC_b_1","09.PredFishNCC_b_1",NA
+"AllPinnDayBonn","AllPinnDayBonn","PredAK",NA,"AllSeaLionsBonn_2yrLead_2025","10.PredMammalNCC",NA,NA
+"AllSeaLionsBonn_2025","AllSeaLionsBonn_2025","PredAK",NA,"AllSeaLionsBonn_2yrLead_2025","10.PredMammalNCC",NA,NA
+"Bonneville pinnipeds","BonnPinn","PredAK",NA,"AllSeaLionsBonn_2yrLead_2025","10.PredMammalNCC",NA,NA
+"CSL_Bonn","CSL_Bonn","PredAK",NA,"AllSeaLionsBonn_2yrLead_2025","10.PredMammalNCC",NA,NA
+"SSL_Bonn","SSL_Bonn","PredAK",NA,"AllSeaLionsBonn_2yrLead_2025","10.PredMammalNCC",NA,NA
+"AllSeaLionsEMB_2025","AllSeaLionsEMB_2025","PredAK",NA,"AllSeaLionsEMB_2yrLead_2025","10.PredMammalNCC",NA,NA
+"CSL_EMB","CSL_EMB","PredAK",NA,"AllSeaLionsEMB_2yrLead_2025","10.PredMammalNCC",NA,NA
+"CSLspring.EastMooringBasin","CSLspring_EastMooringBasin","PredAK",NA,"AllSeaLionsEMB_2yrLead_2025","10.PredMammalNCC",NA,NA
+"SSL_EMB","SSL_EMB","PredAK",NA,"AllSeaLionsEMB_2yrLead_2025","10.PredMammalNCC",NA,NA
+"Californian_s_l_WS_2026","Californian_s_l_WS_2026","PredAK","replaced with 2-year lead version: Californian_s_l_2yrLead_WS_2026","Californian_s_l_2yrLead_WS_2026","10.PredMammalNCC_0",NA,NA
+"Harbor.seal.CR","Harbor_seal_CR","PredAK",NA,"Harbor_seal_CR_2yrLead_2025","10.PredMammalNCC",NA,NA
+"Killer.whales.BC","Killer_whales_BC","PredAK",NA,"Killer.whales.BC_2yrLead_2025","10.PredMammalNCC",NA,NA
+"Killer.whales.BC_2025","Killer_whales_BC_2025","PredAK",NA,"Killer.whales.BC_2yrLead_2025","10.PredMammalNCC",NA,NA
+"Killer.whales.BC_2yrLead_2025","Killer.whales.BC_2yrLead_2025","PredAK",NA,"Killer.whales.NR.BC_2yrLead_2026","10.PredMammalNCC",NA,NA
+"Northern_f_s_WS_2026","Northern_f_s_WS_2026","PredAK","replaced with 2-year lead version: Northern_f_s_2yrLead_WS_2026","Northern_f_s_2yrLead_WS_2026","10.PredMammalNCC_1",NA,NA
+"Steller_s_l_WS_2026","Steller_s_l_WS_2026","PredAK",NA,"Steller_s_l_2yrLead_WS_2026","10.PredMammalNCC",NA,NA
+"obs_seal_count","sealCount","PredAK",NA,"predSealAbund","MammalPred",NA,NA
+"ssl.est.wholerange","ssl_est_wholerange","PredAK",NA,"ssl.est.wholerange_2yrLead","10.PredMammalNCC",NA,NA
+"Steller sea lion non-pup counts","SSL_CAI","PredAK",NA,"ssl_est_wholerange","MammalPred",NA,NA
+"Steller sea lion non-pup counts","SSL_EAI","PredAK",NA,"ssl_est_wholerange","MammalPred",NA,NA
+"Steller Sea Lion Non-pups","SSL_EGoA","PredAK",NA,"ssl_est_wholerange","MammalPred",NA,NA
+"Steller sea lion non-pup counts","SSL_WAI","PredAK",NA,"ssl_est_wholerange","MammalPred",NA,NA
+"Steller Sea Lion Non-pups","SSL_WGoA","PredAK",NA,"ssl_est_wholerange","MammalPred",NA,NA
+"model_pred_seal_abund","predSealAbund","PredAK","?_labelDoug_30may25",NA,"10.PredMammalNCC",NA,NA
+"Guadelupe_f_s_WS_2026","Guadelupe_f_s_WS_2026","PredAK","notsalmonpred",NA,"10.PredMammalNCC",NA,NA
+"Black-legged kittiwake Reproductive Success","kittiwake_WGoA","PredAK","notsalmonpredator",NA,"BirdPred_AK",NA,NA
+"AllSeaLionsBonn_2yrLead_2025","AllSeaLionsBonn_2yrLead_2025","PredAK",NA,NA,"10.PredMammalNCC","10.PredMammalNCC","10.PredMammalNCC"
+"AllSeaLionsEMB_2yrLead_2025","AllSeaLionsEMB_2yrLead_2025","PredAK",NA,NA,"10.PredMammalNCC","10.PredMammalNCC","10.PredMammalNCC"
+"Killer.whales.NR.BC_2yrLead_2026","Killer.whales.NR.BC_2yrLead_2026","PredAK",NA,NA,"10.PredMammalNCC","10.PredMammalNCC",NA
+"Steller_s_l_2yrLead_WS_2026","Steller_s_l_2yrLead_WS_2026","PredAK",NA,NA,"10.PredMammalNCC","10.PredMammalNCC","10.PredMammalNCC"
+"ssl.est.wholerange_2yrLead","ssl.est.wholerange_2yrLead","PredAK",NA,NA,"10.PredMammalNCC","10.PredMammalNCC","10.PredMammalNCC"
+"Californian_s_l_2yrLead_WS_2026","Californian_s_l_2yrLead_WS_2026","PredAK",NA,NA,"10.PredMammalNCC_0","10.PredMammalNCC_0",NA
+"Harbor_seal_CR_2yrLead_2025","Harbor_seal_CR_2yrLead_2025","PredAK",NA,NA,"10.PredMammalNCC_1","10.PredMammalNCC_1",NA
+"Harbour_s_2yrLead_WS_2026","Harbour_s_2yrLead_WS_2026","PredAK",NA,NA,"10.PredMammalNCC_2","10.PredMammalNCC_2",NA
+"Northern_f_s_2yrLead_WS_2026","Northern_f_s_2yrLead_WS_2026","PredAK",NA,NA,"10.PredMammalNCC_3","10.PredMammalNCC_3",NA
+"Harbour_p_WS_2026","Harbour_p_WS_2026","PredNCC",NA,NA,"11.PredMammalSmolt","11.PredMammalSmolt","11.PredMammalSmolt_0"
+"Harbour_s_WS_2026","Harbour_s_WS_2026","PredNCC",NA,NA,"11.PredMammalSmolt","11.PredMammalSmolt","11.PredMammalSmolt_1"
+"Harbor_seal_CR_2025","Harbor_seal_CR_2025","PredNCC",NA,NA,"11.PredMammalSmolt_0","11.PredMammalSmolt_0",NA
+"log_biomass_euphusiid_wcvi_inlet_fall","biomassEuphInletFall","PreyAK","spatialmismatchforSpringrun",NA,"Prey_WCVI",NA,NA
+"log_biomass_euphusiid_wcvi_inlet_summer","biomassEuphInletSum","PreyAK","spatialmismatchforSpringrun",NA,"Prey_WCVI",NA,NA
+"log_biomass_amphipod_wcvi_shelf_fall","biomassAmphShelfFall","PreyAK","timingmismatchforSpringrun",NA,"Prey_WCVI",NA,NA
+"log_biomass_decapod_larvae_wcvi_shelf_fall","biomassDecaShelfFall","PreyAK","timingmismatchforSpringrun",NA,"Prey_WCVI",NA,NA
+"log_biomass_euphusiid_wcvi_shelf_fall","biomassEuphShelfFall","PreyAK","timingmismatchforSpringrun",NA,"Prey_WCVI",NA,NA
+"log_biomass_mysid_wcvi_shelf_fall","biomassMysidShelfFall","PreyAK","timingmismatchforSpringrun",NA,"Prey_WCVI",NA,NA
+"log_biomass_amphipod_wcvi_shelf_summer","biomassAmphShelfSum","PreyAK",NA,NA,"12.ZooPreyAK","12.ZooPreyAK","12.ZooPreyAK"
+"log_biomass_decapod_larvae_wcvi_shelf_summer","biomassDecaShelfSum","PreyAK",NA,NA,"12.ZooPreyAK","12.ZooPreyAK","12.ZooPreyAK_0"
+"log_biomass_euphusiid_wcvi_shelf_summer","biomassEuphShelfSum","PreyAK",NA,NA,"12.ZooPreyAK","12.ZooPreyAK","12.ZooPreyAK"
+"log_biomass_mysid_wcvi_shelf_summer","biomassMysidShelfSum","PreyAK",NA,NA,"12.ZooPreyAK","12.ZooPreyAK","12.ZooPreyAK"
+"Crested Auklet reproductive success","crestedAuk_WAI","PreyAK",NA,NA,"12.ZooPreyAK","12.ZooPreyAK","12.ZooPreyAK"
+"Least Auklet reproductive success","leastAuk_WAI","PreyAK",NA,NA,"12.ZooPreyAK","12.ZooPreyAK","12.ZooPreyAK"
+"Zooplankton Density Icy Strait (#/m3)","zoop_EGoA","PreyAK",NA,NA,"12.ZooPreyAK","12.ZooPreyAK","12.ZooPreyAK"
+"Copepod biomass","copepodBiomass_WGoA","PreyAK",NA,NA,"12.ZooPreyAK_0","12.ZooPreyAK_0",NA
+"Copepod Community Size","copepodCom_EGoA","PreyAK",NA,NA,"12.ZooPreyAK_1","12.ZooPreyAK_1",NA
+"Copepod Community Size","copepodCom_WGoA","PreyAK",NA,NA,"12.ZooPreyAK_2","12.ZooPreyAK_2",NA
+"Pelagic forager biomass","pelag_CAI","PreyAK",NA,"pollockBiomass_predAK_2026","Prey_AK",NA,NA
+"Pelagic forager biomass","pelag_EAI","PreyAK",NA,"pollockBiomass_predAK_2026","Prey_AK",NA,NA
+"Pelagic forager biomass","pelag_WAI","PreyAK",NA,"pollockBiomass_predAK_2026","Prey_AK",NA,NA
+"WGOA_DFA_lowerTrophic_2026","WGOA_DFA_lowerTrophic_2026","PreyAK",NA,NA,"13.FishPreyAK","13.FishPreyAK","13.FishPreyAK"
+"WGOA_DFA_midTrophic_2026","WGOA_DFA_midTrophic_2026","PreyAK",NA,NA,"13.FishPreyAK","13.FishPreyAK","13.FishPreyAK"
+"pollockBiomassAIage1plus_predAK_2026","pollockBiomassAIage1plus_predAK_2026","PreyAK",NA,NA,"13.FishPreyAK","13.FishPreyAK","13.FishPreyAK"
+"Rhinoceros Auklet Chick Growth","rhinoAuk_EGoA","PreyAK",NA,NA,"13.FishPreyAK","13.FishPreyAK","13.FishPreyAK"
+"Sitka Herring Mature Biomass (tons)","sitkaHerring_EGoA","PreyAK",NA,NA,"13.FishPreyAK","13.FishPreyAK","13.FishPreyAK"
+"WGOA_DFA_seabirds_2026","WGOA_DFA_seabirds_2026","PreyAK",NA,NA,"13.FishPreyAK_b","13.FishPreyAK_b","13.FishPreyAK_b"
+"Ammodytes in tufted puffin chick diets","ammod_EAI","PreyAK",NA,NA,"13.FishPreyAK_b","13.FishPreyAK_b","13.FishPreyAK_b"
+"Capelin","capelin_WGoA","PreyAK",NA,NA,"13.FishPreyAK_b","13.FishPreyAK_b","13.FishPreyAK_b"
+"est_log_abund_herring_recruits","estAbundHerringRecruits","PreyAK",NA,NA,"13.FishPreyAK_b","13.FishPreyAK_b","13.FishPreyAK_b"
+"Gadids in tufted puffin chick diets","gadid_EAI","PreyAK",NA,NA,"13.FishPreyAK_b","13.FishPreyAK_b","13.FishPreyAK_b"
+"Ammodytes in tufted puffin chick diets","ammod_WAI","PreyAK",NA,NA,"13.FishPreyAK_b_0","13.FishPreyAK_b_0",NA
+"Gadids in tufted puffin chick diets","gadid_WAI","PreyAK",NA,NA,"13.FishPreyAK_b_1","13.FishPreyAK_b_1",NA
+"Hexagrammids in tufted puffin chick diets","hexagram_EAI","PreyAK",NA,NA,"13.FishPreyAK_b_2","13.FishPreyAK_b_2",NA
+"Hexagrammids in tufted puffin chick diets","hexagram_WAI","PreyAK",NA,NA,"13.FishPreyAK_b_3","13.FishPreyAK_b_3",NA
+"pollockBiomassGoAage3plus_predAK_2026","pollockBiomassGoAage3plus_predAK_2026","PreyAK",NA,NA,"13.FishPreyAK_b_4","13.FishPreyAK_b_4",NA
+"pinkSalmonAsia","pinkSalmonAsia","PreyAK",NA,"pinkSalmonAsia_2025","14.CompAK",NA,NA
+"pinkSalmonNorthAmerica","pinkSalmonNorthAmerica","PreyAK",NA,"pinkSalmonNorthAmerica_2025","14.CompAK_1",NA,NA
+"pinkSalmon","pinkSalmon","PreyAK",NA,"pinkSalmon_2025","14.CompAK_0",NA,NA
+"pinkSalmonAsia_2025","pinkSalmonAsia_2025","PreyAK",NA,NA,"14.CompAK","14.CompAK",NA
+"pinkSalmon_2025","pinkSalmon_2025","PreyAK",NA,NA,"14.CompAK_0","14.CompAK_0",NA
+"pinkSalmonNorthAmerica_2025","pinkSalmonNorthAmerica_2025","PreyAK",NA,NA,"14.CompAK_1","14.CompAK_1",NA
+"Apex predator biomass","ApexBio_CAI","PredAK",NA,"ArrowtoothFlounderBiomass_predAK_2026","Pred_AK",NA,NA
+"Apex predator biomass","ApexBio_EAI","PredAK",NA,"ArrowtoothFlounderBiomass_predAK_2026","Pred_AK",NA,NA
+"Apex predator biomass biennial or triennial","ApexBio_WAI","PredAK",NA,"ArrowtoothFlounderBiomass_predAK_2026","Pred_AK",NA,NA
+"Apex Fish Biomass","ApexFish_EGoA","PredAK",NA,"PacificCodBiomass_predAK_2026","Pred_AK",NA,NA
+"Apex Fish Biomass","ApexFish_WGoA","PredAK",NA,"PacificCodBiomass_predAK_2026","Pred_AK",NA,NA
+"ArrowtoothFlounderBiomass_predAK_2026","ArrowtoothFlounderBiomass_predAK_2026","PredAK",NA,NA,"15.PredFishAK_0","15.PredFishAK_0",NA
+"sablefishBiomass_predAK_2026","sablefishBiomass_predAK_2026","PredAK",NA,NA,"15.PredFishAK_1","15.PredFishAK_1",NA
+"sablefishRecruitment_predAK_2026","sablefishRecruitment_predAK_2026","PredAK",NA,NA,"15.PredFishAK_2","15.PredFishAK_2",NA
+"PacificCodBiomass_predAK_2026","PacificCodBiomass_predAK_2026","PredAK",NA,NA,"15.PredFishAK_3","15.PredFishAK_3",NA
+"spinyDogfishGoA_predAK_2026","spinyDogfishGoA_predAK_2026","PredAK",NA,NA,"15.PredFishAK_4","15.PredFishAK_4",NA
+"halibutBiomassAge8plus_2yrLead_predAK_2026","halibutBiomassAge8plus_2yrLead_predAK_2026","PredAK",NA,NA,"15.PredFishAK_5","15.PredFishAK_5",NA
+"sleeperSharkBSAI_predAK_2026","sleeperSharkBSAI_predAK_2026","PredAK",NA,NA,"15.PredFishAK_b","15.PredFishAK_b","15.PredFishAK_b"
+"sleeperSharkGoA_predAK_2026","sleeperSharkGoA_predAK_2026","PredAK",NA,NA,"15.PredFishAK_b","15.PredFishAK_b","15.PredFishAK_b"
+"spinyDogfishBSAI_predAK_2026","spinyDogfishBSAI_predAK_2026","PredAK",NA,NA,"15.PredFishAK_b_0","15.PredFishAK_b_0",NA
+"salmonSharkBSAI_predAK_2026","salmonSharkBSAI_predAK_2026","PredAK",NA,NA,"15.PredFishAK_b_1","15.PredFishAK_b_1",NA
+"salmonSharkGoA_predAK_2026","salmonSharkGoA_predAK_2026","PredAK",NA,NA,"15.PredFishAK_b_2","15.PredFishAK_b_2",NA
+"sharkCatchGoA_predAK_2026","sharkCatchGoA_predAK_2026","PredAK",NA,NA,"15.PredFishAK_b_3","15.PredFishAK_b_3",NA
+"SAR_2025","SAR_2025","SAR",NA,NA,"SAR","SAR","SAR"
+"sar.UCsprCh_2025","sar_UCsprCh_2025","SAR",NA,NA,"SAR","SAR","SAR"
