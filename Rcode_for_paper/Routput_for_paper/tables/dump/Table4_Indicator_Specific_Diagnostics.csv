@@ -1,0 +1,44 @@
+SEM_Node,Indicator_Type,LisaName,Expected_Sign,N_Evaluated,Pct_Significant,Pct_Positive,Pct_Negative,Mean_Beta,Primary_Verdict
+Abundance,Multi-Taxa DFA,07.Cond2NCC_DFA1,Positive (+),400,96.2,100,0,0.386,Supported
+Growth,Multi-Taxa DFA,06.Cond1NCC_DFA1,Positive (+),362,25.1,40.1,59.9,0.058,NS / Unstable
+Growth,Single Indicator (Straggler),06.Cond1NCC_0_smoothed,Positive (+),38,10.5,86.8,13.2,0.137,NS / Unstable
+PredAK,Multi-Taxa DFA,10.PredMammalNCC_DFA1,Negative (-),7,14.3,14.3,85.7,-0.095,NS / Unstable
+PredAK,Multi-Taxa DFA,15.PredFishAK_b_DFA1,Negative (-),66,87.9,0,100,-0.734,Supported
+PredAK,Single Indicator (Straggler),10.PredMammalNCC_0_smoothed,Negative (-),7,28.6,100,0,0.145,NS / Unstable
+PredAK,Single Indicator (Straggler),10.PredMammalNCC_1_smoothed,Negative (-),161,93.2,100,0,0.505,Flipped Sign
+PredAK,Single Indicator (Straggler),10.PredMammalNCC_2_smoothed,Negative (-),32,68.8,0,100,-0.346,Supported
+PredAK,Single Indicator (Straggler),10.PredMammalNCC_3_smoothed,Negative (-),9,33.3,100,0,0.185,NS / Unstable
+PredAK,Single Indicator (Straggler),15.PredFishAK_0_smoothed,Negative (-),11,36.4,27.3,72.7,-0.168,NS / Unstable
+PredAK,Single Indicator (Straggler),15.PredFishAK_1_smoothed,Negative (-),21,71.4,90.5,9.5,0.489,Flipped Sign
+PredAK,Single Indicator (Straggler),15.PredFishAK_2_smoothed,Negative (-),14,42.9,21.4,78.6,-0.198,NS / Unstable
+PredAK,Single Indicator (Straggler),15.PredFishAK_3_smoothed,Negative (-),20,70,100,0,0.354,Flipped Sign
+PredAK,Single Indicator (Straggler),15.PredFishAK_4_smoothed,Negative (-),9,22.2,44.4,55.6,-0.152,NS / Unstable
+PredAK,Single Indicator (Straggler),15.PredFishAK_5_smoothed,Negative (-),13,61.5,100,0,0.393,Flipped Sign
+PredAK,Single Indicator (Straggler),15.PredFishAK_b_0_smoothed,Negative (-),9,100,100,0,0.452,Flipped Sign
+PredAK,Single Indicator (Straggler),15.PredFishAK_b_2_smoothed,Negative (-),10,0,20,80,-0.091,NS / Unstable
+PredAK,Single Indicator (Straggler),15.PredFishAK_b_3_smoothed,Negative (-),11,27.3,81.8,18.2,0.072,NS / Unstable
+PredNCC,Multi-Taxa DFA,08.PredBirdNCC_DFA1,Negative (-),2,0,0,100,-0.228,NS / Unstable
+PredNCC,Multi-Taxa DFA,09.PredFishNCC_DFA1,Negative (-),2,0,0,100,-0.144,NS / Unstable
+PredNCC,Multi-Taxa DFA,09.PredFishNCC_b_DFA1,Negative (-),211,100,0,100,-0.629,Supported
+PredNCC,Multi-Taxa DFA,11.PredMammalSmolt_DFA1,Negative (-),2,0,100,0,0.011,NS / Unstable
+PredNCC,Single Indicator (Straggler),08.PredBirdNCC_b_0_smoothed,Negative (-),83,100,100,0,0.711,Flipped Sign
+PredNCC,Single Indicator (Straggler),08.PredBirdNCC_b_1_smoothed,Negative (-),3,0,100,0,0.224,NS / Unstable
+PredNCC,Single Indicator (Straggler),08.PredBirdNCC_b_2_smoothed,Negative (-),96,100,100,0,0.566,Flipped Sign
+PredNCC,Single Indicator (Straggler),09.PredFishNCC_b_0_smoothed,Negative (-),1,0,0,100,-0.297,NS / Unstable
+PreyAK,Multi-Taxa DFA,12.ZooPreyAK_DFA1,Positive (+),106,96.2,0,100,-0.585,Flipped Sign
+PreyAK,Multi-Taxa DFA,13.FishPreyAK_DFA1,Positive (+),12,8.3,75,25,0.009,NS / Unstable
+PreyAK,Multi-Taxa DFA,13.FishPreyAK_b_DFA1,Positive (+),30,70,16.7,83.3,-0.479,Flipped Sign
+PreyAK,Single Indicator (Straggler),12.ZooPreyAK_0_smoothed,Positive (+),72,100,0,100,-0.394,Flipped Sign
+PreyAK,Single Indicator (Straggler),12.ZooPreyAK_1_smoothed,Positive (+),25,68,100,0,0.241,Supported
+PreyAK,Single Indicator (Straggler),12.ZooPreyAK_2_smoothed,Positive (+),9,0,55.6,44.4,-0.01,NS / Unstable
+PreyAK,Single Indicator (Straggler),13.FishPreyAK_b_0_smoothed,Positive (+),24,58.3,0,100,-0.248,Flipped Sign
+PreyAK,Single Indicator (Straggler),13.FishPreyAK_b_1_smoothed,Positive (+),15,33.3,80,20,0.172,NS / Unstable
+PreyAK,Single Indicator (Straggler),13.FishPreyAK_b_2_smoothed,Positive (+),33,93.9,0,100,-0.269,Flipped Sign
+PreyAK,Single Indicator (Straggler),13.FishPreyAK_b_3_smoothed,Positive (+),13,30.8,53.8,46.2,0.103,NS / Unstable
+PreyAK,Single Indicator (Straggler),13.FishPreyAK_b_4_smoothed,Positive (+),24,50,0,100,-0.358,Flipped Sign
+PreyAK,Single Indicator (Straggler),14.CompAK_0_smoothed,Positive (+),7,0,85.7,14.3,0.072,NS / Unstable
+PreyAK,Single Indicator (Straggler),14.CompAK_1_smoothed,Positive (+),17,11.8,0,100,-0.188,NS / Unstable
+PreyAK,Single Indicator (Straggler),14.CompAK_smoothed,Positive (+),13,23.1,100,0,0.235,NS / Unstable
+PreyNCC,Multi-Taxa DFA,01.ZooPreyNCC_JSOES_DFA1,Positive (+),68,100,100,0,0.931,Supported
+PreyNCC,Multi-Taxa DFA,05.ForageFishNCC_DFA1,Positive (+),324,100,0,100,-0.938,Flipped Sign
+PreyNCC,Single Indicator (Straggler),04.CompFishNCC_smoothed,Positive (+),8,100,100,0,0.91,Supported

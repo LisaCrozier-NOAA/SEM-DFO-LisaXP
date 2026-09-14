@@ -1,0 +1,32 @@
+H_code,path_label,Baseline_Expectation,DAG1A_long,DAG1A_short,DAG1B_long,DAG1B_short
+H1a,PreyNCC -> Growth,Positive (+),"Supported
+(100% Sig)","Supported
+(100% Sig)","Supported
+(100% Sig)","Supported
+(100% Sig)"
+H1b,Growth -> CPUE,Positive (+),"NS
+(0% Sig)","NS
+(0% Sig)",Path Excluded,Path Excluded
+H1c,Growth -> SAR,Positive (+),Path Excluded,Path Excluded,"NS
+(41% Sig)","Supported
+(54% Sig)"
+H1e,PreyAK -> SAR,Positive (+),"Flipped Sign
+(67% Sig)","Flipped Sign
+(63% Sig)","Flipped Sign
+(84% Sig)","Flipped Sign
+(70% Sig)"
+H2a,PredNCC -> CPUE,Negative (-),"Supported
+(100% Sig)","Flipped Sign
+(98% Sig)","Supported
+(92% Sig)","Flipped Sign
+(100% Sig)"
+H2c,PredAK -> SAR,Negative (-),"NS
+(45% Sig)","Flipped Sign
+(100% Sig)","Flipped Sign
+(52% Sig)","Flipped Sign
+(100% Sig)"
+H4a,CPUE -> SAR,Positive (+),"Supported
+(100% Sig)","Supported
+(100% Sig)","Supported
+(100% Sig)","Supported
+(85% Sig)"

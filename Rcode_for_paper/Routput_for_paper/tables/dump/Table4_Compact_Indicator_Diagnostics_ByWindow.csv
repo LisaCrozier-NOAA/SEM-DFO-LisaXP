@@ -1,0 +1,25 @@
+H_code,path_label,SEM_Node,Time_Window,Series_Type,N_Indicators,N_Evaluations,Pct_Sig,Mean_Beta,Supported_Vars,Flipped_Vars
+H1a,PreyNCC -> Growth,PreyNCC,Long (1998-2024),DFA,1,189,100,-0.93,X05_DFA_abundSardine,None
+H1a,PreyNCC -> Growth,PreyNCC,Long (1998-2024),Straggler,1,11,100,0.91,None,X04_marketsquid_GAM
+H1a,PreyNCC -> Growth,PreyNCC,Short (2008-2024),DFA,2,195,100,-0.01,"X01_DFA_sumPreyOfPrey_planktonJun, X05_DFA_abundSardine",None
+H1a,PreyNCC -> Growth,PreyNCC,Short (2008-2024),Straggler,1,5,100,0.91,None,X04_marketsquid_GAM
+H1b,Growth -> CPUE,Growth,Long (1998-2024),DFA,1,100,0,-0.05,None,None
+H1b,Growth -> CPUE,Growth,Short (2008-2024),DFA,1,85,0,-0.05,None,None
+H1b,Growth -> CPUE,Growth,Short (2008-2024),Straggler,1,15,0,0.04,None,None
+H1c,Growth -> SAR,Growth,Long (1998-2024),DFA,1,100,0,0.18,None,None
+H1c,Growth -> SAR,Growth,Short (2008-2024),DFA,1,85,0,0.05,None,None
+H1c,Growth -> SAR,Growth,Short (2008-2024),Straggler,1,15,0,0.12,None,None
+H1e,PreyAK -> SAR,PreyAK,Long (1998-2024),DFA,3,78,66.7,-0.43,None,"X12_DFA_biomassEuphShelfSum, X13_DFA_WGOA_DFA_seabirds"
+H1e,PreyAK -> SAR,PreyAK,Long (1998-2024),Straggler,11,122,45.5,-0.09,None,"X12_copepodBiomass_WGoA, X13_ammod_WAI, X13_hexagram_EAI, X13_pollockBiomassGoAage3plus_predAK, X14_pinkSalmonAsia"
+H1e,PreyAK -> SAR,PreyAK,Short (2008-2024),DFA,2,107,100,-0.78,None,"X12_DFA_biomassEuphShelfSum, X13_DFA_WGOA_DFA_seabirds"
+H1e,PreyAK -> SAR,PreyAK,Short (2008-2024),Straggler,8,93,62.5,-0.21,"X12_copepodCom_EGoA, X13_gadid_WAI","X12_copepodBiomass_WGoA, X12_copepodCom_WGoA, X13_pollockBiomassGoAage3plus_predAK"
+H2a,PredNCC -> CPUE,PredNCC,Long (1998-2024),DFA,4,141,25,-0.24,X09_DFA_HakeAge5Plus,None
+H2a,PredNCC -> CPUE,PredNCC,Long (1998-2024),Straggler,2,59,50,0.37,None,X08_Loons_8_WS
+H2a,PredNCC -> CPUE,PredNCC,Short (2008-2024),DFA,4,71,25,-0.03,X09_DFA_HakeAge5Plus,None
+H2a,PredNCC -> CPUE,PredNCC,Short (2008-2024),Straggler,5,129,40,0.23,None,"X08_commonMurre_JSOES, X08_Loons_8_WS"
+H2c,PredAK -> SAR,PredAK,Long (1998-2024),DFA,2,44,50,-0.26,X15_DFA_sleeperSharks,None
+H2c,PredAK -> SAR,PredAK,Long (1998-2024),Straggler,11,156,27.3,0.05,X10_Harbour_s_2yrLead_WS,"X15_halibutBiomassAge8plus_2yrLead_predAK, X15_PacificCodBiomass_predAK"
+H2c,PredAK -> SAR,PredAK,Short (2008-2024),DFA,2,83,50,-0.34,X15_DFA_sleeperSharks,None
+H2c,PredAK -> SAR,PredAK,Short (2008-2024),Straggler,13,117,61.5,0.08,"X15_sablefishRecruitment_predAK, X15_sharkCatchGoA_predAK, X15_spinyDogfishGoA_predAK","X10_Californian_s_l_2yrLead_WS, X15_ArrowtoothFlounderBiomass_predAK, X15_PacificCodBiomass_predAK, X15_sablefishBiomass_predAK, X15_spinyDogfishBSAI_predAK"
+H4a,CPUE -> SAR,Abundance,Long (1998-2024),DFA,1,200,100,0.41,X07_DFA_cpue_IntSprJunHW,None
+H4a,CPUE -> SAR,Abundance,Short (2008-2024),DFA,1,200,100,0.27,X07_DFA_cpue_IntSprJunHW,None
