@@ -1,11 +1,8 @@
-
-#"C:\Users\Lisa.Crozier\Documents\Marine survival\SEM-DFO-LisaXP\copilot\rcode_alt_prey\doug_01_analyzeIndicators_extend_to_1996_2025_datwide.R"
-
-#This script reads in data files in Doug's data folder that were previously processed in "preprocessData.R"
-#it uses his screening criteria, except that I have gone back to the original requirement for minFracComplete <- 0.79, which excludes harbor seals from the CR
-#I also extended the time frame 1996:2025 for the resulting data file to be used with 2yrlead requirements for alternate prey
-#it creates a wide format data frame "copilot/outputs_8/datWide_1996_2025_qualified.csv"
-
+# ==============================================================================
+# Script: doug_01_analyzeIndicators_recreate_1998_2021.R
+# Purpose: Recreate Doug's original indicator screening and wide data matrix (1998–2021)
+# Output: copilot/outputs_8/datWide_1998_2021_qualified.csv
+# ==============================================================================
 
 library(tidyverse)
 library(lubridate)
@@ -14,32 +11,31 @@ library(imputeTS)
 # ---------------------------------------------------------------------------
 # Setup & Directories
 # ---------------------------------------------------------------------------
-rootdir<-"C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP"
+rootdir <- "C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP"
 
 # Doug directory
-# Change index to 1 for Lisa's path
-path <- c("C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results", "C:/Users/dougj/Documents/QEDA/NWFSC/ECOTRAN/programs/")[1]
+path <- c("C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results", 
+          "C:/Users/dougj/Documents/QEDA/NWFSC/ECOTRAN/programs/")[1]
 
 workingDir <- file.path(path, "analyzeAKindices")
 
-
 indicatorsFile <- file.path(workingDir, "indicators.csv")
-dataDir <- file.path(workingDir, "data")
-outputDir <- file.path(rootdir, "copilot/outputs_8")
+dataDir        <- file.path(workingDir, "data")
+#outputDir      <- file.path(rootdir, "copilot/outputs_10")
+outputDir      <- file.path(rootdir, "copilot/outputs_altprey")
 dir.create(outputDir, showWarnings = FALSE, recursive = TRUE)
 
 # Source constants and functions
 source(file.path(workingDir, "functions.R"))
 
 scen <- "incl2026"
-minFracComplete <- 0.79
+minFracComplete <- 0.5 # Matches Doug's exact baseline output criterion
+
 screenStartDatetime <- dmy(screenStartDate) # 01JAN1998
-screenEndDatetime <- dmy(screenEndDate)     # 31DEC2021
+screenEndDatetime   <- dmy(screenEndDate)   # 31DEC2021
 
-# Define full target output window (1996 to 2025)
-target_years <- data.frame(date = ymd(paste0(1996:2025, "-01-01")))
-
-
+# Restored original target output window (1998 to 2021)
+target_years <- data.frame(date = ymd(paste0(1998:2021, "-01-01")))
 
 # ---------------------------------------------------------------------------
 # Load Indicators Manifest
@@ -85,16 +81,16 @@ for (subDir in subDirs) {
       names(thisData) <- c("date", "value")
       
       # Imputation and Log Transformation
-      thisInd <- getInd(indicators, thisIndicator, subDir)
+      thisInd  <- getInd(indicators, thisIndicator, subDir)
       thisData <- impute(thisInd, thisData)
-      out <- logTransform(thisInd, thisData)
+      out      <- logTransform(thisInd, thisData)
       thisData <- out$thisData
       
       # Store metadata and finalVal
-      thisData$finalVal <- if (out$transformed) thisData$logTransformed else thisData$imputed
+      thisData$finalVal  <- if (out$transformed) thisData$logTransformed else thisData$imputed
       thisData$shortName <- thisInd$shortName
       thisData$indicator <- thisIndicator
-      thisData$subDir <- subDir
+      thisData$subDir    <- subDir
       
       dataList[[length(dataList) + 1]] <- thisData[, c("indicator", "subDir", "shortName", "date", "finalVal")]
     }
@@ -135,7 +131,7 @@ qualified_series <- allData %>%
 # Print excluded series for transparency
 excluded <- qualified_series %>% filter(!pass)
 if (nrow(excluded) > 0) {
-  cat("\nExcluded Series (failed 79% completeness criterion):\n")
+  cat("\nExcluded Series (failed 50% completeness criterion):\n")
   print(excluded %>% select(indicator, subDir, shortName, fracComplete))
 }
 
@@ -148,7 +144,6 @@ qualified_data <- allData %>%
 
 # ---------------------------------------------------------------------------
 # Deduplicate shortName before Pivoting
-# (If the same shortName passed screening from multiple subDirs, take the mean value)
 # ---------------------------------------------------------------------------
 final_long_data <- qualified_data %>% 
   group_by(shortName, date) %>% 
@@ -156,7 +151,7 @@ final_long_data <- qualified_data %>%
   filter(!is.nan(finalVal))
 
 # ---------------------------------------------------------------------------
-# Format Wide Matrix (1996–2025)
+# Format Wide Matrix (Restored: 1998–2021)
 # ---------------------------------------------------------------------------
 datWide <- target_years %>% 
   left_join(final_long_data, by = "date") %>% 
@@ -172,7 +167,7 @@ datWide <- target_years %>%
 datWide$is_fully_complete <- complete.cases(datWide)
 
 # Export wide data frame
-write.csv(datWide, file.path(outputDir, "datWide_1996_2025_qualified.csv"), row.names = FALSE)
+write.csv(datWide, file.path(outputDir, "datWide_1998_2021_qualified.csv"), row.names = FALSE)
 
-cat("\nPipeline Complete! Retained", ncol(datWide) - 1, "unique indicators across 1996-2025.\n")
+cat("\nPipeline Complete! Retained", ncol(datWide) - 1, "unique indicators across 1998-2021.\n")
 head(datWide)

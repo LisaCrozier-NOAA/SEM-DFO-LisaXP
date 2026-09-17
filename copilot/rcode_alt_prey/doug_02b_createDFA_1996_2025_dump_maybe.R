@@ -32,7 +32,8 @@ workingDir <- file.path(path, "analyzeAKindices")
 
 indicatorsFile <- file.path(workingDir, "indicators.csv")
 dataDir        <- file.path(workingDir, "data")
-outputDir      <- file.path(rootdir, "copilot/outputs_8")
+#outputDir      <- file.path(rootdir, "copilot/outputs_8")
+outputDir      <- file.path(rootdir, "copilot/outputs_altprey")
 dir.create(outputDir, showWarnings = FALSE, recursive = TRUE)
 
 

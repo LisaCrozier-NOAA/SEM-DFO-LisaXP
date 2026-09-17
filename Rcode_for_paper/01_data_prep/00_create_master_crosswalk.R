@@ -15,12 +15,14 @@ library(tidyverse)
 library(stringr)
 
 # --- Configuration & Paths ---
-proj_dir     <- getwd()
-input_dir    <- file.path(proj_dir, "output", "DFA")
+proj_dir     <- paste0(getwd(),"/Rcode_for_paper")
+doug_results_dir <- "C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP/2026_06_29_SEM_AKPred/shiftLisa_step3_26jun26"
+altprey_dir <- paste0(getwd(),"/copilot/outputs_10")
+input_dir    <- file.path(proj_dir, "Routput_for_paper", "DFA")
 meta_dir     <- file.path(proj_dir, "metadata")
 dir.create(meta_dir, showWarnings = FALSE, recursive = TRUE)
 
-ranked_file  <- file.path(input_dir, "rankedIndicators.csv")
+ranked_file  <- file.path(altprey_dir, "rankedIndicators.csv")
 
 # Load Doug's ranked indicators file
 if (!file.exists(ranked_file)) {
@@ -72,10 +74,10 @@ master_crosswalk <- rankedIndicators %>%
 # ------------------------------------------------------------------------------
 # Verification Output & Save
 # ------------------------------------------------------------------------------
-cat("Generated Crosswalk with", nrow(master_crosswalk), "total indicators.\n")
-cat("DFAs mapped:", sum(grepl("DFA1", master_crosswalk$dfa_cols)), "\n")
-cat("Stragglers mapped:", sum(!grepl("DFA1", master_crosswalk$dfa_cols)), "\n\n")
+cat("Generated Crosswalk with", nrow(master_crosswalk), "total indicators./n")
+cat("DFAs mapped:", sum(grepl("DFA1", master_crosswalk$dfa_cols)), "/n")
+cat("Stragglers mapped:", sum(!grepl("DFA1", master_crosswalk$dfa_cols)), "/n/n")
 
 # Export Master Crosswalk
 write.csv(master_crosswalk, file.path(meta_dir, "master_name_crosswalk.csv"), row.names = FALSE)
-cat("Master Crosswalk saved to:", file.path(meta_dir, "master_name_crosswalk.csv"), "\n")
+cat("Master Crosswalk saved to:", file.path(meta_dir, "master_name_crosswalk.csv"), "/n")

@@ -16,13 +16,16 @@ library(janitor)
 # ---------------------------------------------------------------------------
 # Setup Directories
 # ---------------------------------------------------------------------------
-outputDir <- file.path("copilot/outputs_9")
+#outputDir <- file.path("copilot/outputs_9")
+outputDir <- file.path("copilot/outputs_altprey")
 dir.create(outputDir, showWarnings = FALSE, recursive = TRUE)
+Rcode_for_paper_Dir <- file.path("Rcode_for_paper")
 
 # ---------------------------------------------------------------------------
-# 1. Update Master Assembly: Rename ssl_seak_pup_pred to X11_
+# 1. Add new data for altprey analysis
 # ---------------------------------------------------------------------------
-clusData_led <- read.csv(file.path(outputDir, "clusData_wide_Lisanames.csv"))
+clusData_led <- read.csv(file.path(outputDir, "clusDataDFA_wide_1998_2021_altprey_extended.csv"))
+sort(names(clusData_led))
 
 eulachon_scaled <- read.csv("copilot/outputs_8/eulachon_scaled_annual_weekly_during_chinook.csv") %>%
   select(Year, eulachon_during_chinook, eulachon_annual_scaled) %>%
@@ -38,7 +41,6 @@ ak_yr_selected <- read.csv("data_Lisa/ak_yr.csv", row.names = NULL) %>%
     Year,
     X11_ssl_seak_pup_pred = ssl_seak_pup_pred,  # Renamed X10 -> X11
     X12_egoa.krill        = secm_euph_dens,
-    X13_stka_herr_matbiom  = stka_herr_matbiom,
     X13_mid_il_capelin    = mid_il_capelin
   )
 
@@ -59,6 +61,7 @@ sem_complete_data <- df_1998_2021 %>%
   mutate(across(-Year, ~ as.numeric(scale(.x))))
 
 write.csv(sem_complete_data, file.path(outputDir, "sem_altprey_data_complete_1998_2021.csv"), row.names = FALSE)
+write.csv(sem_complete_data, file.path(Rcode_for_paper_Dir,"metadata", "sem_altprey_data_complete_1998_2021.csv"), row.names = FALSE)
 
 # ---------------------------------------------------------------------------
 # 2. Build Unified Predator Assignment Matrix (NCC + AK)
