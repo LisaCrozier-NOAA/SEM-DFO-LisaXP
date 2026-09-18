@@ -1,5 +1,7 @@
+
+
 # ==============================================================================
-# Script: doug_01_analyzeIndicators_recreate_1998_2021.R
+# Script: doug_01a_analyzeIndicators_recreate_1998_2021.R
 # Purpose: Recreate Doug's original indicator screening and wide data matrix (1998–2021)
 # Output: copilot/outputs_8/datWide_1998_2021_qualified.csv
 # ==============================================================================
@@ -171,3 +173,5 @@ write.csv(datWide, file.path(outputDir, "datWide_1998_2021_qualified.csv"), row.
 
 cat("\nPipeline Complete! Retained", ncol(datWide) - 1, "unique indicators across 1998-2021.\n")
 head(datWide)
+
+

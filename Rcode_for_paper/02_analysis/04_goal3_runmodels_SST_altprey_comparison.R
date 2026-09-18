@@ -3,8 +3,8 @@
 
 
 # ==============================================================================
-# Script: 01_goal3_parameter_extraction_and_comparison.R
-# Directory: Rcode_for_paper/04_goal3_interaction_analysis/
+# Script: 04_goal3_runmodels_SST_altprey_comparison.R
+# Directory: Rcode_for_paper/02_analysis/
 # Purpose: Goal 3 - Complete Parameter Extraction & Non-Linear Model Benchmarking
 # Output: Rcode_for_paper/Routput_for_paper/ (data and tables)
 # ==============================================================================
@@ -19,33 +19,31 @@ suppressPackageStartupMessages({
 # ------------------------------------------------------------------------------
 # STEP 0: SETUP PATHS & DIRECTORIES------
 # ------------------------------------------------------------------------------
-proj_dir     <- getwd()
-master_out   <- file.path(proj_dir, "Rcode_for_paper", "Routput_for_paper")
+proj_dir     <- paste0(getwd(),"/Rcode_for_paper")
+master_out   <- file.path(proj_dir, "Routput_for_paper")
 tbl_out_dir  <- file.path(master_out, "tables")
+fig_out_dir  <- file.path(master_out, "figures")
 data_out_dir <- file.path(master_out, "data")
 
 dir.create(tbl_out_dir, showWarnings = FALSE, recursive = TRUE)
 dir.create(data_out_dir, showWarnings = FALSE, recursive = TRUE)
 
-sem_data_path <- "copilot/outputs_9/sem_altprey_data_complete_1998_2021.csv"
-ak_yr_path    <- "C:/Users/Lisa.Crozier C drive from work/Marine survival/SEM-DFO-LisaXP/data_Lisa/ak_yr.csv"
-if (!file.exists(ak_yr_path)) ak_yr_path <- "data_Lisa/ak_yr.csv"
 
-lookup_path   <- "copilot/outputs_9/all_pred_dfa_altprey.csv"
+sem_data_noNA <- read.csv(file.path(proj_dir, "metadata/sem_data_noNA_1998_2021.csv"), stringsAsFactors = FALSE) %>%
+  select(-X10_Harbor_seal_CR_2yrLead)
+sem_data_all <- read.csv(file.path(proj_dir, "metadata/sem_data_all_1998_2021.csv"), stringsAsFactors = FALSE)%>%
+  select(-X10_Harbor_seal_CR_smoltYear,X10_Harbor_seal_CR_2yrLead)
 
-cat("Preparing standardized comparison dataset for Goal 3...\n")
+names(sem_data_all)
+sem_data_complete_years <- sem_data_all %>%
+  filter(complete.cases(.))
+altprey_lookup <- read.csv(file.path(proj_dir, "metadata/all_pred_dfa_altprey.csv"), stringsAsFactors = FALSE)
 
-# ------------------------------------------------------------------------------
+names(sem_data_noNA)
+names(sem_data_complete_years)
+------------------------------------------------------------------------------
 # STEP 1: LOAD & PREPARE UNIFIED DATASET (+5.0 SHIFT)------
 # ------------------------------------------------------------------------------
-sem_raw <- read.csv(sem_data_path, row.names = NULL)
-names(sem_raw) <- tolower(names(sem_raw))
-
-ak_yr_df <- read.csv(ak_yr_path) %>%
-  clean_names() %>%
-  select(year, sst_egoa = sst_egoa_coastwatch_junjulaug)
-
-sem_joined <- sem_raw %>% left_join(ak_yr_df, by = "year")
 
 # Apply +5.0 domain shift across numeric columns (excluding year)
 sem_complete_data <- sem_joined %>%

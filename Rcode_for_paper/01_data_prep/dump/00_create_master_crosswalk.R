@@ -1,4 +1,6 @@
 
+
+#Script: 00_create_master_crosswalk.R
 #Step 1: Master Name Crosswalk Generator Script
 #Below is the updated, clean version of your crosswalk creation script (00_create_master_crosswalk.R). 
 #It standardizes column names, cleans up year tags (_2025/_2026), maps the 17 DFAs and 48 stragglers/smoothed series, and 
@@ -81,3 +83,40 @@ cat("Stragglers mapped:", sum(!grepl("DFA1", master_crosswalk$dfa_cols)), "/n/n"
 # Export Master Crosswalk
 write.csv(master_crosswalk, file.path(meta_dir, "master_name_crosswalk.csv"), row.names = FALSE)
 cat("Master Crosswalk saved to:", file.path(meta_dir, "master_name_crosswalk.csv"), "/n")
+
+
+
+#00b_crosswalk_utility_fxn.r-------
+
+# Utility function to automatically apply your standardized LisaName convention
+apply_lisa_names <- function(df, crosswalk_path = "metadata/master_name_crosswalk.csv") {
+  if (!file.exists(crosswalk_path)) {
+    warning("Crosswalk file not found at: ", crosswalk_path, ". Returning original data.")
+    return(df)
+  }
+  
+  crosswalk <- read.csv(crosswalk_path)
+  
+  # Build lookup dictionary (maps dfa_cols or raw names -> LisaName)
+  lookup_map <- setNames(crosswalk$LisaName, crosswalk$dfa_cols)
+  
+  # Also match raw DFAname strings without 'X' prefix if present
+  lookup_map_raw <- setNames(crosswalk$LisaName, crosswalk$DFAname)
+  lookup_map <- c(lookup_map, lookup_map_raw)
+  
+  # Rename matching columns
+  current_cols <- names(df)
+  new_cols <- current_cols
+  
+  for (i in seq_along(current_cols)) {
+    col <- current_cols[i]
+    if (col %in% names(lookup_map)) {
+      new_cols[i] <- lookup_map[[col]]
+    }
+  }
+  
+  names(df) <- new_cols
+  return(df)
+}
+
+

@@ -1,10 +1,10 @@
-
-
 # ==============================================================================
 # Script: doug_03_add_altprey_2yrlead_to_clusData.R
-# Purpose: Extend 8 AltPrey series (including Sitka Herring) through 2023 
-#          using locked 1998–2021 scaling and append their 2-year leads.
+# Purpose: Extend 8 AltPrey series (including Sitka Herring) through 2023, 
+#          standardize ALL baseline headers to LisaNames early, append 
+#          in-year and 2-year lead columns, and export clean CSVs.
 # Output: copilot/outputs_altprey/clusDataDFA_wide_1998_2021_altprey_extended.csv
+#         Rcode_for_paper/metadata/clusDataDFA_wide_1998_2021_altprey_extended_LisaNames.csv
 # ==============================================================================
 
 library(tidyverse)
@@ -16,8 +16,18 @@ library(lubridate)
 # ------------------------------------------------------------------------------
 rootdir   <- "C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP"
 outputDir <- file.path(rootdir, "copilot/outputs_altprey")
+metaDir   <- file.path(rootdir, "Rcode_for_paper/metadata")
 
 dir.create(outputDir, showWarnings = FALSE, recursive = TRUE)
+dir.create(metaDir,   showWarnings = FALSE, recursive = TRUE)
+
+# Load Master Crosswalk to map DFA names -> LisaNames
+crosswalk_path  <- file.path(metaDir, "master_name_crosswalk.csv")
+if (!file.exists(crosswalk_path)) stop("Missing master_name_crosswalk.csv at: ", crosswalk_path)
+master_crosswalk <- read.csv(crosswalk_path, stringsAsFactors = FALSE)
+
+# Lookup vector for standardizing baseline headers
+name_map <- setNames(master_crosswalk$LisaName, master_crosswalk$DFAname)
 
 # ------------------------------------------------------------------------------
 # STEP 1: LOAD RAW OBSERVATIONS (1998–2023) & LOCK 1998–2021 SCALING
@@ -157,20 +167,40 @@ for (i in seq_len(nrow(dfa_targets))) {
   )
 }
 
-# Combine all 8 extended series
+# Combine all 8 extended target series
 all_extended_altprey <- bind_rows(extended_results)
 
 # ------------------------------------------------------------------------------
-# STEP 3: CONSTRUCT IN-YEAR AND 2-YEAR LEADS & MERGE ONTO BASELINE MATRIX
+# STEP 3: CONVERT BASELINE TO LISANAMES EARLY & MERGE TARGET EXTENSIONS
 # ------------------------------------------------------------------------------
-cat("\nStep 3: Constructing in-year and 2-year lead columns for target series...\n")
+cat("\nStep 3: Standardizing baseline matrix to LisaNames and appending target extensions...\n")
 
-# 1. Prepare In-Year (t) dataframe for 1998–2021
+# 1. Load baseline DFA matrix and immediately translate headers to LisaName schema
+baseline_dfa_path <- file.path(outputDir, "clusDataDFA_wide_1998_2021.csv")
+if (!file.exists(baseline_dfa_path)) {
+  stop("CRITICAL ERROR: Cannot find clusDataDFA_wide_1998_2021.csv in ", outputDir)
+}
+
+baseline_dfa_wide <- read.csv(baseline_dfa_path, stringsAsFactors = FALSE)
+
+# Translate baseline headers using crosswalk early
+mapped_baseline_cols <- sapply(names(baseline_dfa_wide), function(col) {
+  if (col == "Year" || col == "year") return("Year")
+  if (col %in% master_crosswalk$LisaName) return(col)
+  
+  clean_col <- str_remove(col, "^X(?=\\d)")
+  if (clean_col %in% names(name_map)) return(name_map[[clean_col]])
+  
+  return(col)
+})
+names(baseline_dfa_wide) <- unname(mapped_baseline_cols)
+
+# 2. Build In-Year (t) wide matrix for 1998–2021
 in_year_df <- all_extended_altprey %>%
   filter(Year >= 1998 & Year <= 2021) %>%
   select(Year, LisaName, value)
 
-# 2. Prepare 2-Year Lead (t-2) dataframe for 1998–2021 smolt entry
+# 3. Build 2-Year Lead (t-2) wide matrix for 1998–2021 smolt entry
 lead_df <- all_extended_altprey %>%
   mutate(
     Year_SmoltEntry = Year - 2,
@@ -179,28 +209,27 @@ lead_df <- all_extended_altprey %>%
   filter(Year_SmoltEntry >= 1998 & Year_SmoltEntry <= 2021) %>%
   select(Year = Year_SmoltEntry, LisaName, value)
 
-# 3. Combine both in-year and lead series and pivot to wide format
+# 4. Pivot target extensions to wide format
 targets_wide <- bind_rows(in_year_df, lead_df) %>%
   pivot_wider(names_from = LisaName, values_from = value)
 
-# 4. Load baseline 1998-2021 DFA wide matrix
-baseline_dfa_path <- file.path(outputDir, "clusDataDFA_wide_1998_2021.csv")
-baseline_dfa_wide <- read.csv(baseline_dfa_path)
-
-# Remove any existing duplicate target columns from baseline before joining
+# 5. Deduplicate: Remove any matching target columns from baseline before joining
 clean_baseline <- baseline_dfa_wide %>%
   select(-any_of(names(targets_wide)[names(targets_wide) != "Year"]))
 
-# Left join both in-year and 2yrLead columns onto baseline
+# 6. Perform left join
 final_extended_matrix <- clean_baseline %>%
   left_join(targets_wide, by = "Year")
 
-# Save final dataset
-out_csv_path <- file.path(outputDir, "clusDataDFA_wide_1998_2021_altprey_extended.csv")
-write.csv(final_extended_matrix, out_csv_path, row.names = FALSE)
+# ------------------------------------------------------------------------------
+# STEP 4: EXPORT STANDARDIZED MATRICES
+# ------------------------------------------------------------------------------
+out_altprey_path <- file.path(outputDir, "clusDataDFA_wide_1998_2021_altprey_extended.csv")
+out_meta_path    <- file.path(metaDir,   "clusDataDFA_wide_1998_2021_altprey_extended_LisaNames.csv")
 
-cat("\nPipeline Step Complete!")
-cat("\nSaved baseline matrix with both in-year and 2yrLead AltPrey columns to:\n", out_csv_path, "\n")
+write.csv(final_extended_matrix, out_altprey_path, row.names = FALSE)
+write.csv(final_extended_matrix, out_meta_path,    row.names = FALSE)
 
-
-
+cat("\nPipeline Complete!")
+cat("\nSaved clean standardized matrix to:\n - ", out_altprey_path, "\n - ", out_meta_path, "\n")
+cat("Total columns:", ncol(final_extended_matrix), "\n")

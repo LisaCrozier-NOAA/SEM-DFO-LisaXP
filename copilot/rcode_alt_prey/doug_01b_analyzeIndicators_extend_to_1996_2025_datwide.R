@@ -1,5 +1,5 @@
 
-#"C:\Users\Lisa.Crozier\Documents\Marine survival\SEM-DFO-LisaXP\copilot\rcode_alt_prey\doug_01_analyzeIndicators_extend_to_1996_2025_datwide.R"
+#"C:\Users\Lisa.Crozier\Documents\Marine survival\SEM-DFO-LisaXP\copilot\rcode_alt_prey\doug_01b_analyzeIndicators_extend_to_1996_2025_datwide.R"
 
 #This script reads in data files in Doug's data folder that were previously processed in "preprocessData.R"
 #it uses his screening criteria, except that I have gone back to the original requirement for minFracComplete <- 0.79, which excludes harbor seals from the CR
@@ -33,7 +33,7 @@ dir.create(outputDir, showWarnings = FALSE, recursive = TRUE)
 source(file.path(workingDir, "functions.R"))
 
 scen <- "incl2026"
-minFracComplete <- 0.79
+minFracComplete <- 0.5
 screenStartDatetime <- dmy(screenStartDate) # 01JAN1998
 screenEndDatetime <- dmy(screenEndDate)     # 31DEC2021
 
@@ -177,3 +177,5 @@ write.csv(datWide, file.path(outputDir, "datWide_1996_2025_qualified.csv"), row.
 
 cat("\nPipeline Complete! Retained", ncol(datWide) - 1, "unique indicators across 1996-2025.\n")
 head(datWide)
+
+

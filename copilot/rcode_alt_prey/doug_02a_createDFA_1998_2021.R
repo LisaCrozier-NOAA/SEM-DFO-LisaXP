@@ -1,5 +1,7 @@
+
+
 # ==============================================================================
-# Script: doug_02_createDFA_19982021.R
+# Script: doug_02a_createDFA_1998_2021.R
 # Purpose: Fit DFAs (loading > 0.2) & MARSS Kalman Smoothing across Guilds (1998–2021)
 # Output: copilot/outputs_10/
 # ==============================================================================
@@ -207,3 +209,5 @@ if (length(smoothedIndList) > 0) {
 write.csv(DFAnames %>% arrange(DFAname), file.path(outputDir, "rankedIndicators.csv"), row.names = FALSE)
 
 cat("\nDFA Pipeline Complete! All outputs and marss_fits.rds saved to:", outputDir, "\n")
+
+
