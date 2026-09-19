@@ -1,136 +1,162 @@
 
 
+
 # ==============================================================================
-# Script: 01_recreate_doug_baseline_and_allsmoothed_1998_2021.R
-# Purpose: Recreate Doug's 1998-2021 DFA products + generate All-Smoothed matrix
-# Output: copilot/outputs_altprey/
+# Script: 01_reprocess_raw_data_scratch_1995_2025.R
+# Purpose: Build un-truncated 1995-2025 raw data matrix directly from source files
+#          without using Doug's legacy functions.R
+# Output: metadata/datWide_1995_2025_reprocessed_raw.csv
 # ==============================================================================
 
 library(tidyverse)
 library(lubridate)
-library(MARSS)
 library(imputeTS)
 
-rootdir <- "C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP"
-path    <- "C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results/analyzeAKindices"
+# ------------------------------------------------------------------------------
+# 1. SETUP UPDATED PATHS AND DIRECTORIES
+# ------------------------------------------------------------------------------
+rootdir   <- "C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP/Rcode_for_paper"
+path      <- "C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results/analyzeAKindices"
 
 dataDir   <- file.path(path, "data")
-outputDir <- file.path(rootdir, "copilot/outputs_altprey")
+outputDir <- file.path(rootdir, "metadata")
 dir.create(outputDir, showWarnings = FALSE, recursive = TRUE)
 
-source(file.path(path, "functions.R"))
+# Target full timeline (1995 to 2025)
+target_years <- data.frame(Year = 1995:2025)
 
-screenStartDatetime <- dmy("01JAN1998")
-screenEndDatetime   <- dmy("31DEC2021")
-target_years        <- data.frame(date = ymd(paste0(1998:2021, "-01-01")))
+# Subdirectories containing the source data files
+subDirs <- c("Western_Aleutian_Islands", "Central_Aleutian_Islands", "Eastern_Aleutian_Islands",
+             "Western_Gulf_of_Alaska", "Eastern_Gulf_of_Alaska", "CCIEA", "WCVI", "SEM_data_2024",
+             "pinkSalmon", "BonnPinn", "ColumbiaRiverPinn", "SEM_data_2025", "pinkSalmon_2025",
+             "data_2025", "NHL_2025", "planktonJuneNCC_2025", "plankton_2025b",
+             "plankton_2026", "NHL_2026", "JSOES_2026", "Westport_2026", "WGOA_DFA_2026", "lingcodSA_2026",
+             "predAK_2026", "orca_2026")
 
-# 1. Load Manifest & Process Raw Files
-indicators <- read.csv(file.path(path, "indicators.csv")) %>%
-  filter(category != "") %>%
-  filter(incl2026 == "Y")
+# ------------------------------------------------------------------------------
+# 2. LOAD INDICATOR MANIFEST (indicators.csv)
+# ------------------------------------------------------------------------------
+indicators <- read.csv(file.path(path, "indicators.csv"), stringsAsFactors = FALSE) %>%
+  filter(category != "", incl2026 == "Y")
 
+# ------------------------------------------------------------------------------
+# 3. CUSTOM IN-LINE INTERPOLATION & LOG-TRANSFORM FUNCTIONS
+# ------------------------------------------------------------------------------
+# Interpolate interior NAs ONLY; preserve leading/trailing NAs outside observed range
+clean_interpolate <- function(vec, impute_type) {
+  if (impute_type == "none" || all(is.na(vec))) return(vec)
+  
+  # Set non-positive values to NA if linear non-zero constraint is required
+  if (impute_type == "linear") {
+    vec[vec <= 0] <- NA
+  } else if (impute_type == "linearKeepZeros") {
+    vec[vec < 0]  <- NA
+  }
+  
+  valid_idx <- which(!is.na(vec))
+  if (length(valid_idx) < 2) return(vec)
+  
+  first_v <- min(valid_idx)
+  last_v  <- max(valid_idx)
+  
+  # Linearly interpolate ONLY between the first and last valid data points
+  interior <- vec[first_v:last_v]
+  if (any(is.na(interior))) {
+    vec[first_v:last_v] <- imputeTS::na_interpolation(interior, option = "linear")
+  }
+  return(vec)
+}
+
+# Apply simple natural log transformation if specified
+clean_log_transform <- function(vec, log_setting) {
+  if (log_setting == "simple") {
+    return(log(vec))
+  }
+  return(vec)
+}
+
+# ------------------------------------------------------------------------------
+# 4. INGEST AND PROCESS RAW DATA
+# ------------------------------------------------------------------------------
 dataList <- list()
+
 for (subDir in subDirs) {
   subDirPath <- file.path(dataDir, subDir)
   if (!dir.exists(subDirPath)) next
   
-  for (dataFile in list.files(subDirPath, pattern = "\\.csv")) {
+  for (dataFile in list.files(subDirPath, pattern = "\\.csv$")) {
     thisFile <- file.path(subDirPath, dataFile)
-    thisHeader <- readLines(thisFile, n = 4)
-    thisIndicator <- trimws(unlist(strsplit(thisHeader[[1]], ","))[2])
+    
+    # Extract indicator name from header line 1
+    thisHeader    <- readLines(thisFile, n = 1)
+    thisIndicator <- trimws(unlist(strsplit(thisHeader, ","))[2])
     thisIndicator <- gsub('"', "", thisIndicator)
     
-    if (thisIndicator %in% indicators$indicator) {
-      thisData <- read.csv(thisFile, skip = 4, colClasses = c("character", "numeric"), na.strings = c("null", "NA"))
+    # Match with indicators manifest
+    ind_meta <- indicators %>% filter(indicator == thisIndicator, dataset == subDir)
+    
+    if (nrow(ind_meta) > 0) {
+      raw_df <- read.csv(thisFile, skip = 4, colClasses = c("character", "numeric"), na.strings = c("null", "NA"))
       
-      if (names(thisData)[2] == "Index") {
-        thisData$date <- ymd(thisData$Year, truncated = 2L)
-        thisData <- thisData[, c("date", "Index")]
-      } else if (names(thisData)[1] == "Year") {
-        thisData$date <- ymd(thisData$Year, truncated = 2L)
-        thisData <- thisData[, c("date", "Value")]
+      if (nrow(raw_df) == 0) next
+      
+      # Standardize Year column
+      if ("Year" %in% names(raw_df)) {
+        raw_df$Year <- suppressWarnings(as.numeric(raw_df$Year))
+      } else if ("date" %in% names(raw_df)) {
+        raw_df$Year <- year(ymd(raw_df$date))
       } else {
-        thisData$date <- ymd(thisData$date)
+        raw_df$Year <- suppressWarnings(as.numeric(raw_df[[1]]))
       }
-      names(thisData) <- c("date", "value")
       
-      thisInd  <- getInd(indicators, thisIndicator, subDir)
-      thisData <- impute(thisInd, thisData)
-      out      <- logTransform(thisInd, thisData)
-      thisData <- out$thisData
+      val_col <- names(raw_df)[names(raw_df) %in% c("Value", "Index", "value")][1]
+      if (is.na(val_col)) val_col <- names(raw_df)[2]
       
-      thisData$finalVal  <- if (out$transformed) thisData$logTransformed else thisData$imputed
-      thisData$shortName <- thisInd$shortName
+      df_clean <- raw_df %>%
+        select(Year, Value = !!sym(val_col)) %>%
+        filter(!is.na(Year), Year >= 1995, Year <= 2025) %>%
+        group_by(Year) %>%
+        summarize(Value = mean(Value, na.rm = TRUE), .groups = "drop")
       
-      dataList[[length(dataList) + 1]] <- thisData[, c("shortName", "date", "finalVal")]
+      # Merge onto 1995-2025 grid
+      full_grid <- target_years %>% left_join(df_clean, by = "Year")
+      
+      # Apply interpolation and transformation
+      impute_setting <- ind_meta$impute[1]
+      log_setting    <- ind_meta$logTransform[1]
+      
+      vec_interp <- clean_interpolate(full_grid$Value, impute_setting)
+      vec_final  <- clean_log_transform(vec_interp, log_setting)
+      
+      dataList[[length(dataList) + 1]] <- tibble(
+        Year      = full_grid$Year,
+        shortName = ind_meta$shortName[1],
+        finalVal  = vec_final
+      )
     }
   }
 }
 
-allData <- bind_rows(dataList)
+# ------------------------------------------------------------------------------
+# 5. PIVOT WIDE AND EXPORT REPROCESSED MATRIX
+# ------------------------------------------------------------------------------
+allData_long <- bind_rows(dataList)
 
-# 2. Filter 50% Completeness Criterion
-yearDF <- data.frame(year = year(seq(screenStartDatetime, screenEndDatetime, by = "1 year")))
-
-qualified_series <- allData %>%
-  group_by(shortName) %>%
-  group_modify(~ {
-    thisScreenDat <- .x %>% filter(date >= screenStartDatetime & date <= screenEndDatetime)
-    thisScreenDat$year <- year(thisScreenDat$date)
-    thisYearDat <- thisScreenDat %>%
-      group_by(year) %>%
-      summarize(finalVal = mean(finalVal, na.rm = TRUE), .groups = "drop") %>%
-      full_join(yearDF, by = "year")
-    
-    fracComplete <- sum(is.finite(thisYearDat$finalVal)) / nrow(thisYearDat)
-    pass <- (fracComplete >= 0.5) | str_starts(toupper(.y$shortName), "SAR_")
-    tibble(pass = pass)
-  }) %>%
-  filter(pass)
-
-qualified_data <- allData %>% inner_join(qualified_series, by = "shortName")
-
-# 3. Build Qualified Wide Matrix (1998-2021)
-datWide_1998_2021 <- target_years %>%
-  left_join(qualified_data, by = "date") %>%
-  pivot_wider(id_cols = date, names_from = shortName, values_from = finalVal, values_fn = mean) %>%
-  mutate(Year = year(date)) %>%
-  select(Year, everything(), -date) %>%
+datWide_raw_full <- target_years %>%
+  left_join(allData_long, by = "Year") %>%
+  group_by(Year, shortName) %>%
+  summarize(finalVal = mean(finalVal, na.rm = TRUE), .groups = "drop") %>%
+  filter(!is.na(shortName)) %>%
+  pivot_wider(id_cols = Year, names_from = shortName, values_from = finalVal) %>%
   arrange(Year)
 
-write.csv(datWide_1998_2021, file.path(outputDir, "datWide_1998_2021_qualified.csv"), row.names = FALSE)
+# Export complete un-truncated raw matrix
+out_file <- file.path(outputDir, "datWide_1995_2025_reprocessed_raw.csv")
+write.csv(datWide_raw_full, out_file, row.names = FALSE)
 
-# 4. Generate All-Smoothed Matrix (Single-Series MARSS Filter for ALL Variables)
-all_marss_objects <- list()
-allsmoothed_list  <- list()
+cat("\n==============================================================================\n")
+cat("RAW REPROCESSING COMPLETE (1995-2025)\n")
+cat("Retained", ncol(datWide_raw_full) - 1, "indicators across 1995-2025.\n")
+cat("Saved file to:", out_file, "\n")
+cat("==============================================================================\n")
 
-for (col in setdiff(names(datWide_1998_2021), "Year")) {
-  vec_raw <- datWide_1998_2021[[col]]
-  valid_idx <- which(!is.na(vec_raw))
-  
-  if (length(valid_idx) > 3) {
-    scaled_vec <- scale(vec_raw) %>% as.vector()
-    
-    # Fit MARSS univariate state-space model
-    fit_single <- MARSS(scaled_vec, fit = FALSE, silent = TRUE)
-    fit_single$par <- fit_single$start
-    kfOut <- MARSSkf(fit_single)
-    
-    smoothed_vals <- as.numeric(t(kfOut$xtT))
-    
-    allsmoothed_list[[col]] <- smoothed_vals
-    all_marss_objects[[paste0(col, "_smoothed")]] <- fit_single
-  } else {
-    allsmoothed_list[[col]] <- vec_raw
-  }
-}
-
-datWide_1998_2021_allsmoothed <- as_tibble(allsmoothed_list) %>%
-  mutate(Year = datWide_1998_2021$Year) %>%
-  select(Year, everything())
-
-# Export Containers
-write.csv(datWide_1998_2021_allsmoothed, file.path(outputDir, "datWide_1998_2021_allsmoothed.csv"), row.names = FALSE)
-saveRDS(all_marss_objects, file.path(outputDir, "all_marss_objects_1998_2021.rds"))
-
-cat("\nPhase 1 Complete!\nExported: datWide_1998_2021_qualified.csv & datWide_1998_2021_allsmoothed.csv\n")
