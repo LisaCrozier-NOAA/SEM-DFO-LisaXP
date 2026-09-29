@@ -178,9 +178,9 @@ shifted_dfaCols <- masked_clus_wide %>%
                 ~ dplyr::lead(.x, 2), 
                 .names = "{gsub('_adultyr', '_smoltyr', .col)}")) %>%
   
-  # 2. Alternate Prey (X05, X13, X14): Original column is _smoltyr. Derive _adultyr via lead(2)
-  rename_with(~ paste0(.x, "_smoltyr"), contains("05.Forage") | contains("13.FishPrey") | contains("14.CompAK")) %>%
-  mutate(across((contains("05.Forage") | contains("13.FishPrey") | contains("14.CompAK")) & ends_with("_smoltyr"), 
+  # 2. Alternate Prey (X04, X05, X09, X12, X13, X14): Original column is _smoltyr. Derive _adultyr via lead(2)
+  rename_with(~ paste0(.x, "_smoltyr"), contains("01.ZooPrey") |contains("04.CompFish") | contains("05.Forage") | contains("09.PredFish") | contains("12.ZooPrey") | contains("13.FishPrey") | contains("14.CompAK")) %>%
+  mutate(across(( contains("01.ZooPrey") | contains("04.CompFish") | contains("05.Forage") | contains("09.PredFish") | contains("12.ZooPrey") | contains("13.FishPrey") | contains("14.CompAK")) & ends_with("_smoltyr"), 
                 ~ dplyr::lead(.x, 2), 
                 .names = "{gsub('_smoltyr', '_adultyr', .col)}"))
 
@@ -252,3 +252,8 @@ cat(sprintf("\nTotal NAs in Final Shifted LisaName Matrix: %d\n", sum(is.na(shif
 cat("First 5 Columns in Output:\n")
 print(names(shifted_LisaNames)[1:5])
 cat("==============================================================================\n")
+
+
+x<-t(shifted_LisaNames %>% filter(Year == 1998 | Year == 2021) %>% select(Year,contains("X10_") | contains("X15_")));x
+y<-t(shifted_LisaNames %>% filter(Year == 1998 | Year == 2021) %>% select(Year,contains("X01_") | contains("X04_")| contains("X05_")| contains("X09_")));y
+z<-t(shifted_LisaNames %>% filter(Year == 1998 | Year == 2021) %>% select(Year,contains("X11_") | contains("X12_")| contains("X13_")| contains("X14_")));z

@@ -12,12 +12,12 @@ library(stringr)
 # ------------------------------------------------------------------------------
 # STEP 0: SETUP PATHS & LOAD MASTER CROSSWALK ONLY
 # ------------------------------------------------------------------------------
-proj_dir <- getwd()
+proj_dir    <- file.path(getwd(), "Rcode_for_paper")
 doug_dir <- "2026_06_29_SEM_AKPred/shiftLisa_step3_26jun26"
 
-master_out   <- file.path(proj_dir, "Rcode_for_paper", "Routput_for_paper")
-tbl_out_dir  <- file.path(master_out, "tables")
-data_out_dir <- file.path(master_out, "data")
+master_out   <- file.path(proj_dir,  "Routput_for_paper")
+tbl_out_dir  <- file.path(proj_dir, "tables")
+data_out_dir <- file.path(proj_dir, "data")
 
 dir.create(tbl_out_dir, showWarnings = FALSE, recursive = TRUE)
 dir.create(data_out_dir, showWarnings = FALSE, recursive = TRUE)
@@ -26,7 +26,7 @@ dir.create(data_out_dir, showWarnings = FALSE, recursive = TRUE)
 source(file.path("Rcode_for_paper", "01_data_prep", "00b_crosswalk_utility_fxn.r"))
 
 # Single Source of Truth
-crosswalk_path <- file.path("metadata", "master_name_crosswalk.csv")
+crosswalk_path <- file.path(proj_dir,"metadata", "master_name_crosswalk.csv")
 if (!file.exists(crosswalk_path)) {
   stop("Missing master crosswalk file at: ", crosswalk_path)
 }
@@ -153,11 +153,12 @@ indicator_diagnostic_summary <- targeted_estimates %>%
   ) %>%
   arrange(H_code, path_label, model_id, desc(N_Top_Runs))
 
+print(indicator_diagnostic_summary)
 write_csv(indicator_diagnostic_summary, file.path(data_out_dir, "Goal2_Individual_Indicator_Diagnostics.csv"))
 cat("Diagnostic CSV saved to: Goal2_Individual_Indicator_Diagnostics.csv\n")
 
 # ------------------------------------------------------------------------------
-# OUTPUT 2: MANUSCRIPT-READY TABLE 3 (WIDE FORMAT)
+# OUTPUT 2: MANUSCRIPT-READY TABLE 3 (NARROW WORD PORTRAIT FORMAT)
 # ------------------------------------------------------------------------------
 path_summary_by_model <- targeted_estimates %>%
   group_by(model_id, H_code, path_label) %>%
@@ -177,7 +178,8 @@ path_summary_by_model <- targeted_estimates %>%
       Pct_Sig >= 50 & Pct_Supported < 50  ~ "Flipped Sign",
       TRUE                                ~ "NS"
     ),
-    Cell_Display = paste0(Verdict, "\n(", Pct_Sig, "% Sig)")
+    # Use explicit <br> for HTML line breaks to force 2-line stacking
+    Cell_Display = paste0(Verdict, "<br>(", Pct_Sig, "% Sig)")
   )
 
 # Reshape into Wide Format (Hypothesis Rows x Model Columns)
@@ -190,38 +192,199 @@ table3_wide <- path_summary_by_model %>%
   ) %>%
   arrange(H_code)
 
-write_csv(table3_wide, file.path(tbl_out_dir, "Table3_Hypothesis_Evaluation_Summary.csv"))
+model_cols <- c("DAG1A_long", "DAG1A_short", "DAG1B_long", "DAG1B_short")
 
-# Render Formatted gt Table
+# Build Narrow gt Table
 table3_gt <- table3_wide %>%
   gt() %>%
   tab_header(
-    title = md("**Table 3. Empirical Evaluation of Structural Path Hypotheses**"),
+    title = md("**Table 3. Evaluation of Structural Path Hypotheses**"),
     subtitle = "Path significance (% Sig at p < 0.05) and directional support across top-ranked candidate models"
   ) %>%
   cols_label(
     H_code               = md("**Code**"),
-    path_label           = md("**Target Structural Path**"),
-    Baseline_Expectation = md("**Baseline Expectation**"),
-    DAG1A_long           = md("**DAG 1A (Long)**"),
-    DAG1A_short          = md("**DAG 1A (Short)**"),
-    DAG1B_long           = md("**DAG 1B (Long)**"),
-    DAG1B_short          = md("**DAG 1B (Short)**")
+    path_label           = md("**Structural Path**"),
+    Baseline_Expectation = md("**Expectation**"),
+    DAG1A_long           = md("**DAG 1A<br>(Long)**"),
+    DAG1A_short          = md("**DAG 1A<br>(Short)**"),
+    DAG1B_long           = md("**DAG 1B<br>(Long)**"),
+    DAG1B_short          = md("**DAG 1B<br>(Short)**")
   ) %>%
-  cols_align(align = "center", columns = c(H_code, Baseline_Expectation, DAG1A_long, DAG1A_short, DAG1B_long, DAG1B_short)) %>%
-  tab_options(
-    table.font.size = px(11),
-    heading.title.font.size = px(13),
-    column_labels.font.weight = "bold"
+  # Enable HTML rendering for <br> breaks
+  fmt_markdown(columns = c(all_of(model_cols), "path_label")) %>%
+  cols_align(
+    align = "center", 
+    columns = c(H_code, Baseline_Expectation, all_of(model_cols))
+  ) %>%
+  # Constrain column widths for Word Portrait mode (total width ~ 6.5 in / 650 px)
+  cols_width(
+    H_code ~ px(55),
+    path_label ~ px(160),
+    Baseline_Expectation ~ px(95),
+    everything() ~ px(85)
   )
+
+# ------------------------------------------------------------------------------
+# CELL-BY-CELL CONDITIONAL COLORING
+# ------------------------------------------------------------------------------
+for (col in model_cols) {
+  table3_gt <- table3_gt %>%
+    # Soft Light Green for Supported
+    tab_style(
+      style = list(
+        cell_fill(color = "#C8E6C9"),                # Soft Green
+        cell_text(color = "#1B5E20", weight = "bold") # Dark Green Text
+      ),
+      locations = cells_body(
+        columns = all_of(col),
+        rows = str_detect(.data[[col]], "Supported")
+      )
+    ) %>%
+    # Soft Light Red for Flipped Sign
+    tab_style(
+      style = list(
+        cell_fill(color = "#FFCDD2"),                # Soft Red
+        cell_text(color = "#B71C1C", weight = "bold") # Dark Red Text
+      ),
+      locations = cells_body(
+        columns = all_of(col),
+        rows = str_detect(.data[[col]], "Flipped Sign")
+      )
+    )
+}
+
+# Final Options & Export (Sized for Word Portrait)
+table3_gt <- table3_gt %>%
+  tab_options(
+    table.width = px(650),
+    table.font.size = px(10),
+    heading.title.font.size = px(12),
+    column_labels.font.weight = "bold",
+    data_row.padding = px(4)
+  )
+
+print(table3_gt)
 
 # Save Outputs
 gtsave(table3_gt, file.path(tbl_out_dir, "Table3_Hypothesis_Evaluation_Summary.html"))
 gtsave(
   data     = table3_gt,
   filename = file.path(tbl_out_dir, "Table3_Hypothesis_Evaluation_Summary.png"),
-  vwidth   = 1200,
-  vheight  = 700
+  vwidth   = 700,
+  vheight  = 550
+)
+
+# ------------------------------------------------------------------------------
+# OUTPUT 2: MANUSCRIPT-READY TABLE 3 (WIDE FORMAT WITH CONDITIONAL COLORING)
+# ------------------------------------------------------------------------------
+path_summary_by_model <- targeted_estimates %>%
+  group_by(model_id, H_code, path_label) %>%
+  summarise(
+    N_Top100      = n(),
+    Pct_Sig       = round((sum(is_significant) / N_Top100) * 100, 1),
+    Pct_Supported = round((sum(Model_Supports) / N_Top100) * 100, 1),
+    .groups       = "drop"
+  ) %>%
+  mutate(
+    Baseline_Expectation = case_when(
+      H_code %in% c("H2a", "H2c") ~ "Negative (-)",
+      TRUE                        ~ "Positive (+)"
+    ),
+    Verdict = case_when(
+      Pct_Sig >= 50 & Pct_Supported >= 50 ~ "Supported",
+      Pct_Sig >= 50 & Pct_Supported < 50  ~ "Flipped Sign",
+      TRUE                                ~ "NS"
+    ),
+    # Multi-line cell display to narrow column width
+    Cell_Display = paste0(Verdict, "\n", Pct_Sig, "% Sig")
+  )
+
+# Reshape into Wide Format (Hypothesis Rows x Model Columns)
+table3_wide <- path_summary_by_model %>%
+  select(H_code, path_label, Baseline_Expectation, model_id, Cell_Display) %>%
+  pivot_wider(
+    names_from  = model_id,
+    values_from = Cell_Display,
+    values_fill = "Path Excluded"
+  ) %>%
+  arrange(H_code)
+
+print(table3_wide)
+write_csv(table3_wide, file.path(tbl_out_dir, "Table3_Hypothesis_Evaluation_Summary.csv"))
+
+# Define target model columns for styling
+model_cols <- c("DAG1A_long", "DAG1A_short", "DAG1B_long", "DAG1B_short")
+
+# Render Formatted gt Table with Cell-by-Cell Conditional Colors
+table3_gt <- table3_wide %>%
+  gt() %>%
+  tab_header(
+    title = md("**Table 3. Evaluation of Structural Path Hypotheses**"),
+    subtitle = "Path significance (% Sig at p < 0.05) and directional support across top-ranked candidate models"
+  ) %>%
+  cols_label(
+    H_code               = md("**Code**"),
+    path_label           = md("**Structural Path**"),
+    Baseline_Expectation = md("**Expectation**"),
+    DAG1A_long           = md("**DAG 1A<br>(Long)**"),
+    DAG1A_short          = md("**DAG 1A<br>(Short)**"),
+    DAG1B_long           = md("**DAG 1B<br>(Long)**"),
+    DAG1B_short          = md("**DAG 1B<br>(Short)**")
+  ) %>%
+  # Convert \n to HTML line breaks
+  fmt_markdown(columns = all_of(model_cols)) %>%
+  cols_align(
+    align = "center", 
+    columns = c(H_code, Baseline_Expectation, all_of(model_cols))
+  )
+
+# ------------------------------------------------------------------------------
+# APPLY CONDITIONAL COLORS CELL-BY-CELL
+# ------------------------------------------------------------------------------
+for (col in model_cols) {
+  table3_gt <- table3_gt %>%
+    # Soft Green for Supported
+    tab_style(
+      style = list(
+        cell_fill(color = "#C8E6C9"),                # Light Green
+        cell_text(color = "#1B5E20", weight = "bold") # Dark Green Text
+      ),
+      locations = cells_body(
+        columns = all_of(col),
+        rows = str_detect(.data[[col]], "Supported")
+      )
+    ) %>%
+    # Soft Red for Flipped Sign
+    tab_style(
+      style = list(
+        cell_fill(color = "#FFCDD2"),                # Light Red
+        cell_text(color = "#B71C1C", weight = "bold") # Dark Red Text
+      ),
+      locations = cells_body(
+        columns = all_of(col),
+        rows = str_detect(.data[[col]], "Flipped Sign")
+      )
+    )
+}
+
+# Final Options & Rendering
+table3_gt <- table3_gt %>%
+  tab_options(
+    table.font.size = px(11),
+    heading.title.font.size = px(13),
+    column_labels.font.weight = "bold",
+    data_row.padding = px(6)
+  )
+
+print(table3_gt)
+
+# Save Outputs
+gtsave(table3_gt, file.path(tbl_out_dir, "Table3_Hypothesis_Evaluation_Summary.html"))
+gtsave(
+  data     = table3_gt,
+  filename = file.path(tbl_out_dir, "Table3_Hypothesis_Evaluation_Summary.png"),
+  vwidth   = 950,
+  vheight  = 650
 )
 
 message("Goal 2 Pipeline Complete! Table 3 and diagnostics exported to: ", master_out)

@@ -17,7 +17,7 @@ outputDir <- file.path(rootdir, "metadata")
 path      <- "C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results/analyzeAKindices"
 
 # File paths
-master_data_file <- file.path(outputDir, "sem_altprey_data_complete_1998_2021.csv")
+master_data_file <- file.path(outputDir, "sem_altprey_data_1998_2021.csv")
 crosswalk_path   <- file.path(outputDir, "master_name_crosswalk.csv")
 guild_file       <- file.path(path, "guildsWithExclude.csv")
 
@@ -47,20 +47,25 @@ combined_guildfiles <- read.csv(guild_file, row.names = NULL, stringsAsFactors =
 # NCC Predators (Guilds 08, 09, 10, 11)
 nccpred <- combined_guildfiles %>% 
   filter(grepl("08|09|10|11", latest_guild)) %>% 
+  filter(!grepl(paste(excluded_preds, collapse = "|"), short_name_lower ,ignore.case = T)) %>% 
   select(indicator, short_name_lower, sem_name, latest_guild) %>% 
   mutate(
     region = "NCC",
     altprey1 = case_when(
-      grepl("allsealionsbonn", indicator) ~ "eulachon",
       grepl("08\\.predbirdncc|peli|tern|murre|corm|alcid|shrw|shearwater|grebe", indicator) ~ "market_squid",
       grepl("hake|rockfish|mackerel|chinook abundance", indicator) ~ "krill",
       TRUE ~ "hake"
     ),
     altprey2 = case_when(
+      grepl("allsealionsbonn", indicator) ~ "anchovy",
+      grepl("allsealionsemb", indicator) ~ "anchovy",
       grepl("californian_s_l|08\\.predbirdncc|peli|tern|murre|corm|alcid|shrw|shearwater|grebe|rockfish|mackerel|chinook abundance|hake", indicator) ~ "anchovy",
       TRUE ~ "herring"
     ),
     altprey3 = case_when(
+      grepl("allsealionsbonn", indicator) ~ "eulachon",
+      grepl("allsealionsemb", indicator) ~ "eulachon",
+      grepl("hake", indicator) ~ "eulachon",
       grepl("ssl.est.wholerange|allsealionsemb", indicator) ~ "eulachon",
       grepl("08\\.predbirdncc|peli|tern|corm|murre", indicator) ~ "herring",
       TRUE ~ NA_character_
@@ -70,6 +75,7 @@ nccpred <- combined_guildfiles %>%
 # AK Predators (Guild 15)
 akpred <- combined_guildfiles %>% 
   filter(grepl("15", latest_guild)) %>% 
+  filter(!grepl(paste(excluded_preds, collapse = "|"), short_name_lower ,ignore.case = T)) %>% 
   select(indicator, short_name_lower, sem_name, latest_guild) %>% 
   mutate(
     region = "AK",
@@ -151,7 +157,8 @@ get_prey_base <- function(prey_key, region_val) {
     prey_key == "herring"      ~ ifelse(region_val == "AK", "X13_sitkaHerring_EGoA", "X05_DFA_abundSardine"),
     prey_key == "anchovy"      ~ "X05_anchovy_GAM",
     prey_key == "pink_salmon"  ~ "X14_pinkSalmonNorthAmerica",
-    prey_key == "capelin"      ~ "X13_mid_il_capelin",
+#    prey_key == "capelin"      ~ "X13_mid_il_capelin",
+    prey_key == "capelin"      ~ "X13_capelin_WGoA",
     TRUE                       ~ NA_character_
   )
 }
@@ -189,15 +196,39 @@ preds_smoltyr <- all_preds_base %>%
   ungroup()
 
 all_pred_dfa_altprey <- bind_rows(preds_adultyr, preds_smoltyr) %>%
-  select(latest_guild, region, pred_data_col, altprey1_data_col, altprey2_data_col, altprey3_data_col) %>%
+  select(region,latest_guild, pred_data_col,altprey1,altprey2,altprey3,  altprey1_data_col, altprey2_data_col, altprey3_data_col) %>%
   distinct() %>%
-  group_by(latest_guild, pred_data_col, altprey1_data_col, altprey2_data_col) %>%
+  group_by(latest_guild, pred_data_col,altprey1_data_col, altprey2_data_col) %>%
   filter(n() == 1 | !is.na(altprey3_data_col)) %>%
   ungroup() %>%
   arrange(latest_guild, pred_data_col)
 
+# all_pred_dfa_altprey.2<-all_pred_dfa_altprey %>%
+#   mutate(pred_data_col = case_when(
+#     indicator=="allsealionsemb_2yrlead_2025" ~ "X10_AllSeaLionsEMB_2025_raw_sc_adultyr",
+#     .default = pred_data_col
+#   )
+#          )
+
+print(all_pred_dfa_altprey,n=Inf)
+all_pred_dfa_altprey.2<-rbind(all_pred_dfa_altprey,
+                              c("NCC","10.predmammalncc","X10_AllSeaLionsEMB_2025_raw_sc_adultyr",
+                                "hake","anchovy","eulachon ",
+                              "X09_DFA_HakeAge5Plus","X05_anchovy_GAM_adultyr","X05_eulachon_during_chinook_adultyr")
+)
+
+all_pred_dfa_altprey.2 %>% distinct() %>% filter(pred_data_col=="X10_AllSeaLionsEMB_2025_raw_sc_adultyr")
+
+altprey_pred_dfa_columns_only <-all_pred_dfa_altprey.2 %>%
+  select(region, pred_data_col, altprey1_data_col, altprey2_data_col, altprey3_data_col) %>% 
+  distinct()
+
+print(altprey_pred_dfa_columns_only,n=Inf)
+  
 out_lookup_path <- file.path(outputDir, "all_pred_dfa_altprey.csv")
-write.csv(all_pred_dfa_altprey, out_lookup_path, row.names = FALSE)
+write.csv(all_pred_dfa_altprey.2, file.path(outputDir, "altprey_pred_lookup_complete.csv"), row.names = FALSE)
+write.csv(altprey_pred_dfa_columns_only %>% distinct(), file.path(outputDir, "altprey_pred_lookup_dfa_columns_only.csv"), row.names = FALSE)
+write.csv(altprey_pred_dfa_columns_only %>% distinct(), file.path(outputDir, "all_pred_dfa_altprey.csv"), row.names = FALSE)
 
 # ------------------------------------------------------------------------------
 # 3. DATASET ORGANIZATION & SANITY CHECK

@@ -39,6 +39,31 @@
     
 #Goal 3: alternate explanations (temp and prey*pred scenarios)
     
+    #I want to set up a table as follows:
+    Rows are all ak predators
+    Ordering is in ascending order of the magnitude of the coef on the base model, which was:
+
+            X16_SAR ~ X07_DFA_cpue_IntSprJunHW +  akpred
+      
+      The rows should be in groups that are separated by negative vs positive coefficients in that initial model, which is presumably comparable to the mean net effect of the predator, right? do I need to do anything else to make it more comparable to the altprey models?
+      
+        Then I want to see  the mean net effect of the predator under the base model and the altprey model, regardless of whether that model had >2 lower daic than the base model. I want to see what direction it was pushed.  
+      
+    
+      
+        The 2nd column should be the magnitude of that coefficient.
+      3-5: the coeff on that predator of the top performing model for that predator that includes an alternate prey
+      The 3rd column should be the aic of that model
+      4th: the aic of the top performing model for that predator that includes an alternate prey
+      
+    
+    
+    #what these response metrics mean:
+      #std_eff_beta (Standardized Net Effect): How many SDs $SAR$ drops per 1 SD increase in effective predator pressure.
+      #realized_damping_pct: The empirical percentage of predator mortality absorbed by alternate prey 
+            #(e.g., "Herring buffering reduced total Steller sea lion predation impact on salmon by an average of 34.2% across the 1998–2021 study period").
+      #mean_net_impact: The net annual mortality penalty imposed on $SAR$ by that predator after buffering.
+    
     
        #Q: have we replaced DAG1C w/ alt prey?
        

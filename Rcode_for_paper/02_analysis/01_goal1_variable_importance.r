@@ -12,26 +12,26 @@ library(forcats)
 # ------------------------------------------------------------------------------
 # STEP 0: DEFINE PATHS & LOAD UTILITIES-------
 # ------------------------------------------------------------------------------
-proj_dir     <- getwd()
+proj_dir    <- file.path(getwd(), "Rcode_for_paper")
 doug_dir     <- "2026_06_29_SEM_AKPred/shiftLisa_step3_26jun26"
 
 input_dir    <- file.path(doug_dir,  "DFA")
 #raw_path     <- "C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results/2026_06_29_SEM_AKPred/shiftLisa_step3_26jun26/"
 
 # Output Directories
-master_out   <- file.path(proj_dir, "Rcode_for_paper", "Routput_for_paper")
+master_out   <- file.path(proj_dir, "Routput_for_paper")
 data_out_dir <- file.path(master_out, "data")
-tbl_out_dir  <- file.path(master_out, "tables")
-fig_out_dir  <- file.path(master_out, "figures")
+tbl_out_dir  <- file.path(proj_dir, "tables")
+fig_out_dir  <- file.path(proj_dir, "figures")
 
 dir.create(data_out_dir, showWarnings = FALSE, recursive = TRUE)
 dir.create(tbl_out_dir, showWarnings = FALSE, recursive = TRUE)
 dir.create(fig_out_dir, showWarnings = FALSE, recursive = TRUE)
 
 # Source Universal Crosswalk Utility & Master Metadata
-source(file.path("Rcode_for_paper", "01_data_prep", "00b_crosswalk_utility_fxn.r"))
+source(file.path(proj_dir, "01_data_prep", "00b_crosswalk_utility_fxn.r"))
 
-crosswalk_path <- file.path("metadata", "master_name_crosswalk.csv")
+crosswalk_path <- file.path(proj_dir,"metadata", "master_name_crosswalk.csv")
 if (!file.exists(crosswalk_path)) {
   stop("Missing master crosswalk file at: ", crosswalk_path)
 }

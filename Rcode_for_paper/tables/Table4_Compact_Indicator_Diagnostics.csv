@@ -1,0 +1,14 @@
+H_code,path_label,SEM_Node,Series_Type,N_Indicators,N_Evaluations,Pct_Sig,Mean_Beta,Supported_Vars,Flipped_Vars
+H1a,PreyNCC -> Growth,PreyNCC,Multi-Taxa DFA,2,384,100,-0,"X01_DFA_sumPreyOfPrey_planktonJun, X05_DFA_abundSardine",None
+H1a,PreyNCC -> Growth,PreyNCC,Single-Series Straggler,1,16,100,0.91,None,X04_marketsquid_GAM
+H1b,Growth -> CPUE,Growth,Multi-Taxa DFA,1,185,0,-0.05,None,None
+H1b,Growth -> CPUE,Growth,Single-Series Straggler,1,15,0,0.04,None,None
+H1c,Growth -> SAR,Growth,Multi-Taxa DFA,1,185,100,0.12,X06_DFA_IGF_mu,None
+H1c,Growth -> SAR,Growth,Single-Series Straggler,1,15,100,0.12,X06_Lmu_IntSprJunH,None
+H1e,PreyAK -> SAR,PreyAK,Multi-Taxa DFA,3,185,100,-0.55,X13_DFA_WGOA_DFA_midTrophic,"X12_DFA_biomassEuphShelfSum, X13_DFA_WGOA_DFA_seabirds"
+H1e,PreyAK -> SAR,PreyAK,Single-Series Straggler,11,215,81.8,-0.12,"X12_copepodCom_EGoA, X13_gadid_WAI, X14_pinkSalmonNorthAmerica","X12_copepodBiomass_WGoA, X12_copepodCom_WGoA, X13_ammod_WAI, X13_hexagram_EAI, X13_pollockBiomassGoAage3plus_predAK, X14_pinkSalmonAsia"
+H2a,PredNCC -> CPUE,PredNCC,Multi-Taxa DFA,4,212,25,-0.16,X09_DFA_HakeAge5Plus,None
+H2a,PredNCC -> CPUE,PredNCC,Single-Series Straggler,5,188,40,0.22,None,"X08_commonMurre_JSOES, X08_Loons_8_WS"
+H2c,PredAK -> SAR,PredAK,Multi-Taxa DFA,2,127,100,-0.35,X15_DFA_sleeperSharks,X10_DFA_ssl.est.wholerange_2yrLead
+H2c,PredAK -> SAR,PredAK,Single-Series Straggler,13,273,84.6,0.07,"X10_Harbour_s_2yrLead_WS, X15_ArrowtoothFlounderBiomass_predAK, X15_sablefishRecruitment_predAK, X15_sharkCatchGoA_predAK, X15_spinyDogfishGoA_predAK","X10_Californian_s_l_2yrLead_WS, X10_Northern_f_s_2yrLead_WS, X15_halibutBiomassAge8plus_2yrLead_predAK, X15_PacificCodBiomass_predAK, X15_sablefishBiomass_predAK, X15_spinyDogfishBSAI_predAK"
+H4a,CPUE -> SAR,Abundance,Multi-Taxa DFA,1,400,100,0.34,X07_DFA_cpue_IntSprJunHW,None

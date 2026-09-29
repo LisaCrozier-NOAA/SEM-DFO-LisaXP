@@ -1,0 +1,20 @@
+H_code,path_label,SEM_Node,Indicator,N_Models,N_Supp,Pct_Sig_Supp,Beta_Supp,N_Flip,Pct_Sig_Flip,Beta_Flip
+H1a,PreyNCC -> Growth,PreyNCC,X05_DFA_abundSardine,29,29,100,-0.942,0,NA,NA
+H1b,Growth -> CPUE,Growth,X06_DFA_IGF_mu,12,2,0,0.179,10,0,-0.063
+H1c,Growth -> SAR,Growth,X06_DFA_IGF_mu,17,8,100,0.767,9,66.7,-0.495
+H1e,PreyAK -> SAR,PreyAK,X12_DFA_biomassEuphShelfSum,16,0,NA,NA,16,100,-0.655
+H1e,PreyAK -> SAR,PreyAK,X12_copepodBiomass_WGoA,1,0,NA,NA,1,100,-0.341
+H1e,PreyAK -> SAR,PreyAK,X13_DFA_WGOA_DFA_seabirds,5,0,NA,NA,5,100,-0.818
+H1e,PreyAK -> SAR,PreyAK,X13_gadid_WAI,2,2,100,0.365,0,NA,NA
+H1e,PreyAK -> SAR,PreyAK,X13_hexagram_EAI,1,0,NA,NA,1,100,-0.293
+H1e,PreyAK -> SAR,PreyAK,X13_pollockBiomassGoAage3plus_predAK,4,0,NA,NA,4,100,-0.512
+H2a,PredNCC -> CPUE,PredNCC,X08_Loons_8_WS,4,0,NA,NA,4,100,0.57
+H2a,PredNCC -> CPUE,PredNCC,X08_commonMurre_JSOES,9,0,NA,NA,9,100,0.69
+H2a,PredNCC -> CPUE,PredNCC,X09_DFA_HakeAge5Plus,16,16,100,-0.641,0,NA,NA
+H2c,PredAK -> SAR,PredAK,X10_Harbour_s_2yrLead_WS,3,3,66.7,-0.336,0,NA,NA
+H2c,PredAK -> SAR,PredAK,X15_DFA_sleeperSharks,13,13,100,-0.918,0,NA,NA
+H2c,PredAK -> SAR,PredAK,X15_PacificCodBiomass_predAK,4,0,NA,NA,4,100,0.429
+H2c,PredAK -> SAR,PredAK,X15_sablefishBiomass_predAK,5,0,NA,NA,5,100,0.717
+H2c,PredAK -> SAR,PredAK,X15_sablefishRecruitment_predAK,2,2,100,-0.466,0,NA,NA
+H2c,PredAK -> SAR,PredAK,X15_spinyDogfishBSAI_predAK,2,0,NA,NA,2,100,0.405
+H4a,CPUE -> SAR,Abundance,X07_DFA_cpue_IntSprJunHW,29,29,86.2,0.3,0,NA,NA

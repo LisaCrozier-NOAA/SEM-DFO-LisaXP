@@ -1,0 +1,3 @@
+predator,moderator,best_w,best_gamma,pred_est,pvalue,aic,delta_aic,base_aic
+X15_spinyDogfishGoA_predAK_smoltyr,X13_sitkaHerring_EGoA_smoltyr,0.4,10,-1.310947852673163,0.00555421097850739,59.8485262438463,-4.30567545025384,64.15420169410018
+X15_ArrowtoothFlounderBiomass_predAK_smoltyr,X13_mid_il_capelin_smoltyr,1,4,-0.2606539806824763,0.007561214864704846,60.2725541926029,-3.9711498325849,64.24370402518778

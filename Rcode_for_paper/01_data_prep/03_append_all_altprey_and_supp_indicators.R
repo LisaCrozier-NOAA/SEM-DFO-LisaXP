@@ -85,16 +85,17 @@ smooth_raw_straggler <- function(col_name) {
   if (length(nas_raw) > 0) smoothed_trend[full_years %in% nas_raw] <- NA_real_
   return(smoothed_trend)
 }
-
 # Smooth and generate _smoltyr and _adultyr 2-year leads
 raw_stragglers_df <- tibble(
   Year = full_years,
-  X01_habCompInd_smoltyr        = smooth_raw_straggler("habCompInd"),
+  X10_AllSeaLionsEMB_smoltyr    = smooth_raw_straggler("AllSeaLionsEMB_2025"),
+  X13_capelin_WGoA_smoltyr      = smooth_raw_straggler("capelin_WGoA"),
   X13_pollock_age1plus_smoltyr  = smooth_raw_straggler("pollockBiomassAIage1plus_predAK_2026"),
   X13_sitkaHerring_EGoA_smoltyr = smooth_raw_straggler("sitkaHerring_EGoA")
 ) %>%
   mutate(
-    X01_habCompInd_adultyr        = dplyr::lead(X01_habCompInd_smoltyr, 2),
+    X10_AllSeaLionsEMB_adultyr    = dplyr::lead(X10_AllSeaLionsEMB_smoltyr, 2),
+    X13_capelin_WGoA_adultyr      = dplyr::lead(X13_capelin_WGoA_smoltyr, 2),
     X13_pollock_age1plus_adultyr  = dplyr::lead(X13_pollock_age1plus_smoltyr, 2),
     X13_sitkaHerring_EGoA_adultyr = dplyr::lead(X13_sitkaHerring_EGoA_smoltyr, 2)
   )
@@ -164,17 +165,35 @@ cat("--- STEP 4: Exporting 1998–2021 SEM Subsets ---\n")
 
 df_1998_2021 <- updated_master %>% filter(Year >= 1998 & Year <= 2021)
 
+#this just means the column has some data -- it does not remove columns with NAs
 valid_data_cols <- names(df_1998_2021)[colSums(!is.na(df_1998_2021)) > 0]
 
-sem_complete_data <- df_1998_2021 %>%
-  select(all_of(valid_data_cols)) %>%
-  mutate(across(-Year, ~ as.vector(scale(.x))))
+noNA_data_cols <- names(df_1998_2021)[colSums(!is.na(df_1998_2021)) == 24]
 
-out_complete <- file.path(outputDir, "sem_altprey_data_complete_1998_2021.csv")
-out_raw_sem  <- file.path(outputDir, "sem_data_1998_2021.csv")
+sem_scaled_data_all <- df_1998_2021 %>%
+  mutate(across(-Year, ~ as.vector(scale(.x)))) %>%
+  select(all_of(valid_data_cols)) 
 
-write.csv(sem_complete_data, out_complete, row.names = FALSE)
-write.csv(df_1998_2021,       out_raw_sem,  row.names = FALSE)
+sem_scaled_data_noNA <- sem_scaled_data_all %>%
+  select(all_of(noNA_data_cols)) 
+
+out_all_sem <- file.path(outputDir, "sem_altprey_data_1998_2021.csv")
+out_noNA <- file.path(outputDir, "sem_data_noNA_1998_2021.csv")
+
+write.csv(sem_scaled_data_all, out_all_sem, row.names = FALSE)
+write.csv(sem_scaled_data_noNA,       out_noNA,  row.names = FALSE)
+
+#add raw sea lions emb and bonn-------
+path_raw<-"C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP/Rcode_for_paper/metadata/datWide_1995_2025_reprocessed_raw.csv"
+emb_raw<-read.csv(path_raw,row.names = NULL)%>%
+  mutate(X10_AllSeaLionsEMB_2025_raw_sc_smoltyr=scale(AllSeaLionsEMB_2025),
+         X10_AllSeaLionsEMB_2025_raw_sc_adultyr=scale(AllSeaLionsEMB_2yrLead_2025)) %>%
+  select(Year,X10_AllSeaLionsEMB_2025_raw_sc_smoltyr,X10_AllSeaLionsEMB_2025_raw_sc_adultyr);head(emb_raw);tail(emb_raw)
+sem_all<-left_join(sem_scaled_data_all,emb_raw,join_by("Year"))
+head(sem_all)
+
+write.csv(sem_all , out_all_sem, row.names = FALSE)
+write.csv(sem_all%>% select(all_of(noNA_data_cols)), out_noNA, row.names = FALSE)
 
 # ------------------------------------------------------------------------------
 # VERIFICATION SUMMARY
