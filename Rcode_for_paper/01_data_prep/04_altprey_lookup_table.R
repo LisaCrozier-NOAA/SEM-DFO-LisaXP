@@ -1,3 +1,11 @@
+
+#discovery:
+raw_sem_data <- read.csv(sem_data_file, stringsAsFactors = FALSE) 
+# plot(raw_sem_data$Year,raw_sem_data$X01_habCompInd_adultyr,type='l')
+#  lines(raw_sem_data$Year,-1*raw_sem_data$X12_DFA_biomassEuphShelfSum_smoltyr,col=2)
+#  cor(raw_sem_data$X01_habCompInd_adultyr,raw_sem_data$X12_DFA_biomassEuphShelfSum_smoltyr)
+#  [1] -0.9413026
+
 # ==============================================================================
 # Script: 04_altprey_lookup_table.R
 # Purpose: Build AltPrey lookup table mapping predator indicators to exact 

@@ -22,7 +22,8 @@ rootdir   <- "C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP/Rco
 outputDir <- file.path(rootdir, "metadata")
 
 master_file  <- file.path(outputDir, "clusDataDFA_wide_1996_2025_extended_shifted_LisaNames.csv")
-raw_file     <- file.path(outputDir, "datWide_1995_2025_reprocessed_raw_shortnames.csv")
+raw_file     <- file.path(outputDir, "datWide_1995_2025_reprocessed_raw.csv")
+straggler_file     <- file.path(outputDir, "datWide_1995_2025_MARSSextended_noNA_smoltyr_adultyr_labeled.csv")
 
 if (!file.exists(raw_file)) {
   raw_file <- file.path(outputDir, "datWide_1995_2025_reprocessed_raw.csv")
@@ -45,7 +46,22 @@ if (!file.exists(eulachon_file)) stop("Missing eulachon input file at: ", eulach
 if (!file.exists(ak_yr_file))   stop("Missing ak_yr input file at: ", ak_yr_file)
 
 master_df <- read.csv(master_file, stringsAsFactors = FALSE)
+
+#raw_file     <- file.path(outputDir, "datWide_1995_2025_reprocessed_raw.csv")
+# straggler_file     <- file.path(outputDir, "datWide_1996_2025_MARSSextended_noNA_smoltyr_adultyr_labeled.csv")
+# straggler_df    <- read.csv(straggler_file, stringsAsFactors = FALSE)
 raw_df    <- read.csv(raw_file, stringsAsFactors = FALSE)
+
+cap<-grep("capelin",names(raw_df),ignore.case=T,value=T);cap
+herr<-grep("sitkaHerring_EGoA|herring_GAM_2025",names(raw_df),ignore.case=T,value=T);herr
+pollock<-grep("pollock",names(raw_df),ignore.case=T,value=T);pollock
+emb<-grep("emb",names(raw_df),ignore.case=T,value=T);emb
+strag<-raw_df[,c("Year",cap,herr,pollock,emb)];names(strag)
+strag<-strag %>% filter(Year>=1998,Year<=2021)
+
+#Raw direct from the web (in doug's analysis)
+strag
+matplot(strag$Year,scale(strag[,-1]),type='l')
 
 baseline_years <- 1998:2021
 full_years     <- raw_df$Year
@@ -65,41 +81,89 @@ cat("--- STEP 1: Processing Raw Stragglers & AltPrey Constituents ---\n")
 
 # Single-indicator MARSS smoother helper
 smooth_raw_straggler <- function(col_name) {
-  matched_col <- names(raw_df)[names(raw_df) == col_name | 
-                                 grep(gsub("_2025|_2026", "", col_name), names(raw_df), ignore.case = TRUE)][1]
+  # 1. Match Column
+  matched_col <- names(raw_df)[names(raw_df) == col_name] #| 
+  #                               grep(gsub("_2025|_2026", "", col_name), names(raw_df), ignore.case = TRUE)]#[1]
   if (is.na(matched_col)) stop("Missing column in raw_df: ", col_name)
   
   vec_raw <- raw_df[[matched_col]]
   nas_raw <- raw_df$Year[is.na(vec_raw)]
   
+  # 2. Scale baseline lock
   scaled_ext  <- scale_baseline_lock(vec_raw, full_years)
-  scaled_base <- scaled_ext[full_years %in% baseline_years]
   
-  fit_single <- MARSS(scaled_base, fit = FALSE, silent = TRUE)
-  fit_single$par <- fit_single$start
+  # 3. Format as 1 x T matrix for MARSS
+  dat_mat <- matrix(scaled_ext, nrow = 1)
   
-  ext_proj <- MARSS(scaled_ext, fit = FALSE, silent = TRUE)
-  ext_proj$par <- fit_single$par
+  # 4. Fit Random Walk State-Space Model (State trend = x_t = x_{t-1} + w_t)
+  #    This smoothly interpolates NAs and extracts the underlying trend.
+  fit_marss <- tryCatch({
+    MARSS(dat_mat, model = list(B = "identity", U = "zero", Q = "unconstrained", Z = "identity", A = "zero", R = "zero"), silent = TRUE)
+  }, error = function(e) {
+    # Fallback to standard MARSS default if custom specification fails
+    MARSS(dat_mat, silent = TRUE)
+  })
   
-  smoothed_trend <- as.numeric(t(MARSSkf(ext_proj)$xtT))
+  # 5. Extract Kalman smoothed states (xtT)
+  smoothed_trend <- as.numeric(fit_marss$states)
+  
+  # Re-apply original NAs if desired
   if (length(nas_raw) > 0) smoothed_trend[full_years %in% nas_raw] <- NA_real_
+  
   return(smoothed_trend)
 }
 # Smooth and generate _smoltyr and _adultyr 2-year leads
 raw_stragglers_df <- tibble(
   Year = full_years,
   X10_AllSeaLionsEMB_smoltyr    = smooth_raw_straggler("AllSeaLionsEMB_2025"),
+  X10_AllSeaLionsEMB_adultyr    = smooth_raw_straggler("AllSeaLionsEMB_2yrLead_2025"),
   X13_capelin_WGoA_smoltyr      = smooth_raw_straggler("capelin_WGoA"),
   X13_pollock_age1plus_smoltyr  = smooth_raw_straggler("pollockBiomassAIage1plus_predAK_2026"),
   X13_sitkaHerring_EGoA_smoltyr = smooth_raw_straggler("sitkaHerring_EGoA")
+  # X10_AllSeaLionsEMB_smoltyr    = raw_df("AllSeaLionsEMB_2025"),
+  # X10_AllSeaLionsEMB_adultyr    = ("AllSeaLionsEMB_2yrLead_2025"),
+  # X13_capelin_WGoA_smoltyr      = ("capelin_WGoA"),
+  # X13_pollock_age1plus_smoltyr  = ("pollockBiomassAIage1plus_predAK_2026"),
+  # X13_sitkaHerring_EGoA_smoltyr = ("sitkaHerring_EGoA")
 ) %>%
   mutate(
-    X10_AllSeaLionsEMB_adultyr    = dplyr::lead(X10_AllSeaLionsEMB_smoltyr, 2),
+#    X10_AllSeaLionsEMB_adultyr    = dplyr::lead(X10_AllSeaLionsEMB_smoltyr, 2),
     X13_capelin_WGoA_adultyr      = dplyr::lead(X13_capelin_WGoA_smoltyr, 2),
     X13_pollock_age1plus_adultyr  = dplyr::lead(X13_pollock_age1plus_smoltyr, 2),
     X13_sitkaHerring_EGoA_adultyr = dplyr::lead(X13_sitkaHerring_EGoA_smoltyr, 2)
   )
 
+
+
+# # ------------------------------------------------------------------------------
+# # 1. PROCESS RAW STRAGGLERS & ALTPREY (DIRECT SCALING - NO MARSS FLATLINING)
+# # ------------------------------------------------------------------------------
+# cat("--- STEP 1: Processing Raw Stragglers & AltPrey Constituents (Direct Scaling) ---\n")
+# 
+# # Helper function to find column robustly in raw_df
+# get_raw_col <- function(col_name) {
+#   matched_col <- names(raw_df)[names(raw_df) == col_name | 
+#                                  grep(gsub("_2025|_2026", "", col_name), names(raw_df), ignore.case = TRUE)][1]
+#   if (is.na(matched_col)) stop("Missing column in raw_df: ", col_name)
+#   return(raw_df[[matched_col]])
+# }
+# 
+# # Scale raw time series directly using baseline lock (1998-2021)
+# raw_stragglers_df <- tibble(
+#   Year = full_years,
+#   X10_AllSeaLionsEMB_smoltyr    = scale_baseline_lock(get_raw_col("AllSeaLionsEMB_2025"), full_years),
+#   X13_capelin_WGoA_smoltyr      = scale_baseline_lock(get_raw_col("capelin_WGoA"), full_years),
+#   X13_pollock_age1plus_smoltyr  = scale_baseline_lock(get_raw_col("pollockBiomassAIage1plus_predAK_2026"), full_years),
+#   X13_sitkaHerring_EGoA_smoltyr = scale_baseline_lock(get_raw_col("sitkaHerring_EGoA"), full_years)
+# ) %>%
+#   mutate(
+#     X10_AllSeaLionsEMB_adultyr    = dplyr::lead(X10_AllSeaLionsEMB_smoltyr, 2),
+#     X13_capelin_WGoA_adultyr      = dplyr::lead(X13_capelin_WGoA_smoltyr, 2),
+#     X13_pollock_age1plus_adultyr  = dplyr::lead(X13_pollock_age1plus_smoltyr, 2),
+#     X13_sitkaHerring_EGoA_adultyr = dplyr::lead(X13_sitkaHerring_EGoA_smoltyr, 2)
+#   )
+# 
+# cat("Successfully generated stragglers with direct variance preserved!\n")
 # ------------------------------------------------------------------------------
 # 2. PROCESS SUPPLEMENTARY INDICATORS (Eulachon & ak_yr.csv with Leads)
 # ------------------------------------------------------------------------------
@@ -131,6 +195,47 @@ ak_yr_selected <- read.csv(ak_yr_file, row.names = NULL, stringsAsFactors = FALS
     X13_mid_il_capelin_adultyr     = dplyr::lead(X13_mid_il_capelin_smoltyr, 2),
     X21_sst_egoa_junjulaug_adultyr = dplyr::lead(X21_sst_egoa_junjulaug_smoltyr, 2)
   )
+
+#X12_egoa_krill_adultyr X13_mid_il_capelin_adultyr X21_sst_egoa_junjulaug_adultyr all missing 2021 (i.e., 2023 not in Bridget's database)
+yr2020<-ak_yr_selected %>% filter(Year==2020) %>% select(X12_egoa_krill_adultyr,X13_mid_il_capelin_adultyr,X21_sst_egoa_junjulaug_adultyr);yr2020
+ak_yr_selected[26,c("X12_egoa_krill_adultyr", "X13_mid_il_capelin_adultyr", "X21_sst_egoa_junjulaug_adultyr")]<-yr2020
+
+ak_final<-ak_yr_selected %>% filter(Year>=1998,Year<=2021)
+matplot(ak_final$Year,scale(ak_final[,-1]),type='b')
+
+#lisa plot--------
+#Raw direct from the web (in doug's analysis)
+mysource="strag"
+
+#Smoothed doug
+mysource="raw_stragglers_df"
+dat0=get(mysource)
+dat0[,-1]=scale(dat0[,-1])
+names(dat0)
+#doug<-dat0[,c("Year",grep("X13_capelin_WGoA_smoltyr",names(dat0),value=T))]
+doug<-dat0[,c("Year",grep("sitkaHerring_EGoA_smoltyr",names(dat0),value=T))]
+
+#Raw ak
+mysource="ak_final"
+dat0=get(mysource)
+dat0[,-1]=scale(dat0[,-1])
+names(dat0)
+#ak<-dat0[,c("Year",grep("capelin_smoltyr",names(dat0),value=T))]
+ak<-dat0[,c("Year",grep("capelin_smoltyr",names(dat0),value=T))]
+
+
+dat0=get(mysource)
+dat0[,-1]=scale(dat0[,-1])
+dat<-dat0[,c("Year",grep("capelin",names(dat0),value=T))]
+
+dat=doug
+n=ncol(dat)-1
+matplot(dat$Year,dat[,-1],type='b',main=mysource,lty=1:n,col=1:n)
+legend("topleft",legend=names(dat)[-1],lty=1:n,col=1:n)
+
+
+matlines(ak$Year,scale(ak[,2]),type='b',lty=1:n,col=2)
+legend("topright",legend=names(ak)[-1],lty=2,col=2)
 
 # ------------------------------------------------------------------------------
 # 3. MERGE ALL SUPPLEMENTARY INDICATORS & ENFORCE ALPHANUMERIC ORDER
@@ -210,4 +315,8 @@ print(all_new_cols)
 cat("\nFirst 10 Columns in Alphanumeric Order:\n")
 print(names(updated_master)[1:10])
 cat("==============================================================================\n")
+
+
+matplot(sem_all$Year,scale(sem_all[,all_new_cols]),type='b')
+matplot(sem_all$Year,(sem_all[,all_new_cols]),type='b')
 
