@@ -1,0 +1,146 @@
+---
+title: "Salmon Stages Table"
+author: "Lisa Crozier"
+date: "2026-10-13"
+output: html_document
+bibliography: zotero10132026.bib
+#csl: apa.csl  # Optional: specify citation style (APA, IEEE, Chicago, etc.)
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,      # Prevents code blocks from displaying
+  message = FALSE,   # Suppresses package loading messages
+  warning = FALSE    # Suppresses R warnings
+)
+```
+
+## Sources
+
+This is table clarify my conceptual map of the smolt and adult migration stages to justify matching the NCC and AK stages with specific other species.
+
+
+
+```{r gt test}
+library(dplyr)
+library(gt)
+library(stringr)
+library(flextable)
+library(ftExtra)
+
+# 1. Define data frame with BibTeX keys
+df <- tibble::tribble(
+  ~Stage,   ~Location, ~DistShore,   ~Length_mm, ~Citation,
+  "Smolt",  "NCC" ,     "150-300",  "[@fisher_early_2014]",
+  "Smolt",  "WCVI"  ,   "850",      "[@weitkamp_stock-specific_2015; @daly_ontogenetic_2009]",
+  "Smolt",  "SEAK",     "3400",     "[@daly_implications_2024]"
+)
+
+
+#Example
+# df <- tibble::tribble(
+#   ~Stage,   ~Location,   ~Length_mm, ~Citation,
+#   "Smolt",  "NCC" ,     "150-300",  "[@fisher_early_2014]",
+#   "Smolt",  "WCVI"  ,   "850",      "[@weitkamp_stock-specific_2015; @daly_ontogenetic_2009]",
+#   "Smolt",  "SEAK",     "3400",     "[@daly_implications_2024]"
+# )
+
+# 2. Extract citations automatically for Pandoc
+table_citations <- df %>%
+  pull(Citation) %>%
+  str_extract_all("@[a-zA-Z0-9_-]+") %>%
+  unlist() %>%
+  unique() %>%
+  paste(collapse = "; ")
+
+# 3. Render table
+# df %>%
+#   gt() %>%
+#   fmt_markdown(columns = Citation) %>%
+#   cols_label(
+#     Stage = "Stage",
+#     Location = "Location",
+#     Length_mm = "Length (mm)",
+#     Citation = "Referenced Sources"
+#   ) %>%
+#   tab_header(
+#     title = md("**Salmon Stages and Associated Species**"),
+#     subtitle = "Sources for salmon prey, alternate prey for predators, and salmon predators by region"
+#   )
+
+df %>%
+  flextable() %>%
+  colformat_md(j = "Citation") %>%
+  set_header_labels(
+    Stage = "Stage",
+    Location = "Location",
+    Length_mm = "Length (mm)",
+    Citation = "Referenced Sources"
+  ) %>%
+  autofit()
+```
+
+[r table_citations]{style="display: none;"}
+<!-- Hidden citations for Pandoc -->
+<span style="display:none">`r table_citations`</span>
+
+```{r example only}
+library(dplyr)
+library(gt)
+library(stringr)
+library(flextable)
+library(ftExtra)
+
+# 1. Define data frame with BibTeX keys
+df <- tibble::tribble(
+  ~Stage,   ~Location, ~Length_mm, ~DistShore_nm,  ~Depth_m,  ~Season,  ~Citation,
+  "Smolt",  "NCC" ,     "150-300",  "0-60nm",      "na",     "Spring-summer", "[@teel_genetic_2015;@weitkamp_stock-specific_2015;  @daly_spatial_2012;@daly_ontogenetic_2009]",
+  "Smolt",  "WCVI"  ,   "150-300",  "0-60nm",      "122 m",   "Summer",       "[@tucker_life_7]",
+  "Smolt",  "BC/SEAK",  "200-400",  "long 125-128","<100 m", "Summer-fall-winter", "[@tucker_life_7]",
+  "Immature","BC/SEAK", "350-550",  "long 127-135","<100 m", "Summer-fall-winter", "[@tucker_life_7]"
+)
+
+
+# 2. Extract citations automatically for Pandoc
+table_citations <- df %>%
+  pull(Citation) %>%
+  str_extract_all("@[a-zA-Z0-9_-]+") %>%
+  unlist() %>%
+  unique() %>%
+  paste(collapse = "; ")
+
+# 3. Render table
+df %>%
+  flextable() %>%
+  colformat_md(j = "Citation") %>%
+  set_header_labels(
+    Stage = "Stage",
+    Location = "Location",
+    Length_mm = "Length (mm)",
+    DistShore_nm, "Distance from shore \n(nautical miles)",
+    Depth_m = "Depth (m)",
+    Season = "Season",
+    Citation = "Referenced Sources"
+  ) %>%
+  autofit()
+
+
+# df %>%
+#   gt() %>%
+#   fmt_markdown(columns = Citation) %>%
+#   cols_label(
+#     Stage = "Stage",
+#     Location = "Location",
+#     Length_mm = "Length (mm)",
+#     Citation = "Referenced Sources"
+#   ) %>%
+#   tab_header(
+#     title = md("**Salmon Stages and Associated Species**"),
+#     subtitle = "Sources for salmon prey, alternate prey for predators, and salmon predators by region"
+#   )
+
+
+```
+
+## References

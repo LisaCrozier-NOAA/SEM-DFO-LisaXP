@@ -1,0 +1,177 @@
+---
+title: "Salmon Life Stage Table"
+author: "Lisa Crozier"
+date: "2026-10-13"
+output: html_document
+bibliography: zotero10132026.bib
+#csl: apa.csl  # Optional: specify citation style (APA, IEEE, Chicago, etc.)
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,      # Prevents code blocks from displaying
+  message = FALSE,   # Suppresses package loading messages
+  warning = FALSE    # Suppresses R warnings
+)
+```
+
+## Salmon size and location
+
+This is table clarify my conceptual map of the smolt and adult migration stages to justify matching the NCC and AK stages with specific other species.
+
+```{r salmon}
+library(dplyr)
+library(gt)
+library(stringr)
+library(flextable)
+library(ftExtra)
+
+# 1. Define data frame with BibTeX keys
+df <- tibble::tribble(
+  ~Stage,   ~Location, ~Length_mm, ~DistShore_nm,  ~Depth_m,  ~Season,  ~Citation,
+  "Smolt",  "NCC" ,     "100-250",  "0-60nm",      "na",     "Spring-summer", "[@teel_genetic_2015;@weitkamp_stock-specific_2015;  @daly_spatial_2012;@daly_ontogenetic_2009]",
+  "Smolt",  "WCVI"  ,   "150-300",  "0-60nm",      "122 m",   "Summer",       "[@tucker_life_2011]",
+  "Smolt",  "BC/SEAK",  "200-400",  "longitude 125-128",      ">200 m", "Summer-fall-winter", "[@tucker_life_2011]",
+  "Immature","BC/SEAK", "350-550",  "longitude 127-135",      "<100 m", "Summer-fall-winter", "[@tucker_life_2011]"
+)
+# 2. Extract citations automatically for Pandoc
+table_citations <- df %>%
+  pull(Citation) %>%
+  str_extract_all("@[a-zA-Z0-9_-]+") %>%
+  unlist() %>%
+  unique() %>%
+  paste(collapse = "; ")
+
+# 3. Render table
+df %>%
+  flextable() %>%
+  colformat_md(j = "Citation") %>%
+  set_header_labels(
+    Stage = "Stage",
+    Location = "Location",
+    Length_mm = "Length (mm)",
+    DistShore_nm ="Distance from shore \n(nautical miles)",
+    Depth_m = "Depth (m)",
+    Season = "Season",
+    Citation = "Referenced Sources"
+  ) %>%
+  autofit()
+
+
+```
+
+[r table_citations]{style="display: none;"}
+<!-- Hidden citations for Pandoc -->
+<span style="display:none">`r table_citations`</span>
+
+## Predatory fish biomass index comparison
+
+```{r predator_ssb_info}
+library(dplyr)
+library(flextable)
+library(ftExtra)
+
+# 1. Define data frame for predator covariates
+pred_df <- tibble::tribble(
+  ~PredatorNode,         ~Index,                                         ~AssessmentSource,            ~L50,                                              ~A50,                              ~Notes,
+  "Sablefish",           "2-Year Lag (t-2) on Total Biomass (Age-2+)",   "Goethel et al., Table 3.15",  "Females: ~60-65 cm\n\nMales: ~55-57 cm",          "Females: ~5.5-6 yrs\n\nMales: ~4-5 yrs", "Approximates Age-4+ (>=500 mm benthopelagic field).",
+  "Walleye Pollock",     "Spawning Stock Biomass (SSB)",                "Monnahan et al., Table 1.23", "Females: ~42-45 cm",                             "Females: ~4-5 yrs",               "A little small-- maybe lag 1 year? roughly 1:1 sex ratio and similar male/female growth curves",
+  "Pacific Halibut",     "Total biomass age 8+",                        "Stewart & Hicks, Table 1",   "Females: ~115-125 cm\n\nMales: ~70-80 cm",        "Females: ~11-12 yrs\n\nMales: ~8 yrs",   "They don't need to be that large (L50) to eat a yearling",
+  "Pacific Cod",         "Spawning Stock Biomass (SSB)",                "Hulson et al., Table 2.7",    "Females: ~50-58 cm",                             "Females: ~4.4-4.9 yrs",           "This is our target size",
+  "Arrowtooth Flounder", "Female Spawning Biomass (FSB)",               "Shotwell et al., Table 7.16", "Females: ~47-50 cm",                             "Females: ~6-7 yrs",               "This is our target size; Males stay small; FSB isolates large predatory females"
+)
+
+# 2. Render table
+pred_df %>%
+  flextable() %>%
+  set_header_labels(
+    PredatorNode = "Predator Node",
+    Index = "Index",
+    AssessmentSource = "Assessment Source",
+    L50 = "Length at 50%\nMaturity (L50)",
+    A50 = "Age at 50%\nMaturity (A50)",
+    Notes = "Notes"
+  ) %>%
+  autofit()
+```
+## More detailed info
+
+```{r other spp}
+library(dplyr)
+library(gt)
+library(stringr)
+library(flextable)
+library(ftExtra)
+
+# 1. Define data frame with BibTeX keys
+df <- tibble::tribble(
+ ~Species,   ~Region, ~SalmonStage,   ~Age,        ~Size,      ~Depth,         ~DistShore,     ~Trophic,     ~Notes,       ~Citation,
+ 
+  "Salmon",  "NCC" ,     "Smolt",     "Age1",    "100-250",  "0-10m",          "0-60nm",      "Salmon",   "Spring-summer",   "[@teel_genetic_2015;@weitkamp_stock-specific_2015;  @daly_spatial_2012;@daly_ontogenetic_2009]",
+  "Salmon",  "WCVI" ,     "Smolt",     "Age1",    "150-300",  "0-122m",        "0-60nm",      "Salmon",   "Spring-summer",   "[@tucker_life_2011;@fisher_2007]",
+  "Salmon",  "BC/AK" ,     "Smolt",     "Age1",    "200-400",  "0-122m","longitude 125-128",  "Salmon",   "Summer-fall-winter",   "[@tucker_life_2011;@fisher_2007]",
+  "Salmon",  "AK" ,     "Immature",     "Age2-3",    "350-550",  "NA",  "longitude 127-135",  "Salmon",   "Summer-fall-winter",   "NA",
+  "Salmon",  "AK/NCC" ,     "Adult",     "Age3-5",    "350-550",  "0-200m",         "NA",         "Salmon",   "Summer-fall-winter",   "Gietzmann-Sanders_2026 GOA sat tags mostly AK fall chinook",
+
+#     ~Species,   ~Region, ~SalmonStage,   ~Age,        ~Size,  ~Depth,         ~DistShore,     ~Trophic,     ~Notes,       ~Citation,
+  "Walleye pollock", "AK",      "Smolt",    "Age1",  "50-250", "Surface",      "NA",                "Altprey",    "Vertically dispersed in midwater, semi-demersal", "Monnahan etal 2024 SA, Adams etal 2007, Shima et al 2002",
+  "Walleye pollock", "AK",      "Smolt",    "Age2",  "250-350", "shallow",      "coastal/nearshore","Altprey",    "Inshore, central/eastern GOA", "Monnahan etal 2024 SA, Adams etal 2007, Shima et al 2002",
+  "Walleye pollock", "AK",   "Smolt",    "Age3+",   "400-800",   "100-300 m",        "shelf",           "Predator",    "Demersal, benthic shelf",      "Monnahan etal 2024",
+#Lengths from Table 3.12
+  "Sablefish", "NCC",     "Smolt",    "Age1",  "50-200",    "Surface",       "0-60nm",      "Competitor", "Coincident with juvenile salmon cruises May/Jun",                "[@daly_implications_2024]",
+  "Sablefish", "AK",      "Smolt",    "Age1",  "50-250", "Surface",      "<180 miles",           "Altprey",    "Inshore, central/eastern GOA", "Goethel et al 2021",
+  "Sablefish", "AK",      "Smolt",    "Age2",  "250-400", "shallow coastal/nearshore",      "NA",           "Altprey",    "In nearshore southeast Alaska, juvenile sablefish (20 - 45 cm) diets included fish such as Pacific herring and smelts and invertebrates such as krill, amphipods, and polychaete worms (Coutré et al. 2015)", "Goethel et al 2021",
+  "Sablefish", "AK",   "Smolt",    "Age3+",   "500-800",   "0-600m",        "NA",           "Predator",    "slope, deep fjords, GOA, but they make regular midwater excursions to feed esp in warm years",      "Goetz et al 2018",
+
+  
+  "Arrowtooth Flounder", "AK","Smolt", "Age0-1", "15-30cm",  "30-250m","shelf, deep canyons", "Predator","generalist benthic predator,low bottom temp\neat shrimp,capelin,krill,herring,\nsmall amt pollock+other misc fish",  "[@Shotwell_2021]",
+  "Arrowtooth Flounder", "AK", "Immature", "Age1+", "40-700cm","100-500 m","shelf/slope", "Altprey",    "Demersal, eat mostly pollock,then forage fishn\nshallower depth in warm years","[@Shotwell_2021]",
+
+  "Pacific halibut", "AK","Smolt", "Adult", "100-200cm",  "0-400m","shelf, deep canyons", "Predator","salmon is minor prey",  "Best and St. Pierre 1986 Table 2 diet",
+
+ 
+  "Pacific sleeper shark", "AK","Smolt", "Adult", "<7000",  "0-2000m","shelf, deep canyons", "Predator","bycatch data bias: mostly caught in Pcod and pollock fisheries,\nPrey: squid, fish (e.g., salmon, pollock), and HS,SSL",  "Tribuzio et al 2022",
+  "Salmon shark",          "AK","Smolt", "Adult", "<2100",  "<50m","coastal littoral zone, inshore and offshore epipelagic", "Predator","bycatch data bias: mostly caught in pollock fishery; \n Prey: salmon, fish, forage fish",  "Tribuzio et al 2022",
+  "Pacific spiny dogfish", "AK","Smolt", "Adult", "<1600",  "0-677m","shelf and upper slope, benthic and pelagic", "Predator","Southerly, bycatch data bias:Pcod/pollock",  "Tribuzio et al 2022",
+
+  "Pacific cod", "AK","Smolt", "Age1", "15-20cm",  "0-677m","NA", "Predator","NA",  "Hulson et al 2026",
+  "Pacific cod", "AK","Smolt", "Adult", "35-70cm",  "0-677m","NA", "Predator","NA",  "Hulson et al 2026"
+ 
+)
+# 2. Extract citations automatically for Pandoc
+table_citations <- df %>%
+  pull(Citation) %>%
+  str_extract_all("@[a-zA-Z0-9_-]+") %>%
+  unlist() %>%
+  unique() %>%
+  paste(collapse = "; ")
+
+# 3. Render table
+df %>%
+  flextable() %>%
+  colformat_md(j = "Citation") %>%
+  set_header_labels(
+    Species = "Species",
+    Region = "Region",
+    SalmonStage = "SalmonStage",
+    Age ="Age",
+    Size = "Size",
+    Depth = "Depth",
+    DistShore = "DistShore",
+    Trophic = "Trophic assignment",
+    Notes = "Notes",
+    Citation = "Referenced Sources"
+  ) %>%
+  autofit()
+
+
+```
+
+[r table_citations]{style="display: none;"}
+<!-- Hidden citations for Pandoc -->
+<span style="display:none">`r table_citations`</span>
+
+
+
+## References

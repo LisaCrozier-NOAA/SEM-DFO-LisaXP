@@ -1,8 +1,9 @@
 # ==============================================================================
 # Script: 10a_prep_data_and_guild_lookup.R
 # Directory: Rcode_for_paper/02_analysis/
-# Purpose: Single-execution data preparation, 19yr/24yr filtering, Min-Max [0, 1]
-#          scaling, CSV export for Excel, and dynamic Guild Lookup Table creation.
+# Purpose: Data prep, 19yr/24yr filtering, Min-Max [0, 1] scaling, CSV export,
+#          and dynamic Guild Lookup Table creation with Hake self-exclusion 
+#          and Euphausiids in the alternative prey pool.
 # ==============================================================================
 
 suppressPackageStartupMessages({
@@ -12,7 +13,6 @@ suppressPackageStartupMessages({
 # ------------------------------------------------------------------------------
 # STEP 0: CONFIGURATION SWITCH & PATHS
 # ------------------------------------------------------------------------------
-#years_included <- "19yr" # Switch: "19yr" or "24yr"
 years_included <- "24yr" # Switch: "19yr" or "24yr"
 
 proj_dir     <- file.path(getwd(), "Rcode_for_paper")
@@ -23,13 +23,23 @@ dir.create(data_out_dir, showWarnings = FALSE, recursive = TRUE)
 raw_csv_path <- file.path(proj_dir, "metadata/sem_altprey_data_1998_2021.csv")
 raw_df       <- read.csv(raw_csv_path, stringsAsFactors = FALSE)
 
+# Clean empty or unnamed columns
+raw_df <- raw_df[, names(raw_df) != "" & !is.na(names(raw_df))]
+
+# Invert HCI so High = Warm / Compressed
+if ("X01_habCompInd_smoltyr" %in% names(raw_df)) {
+  raw_df$X01_habCompInd_smoltyr <- -1 * raw_df$X01_habCompInd_smoltyr
+}
+if ("X01_habCompInd_adultyr" %in% names(raw_df)) {
+  raw_df$X01_habCompInd_adultyr <- -1 * raw_df$X01_habCompInd_adultyr
+}
+
 # ------------------------------------------------------------------------------
 # STEP 1: APPLY 19-YEAR VS 24-YEAR COLUMN FILTERING
 # ------------------------------------------------------------------------------
 if (years_included == "24yr") {
   valid_cols <- names(raw_df)[colSums(!is.na(raw_df)) == 24]
 } else {
-  # 19yr: Keep columns with at least 19 years of observations
   valid_cols <- names(raw_df)[colSums(!is.na(raw_df)) >= 19]
 }
 
@@ -41,7 +51,7 @@ cat(sprintf("[%s Selection] Retained %d columns across %d complete rows.\n",
             years_included, ncol(filtered_df), nrow(filtered_df)))
 
 # ------------------------------------------------------------------------------
-# STEP 2: MIN-MAX SCALING [0, 1] & EXCEL-FRIENDLY CSV EXPORT
+# STEP 2: MIN-MAX SCALING [0, 1] & CSV EXPORT
 # ------------------------------------------------------------------------------
 min_max_scale <- function(x) {
   rng <- range(x, na.rm = TRUE)
@@ -52,7 +62,6 @@ min_max_scale <- function(x) {
 minmax_complete_data <- filtered_df %>%
   mutate(across(where(is.numeric) & !matches("Year|year"), min_max_scale))
 
-# Export directly to CSV for easy inspection in Excel
 write_csv(minmax_complete_data, file.path(data_out_dir, paste0("minmax_complete_data_", years_included, ".csv")))
 
 # ------------------------------------------------------------------------------
@@ -60,7 +69,7 @@ write_csv(minmax_complete_data, file.path(data_out_dir, paste0("minmax_complete_
 # ------------------------------------------------------------------------------
 all_cols <- names(minmax_complete_data)
 
-get_prey_pool <- function(guild_num, stage_suffix) {
+get_prey_pool <- function(guild_num, stage_suffix, pred_col = "") {
   sfx <- if (stage_suffix != "") paste0("_", stage_suffix) else ""
   
   m_squid     <- paste0("X04_marketsquid_GAM", sfx)
@@ -69,6 +78,7 @@ get_prey_pool <- function(guild_num, stage_suffix) {
   herring_ncc <- paste0("X05_herring_GAM", sfx)
   eulachon    <- paste0("X05_eulachon_during_chinook", sfx)
   hake        <- paste0("X09_DFA_HakeAge5Plus", sfx)
+  euphausiids <- paste0("X12_DFA_biomassEuphShelfSum", sfx)
   
   pollock     <- paste0("X13_pollock_age1plus", sfx)
   herring_ak  <- paste0("X13_sitkaHerring_EGoA", sfx)
@@ -79,12 +89,15 @@ get_prey_pool <- function(guild_num, stage_suffix) {
   prey_list <- switch(
     as.character(guild_num),
     "1" = c(m_squid, anchovy, sardine, herring_ncc, eulachon),
-    "2" = c(hake, m_squid, anchovy, sardine, herring_ncc, eulachon),
+    "2" = c(euphausiids, m_squid, anchovy, sardine, herring_ncc, eulachon, hake),
     "3" = c(pollock, herring_ak, capelin, krill_ak),
     "4" = c(pollock, herring_ak, capelin),
     "5" = c(pink_ak, pollock, herring_ak, capelin),
     c()
   )
+  
+  # EXCLUDE the predator itself from its own prey candidate pool!
+  prey_list <- setdiff(prey_list, pred_col)
   
   intersect(prey_list, all_cols)
 }
@@ -92,9 +105,8 @@ get_prey_pool <- function(guild_num, stage_suffix) {
 get_spatial_overlap_col <- function(pred_col, region, stage_suffix) {
   sfx <- if (stage_suffix != "") paste0("_", stage_suffix) else ""
   
-  if (grepl("X09_DFA_HakeAge5Plus", pred_col)) {
-    col <- paste0("X12_DFA_biomassEuphShelfSum", sfx)
-  } else if (region == "NCC") {
+  # Standardize all NCC predators (including Hake) to use HCI
+  if (region == "NCC") {
     col <- paste0("X01_habCompInd", sfx)
   } else {
     col <- paste0("X21_sst_egoa_junjulaug", sfx)
@@ -135,7 +147,7 @@ for (pred in predator_cols) {
     TRUE ~ 3
   )
   
-  prey_candidates <- get_prey_pool(guild_num, stage_suffix)
+  prey_candidates <- get_prey_pool(guild_num, stage_suffix, pred_col = pred)
   spatial_col     <- get_spatial_overlap_col(pred, region, stage_suffix)
   
   lookup_rows[[length(lookup_rows) + 1]] <- tibble(
@@ -151,4 +163,4 @@ for (pred in predator_cols) {
 guild_pred_lookup <- bind_rows(lookup_rows)
 write_csv(guild_pred_lookup, file.path(data_out_dir, paste0("guild_predator_lookup_table_", years_included, ".csv")))
 
-cat("Data preparation, CSV export, and lookup table generation completed successfully.\n")
+cat("Lookup table generation completed successfully.\n")
