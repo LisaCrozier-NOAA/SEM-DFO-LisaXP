@@ -266,10 +266,10 @@ table3_gt <- table3_gt %>%
 print(table3_gt)
 
 # Save Outputs
-gtsave(table3_gt, file.path(tbl_out_dir, "Table3_Hypothesis_Evaluation_Summary.html"))
+gtsave(table3_gt, file.path(tbl_out_dir, "Table3_Hypothesis_Test_Word.html"))
 gtsave(
   data     = table3_gt,
-  filename = file.path(tbl_out_dir, "Table3_Hypothesis_Evaluation_Summary.png"),
+  filename = file.path(tbl_out_dir, "Table3_Hypothesis_Test_Word.png"),
   vwidth   = 700,
   vheight  = 550
 )
@@ -388,3 +388,110 @@ gtsave(
 )
 
 message("Goal 2 Pipeline Complete! Table 3 and diagnostics exported to: ", master_out)
+
+# ==============================================================================
+# OUTPUT 3: PRESENTATION-READY TABLE 3 (PPT SLIDE FORMAT)-------
+# ==============================================================================
+
+# Add Row Group Concept Column & Remove H_code
+table3_ppt_wide <- path_summary_by_model %>%
+  mutate(
+    Concept = case_when(
+      H_code %in% c("H1a", "H1b", "H1c", "H1e") ~ "Bigger is better -- not supported",
+      TRUE ~ "Predator abundance regulates survival -- mixed results"
+    )
+  ) %>%
+  select(Concept, path_label, Baseline_Expectation, model_id, Cell_Display) %>%
+  pivot_wider(
+    names_from  = model_id,
+    values_from = Cell_Display,
+    values_fill = "Path Excluded"
+  )
+
+# Build Slide-Optimized gt Table
+table3_ppt_gt <- table3_ppt_wide %>%
+  gt(groupname_col = "Concept") %>%
+  tab_header(
+    title = md("**Evaluation of Structural Path Hypotheses**"),
+    subtitle = "Directional support & significance (p < 0.05) across top candidate models"
+  ) %>%
+  cols_label(
+    path_label           = md("**Structural Path**"),
+    Baseline_Expectation = md("**Expect.**"),
+    DAG1A_long           = md("**DAG 1A<br>(Long)**"),
+    DAG1A_short          = md("**DAG 1A<br>(Short)**"),
+    DAG1B_long           = md("**DAG 1B<br>(Long)**"),
+    DAG1B_short          = md("**DAG 1B<br>(Short)**")
+  ) %>%
+  fmt_markdown(columns = c(all_of(model_cols), "path_label")) %>%
+  cols_align(
+    align = "center", 
+    columns = c(Baseline_Expectation, all_of(model_cols))
+  ) %>%
+  cols_align(
+    align = "left",
+    columns = c(path_label)
+  ) %>%
+  # Narrower column widths for presentation slides
+  cols_width(
+    path_label ~ px(140),
+    Baseline_Expectation ~ px(75),
+    everything() ~ px(80)
+  )
+
+# Apply Cell-by-Cell Conditional Colors
+for (col in model_cols) {
+  table3_ppt_gt <- table3_ppt_gt %>%
+    tab_style(
+      style = list(
+        cell_fill(color = "#C8E6C9"),                # Soft Green
+        cell_text(color = "#1B5E20", weight = "bold") # Dark Green Text
+      ),
+      locations = cells_body(
+        columns = all_of(col),
+        rows = str_detect(.data[[col]], "Supported")
+      )
+    ) %>%
+    tab_style(
+      style = list(
+        cell_fill(color = "#FFCDD2"),                # Soft Red
+        cell_text(color = "#B71C1C", weight = "bold") # Dark Red Text
+      ),
+      locations = cells_body(
+        columns = all_of(col),
+        rows = str_detect(.data[[col]], "Flipped Sign")
+      )
+    )
+}
+
+# Style Row Group Headings & Add Spacing Before H2 Group
+table3_ppt_gt <- table3_ppt_gt %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "#ECEFF1"),
+      cell_text(weight = "bold", color = "#263238", size = px(16))
+    ),
+    locations = cells_row_groups()
+  ) %>%
+  tab_options(
+    table.width = px(580),
+    table.font.size = px(11),
+    heading.title.font.size = px(14),
+    heading.subtitle.font.size = px(11),
+    column_labels.font.weight = "bold",
+    row_group.padding = px(6),
+    data_row.padding = px(4)
+  )
+
+print(table3_ppt_gt)
+
+# Save Presentation Outputs
+gtsave(table3_ppt_gt, file.path(tbl_out_dir, "Table3_Hypothesis_Test_PPT.html"))
+gtsave(
+  data     = table3_ppt_gt,
+  filename = file.path(tbl_out_dir, "Table3_Hypothesis_Test_PPT.png"),
+  vwidth   = 650,
+  vheight  = 500
+)
+
+message("Presentation Table 3 saved to: ", file.path(tbl_out_dir, "Table3_Hypothesis_Test_PPT.png"))
