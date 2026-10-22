@@ -20,26 +20,26 @@ suppressPackageStartupMessages({
 # ------------------------------------------------------------------------------
 # STEP 0: CONFIGURATION & DATA LOADING
 # ------------------------------------------------------------------------------
-years_included <- "19yr" # Switch: "19yr" or "24yr"
+years_included <- "24yr" # Switch: "19yr" or "24yr"
 
 proj_dir     <- file.path(getwd(), "Rcode_for_paper")
 master_out   <- file.path(proj_dir, "Routput_for_paper")
 data_out_dir <- file.path(master_out, "data")
 
 # Load raw unscaled filtered data (prepared prior to 0-1 minmax)
-raw_csv_path <- file.path(proj_dir, "metadata/sem_altprey_data_1998_2021.csv")
+raw_csv_path <- file.path(proj_dir, "metadata/sem_altprey_data_1998_2021_10212026.csv")
 raw_df       <- read.csv(raw_csv_path, stringsAsFactors = FALSE)
 
 # Clean empty/unnamed columns
 raw_df <- raw_df[, names(raw_df) != "" & !is.na(names(raw_df))]
 
-# Invert HCI so that High Value = High Temperature / High Compression
-if ("X01_habCompInd_smoltyr" %in% names(raw_df)) {
-  raw_df$X01_habCompInd_smoltyr <- -1 * raw_df$X01_habCompInd_smoltyr
-}
-if ("X01_habCompInd_adultyr" %in% names(raw_df)) {
-  raw_df$X01_habCompInd_adultyr <- -1 * raw_df$X01_habCompInd_adultyr
-}
+# # Invert HCI so that High Value = High Temperature / High Compression
+# if ("X01_habCompInd_smoltyr" %in% names(raw_df)) {
+#   raw_df$X01_habCompInd_smoltyr <- -1 * raw_df$X01_habCompInd_smoltyr
+# }
+# if ("X01_habCompInd_adultyr" %in% names(raw_df)) {
+#   raw_df$X01_habCompInd_adultyr <- -1 * raw_df$X01_habCompInd_adultyr
+# }
 
 # Filter complete cases by year switch
 if (years_included == "24yr") {
@@ -53,10 +53,10 @@ filtered_df <- raw_df %>%
   filter(complete.cases(.))
 
 guild_pred_lookup <- read_csv(file.path(data_out_dir, paste0("guild_predator_lookup_table_", years_included, ".csv")), show_col_types = FALSE)
-target_cpue       <- "X07_DFA_cpue_IntSprJunHW"
+target_cpue       <- "X07_cpue_IntSprJunHW_smoltyr"
 
 # Filter lookup table strictly for NCC Predators
-ncc_lookup <- guild_pred_lookup %>% filter(region == "NCC")
+ncc_lookup <- guild_pred_lookup %>% filter(region == "NCC", stage_suffix == "smoltyr", !grepl("DFO",pred_data_col));ncc_lookup
 
 # ------------------------------------------------------------------------------
 # STEP 1: DYNAMIC MIN-MAX SCALING FUNCTION

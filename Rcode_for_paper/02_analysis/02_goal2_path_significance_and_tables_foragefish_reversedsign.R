@@ -13,7 +13,8 @@ library(stringr)
 # STEP 0: SETUP PATHS & LOAD MASTER CROSSWALK ONLY
 # ------------------------------------------------------------------------------
 proj_dir    <- file.path(getwd(), "Rcode_for_paper")
-doug_dir <- "2026_06_29_SEM_AKPred/shiftLisa_step3_26jun26"
+doug_dir     <- "2026_10_21_SEM/shiftLisa_1_Lisa_21oct26"
+#doug_dir <- "2026_06_29_SEM_AKPred/shiftLisa_step3_26jun26"
 
 master_out   <- file.path(proj_dir,  "Routput_for_paper")
 tbl_out_dir  <- file.path(proj_dir, "tables")
@@ -78,7 +79,9 @@ rankings_long <- rankings_all %>%
 
 # Identify & globally purge model runs containing CR Harbor Seals
 cr_seal_keys <- rankings_long %>%
-  filter(LisaName %in% c("X10_Harbor_seal_CR_2yrLead", "X11_Harbor_seal_CR", "11.PredMammalSmolt_0_smoothed")) %>%
+  filter(LisaName %in% c("X21_DFA_SST_NCC_aprjun_DFObccm","X15_sablefishAK_biomass4plus","X15_pollockGOA_SSB_lag1","X15_DFA_sleeperSharkBSAI_predAK_adultyr")) %>%
+#  filter(LisaName %in% c("X21_DFA_SST_NCC_aprjun_DFObccm")) %>%
+  #  filter(LisaName %in% c("X10_Harbor_seal_CR_2yrLead", "X11_Harbor_seal_CR", "11.PredMammalSmolt_0_smoothed")) %>%
   select(model_id, modNum) %>%
   distinct()
 
@@ -89,7 +92,7 @@ rankings_long_clean <- rankings_long %>%
 
 # Extract clean Top 100 models per model run
 top_100_keys_clean <- rankings_all %>%
-  filter(PreyNCCindNames != "01.ZooPreyNCC_JSOES_1_smoothed") %>%
+ # filter(PreyNCCindNames != "01.ZooPreyNCC_JSOES_1_smoothed") %>%
   anti_join(cr_seal_keys, by = c("model_id", "modNum")) %>%
   group_by(model_id) %>%
   slice_min(order_by = AIC, n = 100, with_ties = FALSE) %>%
@@ -117,7 +120,7 @@ targeted_estimates <- estimates_all %>%
     is_significant = if_else(pvalue < 0.05, 1, 0),
     is_positive    = if_else(est > 0, 1, 0),
     is_negative    = if_else(est < 0, 1, 0),
-    is_competitor  = grepl("X04|X05|X14|X13_DFA_WGOA_DFA_midTrophic", LisaName),
+    is_competitor  = grepl("X02|X04|X05|X14|X13_DFA_WGOA_DFA_midTrophic", LisaName),
     
     # Model-specific prediction based on species ecological role
     # Added special exception for 05.ForageFishNCC_DFA1 / X05_DFA_abundSardine
@@ -397,8 +400,8 @@ message("Goal 2 Pipeline Complete! Table 3 and diagnostics exported to: ", maste
 table3_ppt_wide <- path_summary_by_model %>%
   mutate(
     Concept = case_when(
-      H_code %in% c("H1a", "H1b", "H1c", "H1e") ~ "Bigger is better -- not supported",
-      TRUE ~ "Predator abundance regulates survival -- mixed results"
+      H_code %in% c("H1a", "H1b", "H1c", "H1e") ~ "Bigger is better -- competitor/prey mix",
+      TRUE ~ "Predator abundance regulates survival -- supported"
     )
   ) %>%
   select(Concept, path_label, Baseline_Expectation, model_id, Cell_Display) %>%
