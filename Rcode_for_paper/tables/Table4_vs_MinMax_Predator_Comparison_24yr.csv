@@ -1,0 +1,10 @@
+SEM_Node,Indicator,predator_full,Baseline_Status,Baseline_Beta,Variant_Type,Selected_Prey,MinMax_Beta_Peff,MinMax_AIC,Base_AIC,Delta_AIC
+PredAK,X10_harbour_seal_DFO_Coastwide,X10_harbour_seal_DFO_Coastwide_smoltyr,Supported (-),-0.388,Joint SST + 1 AltPrey,X05_DFA_abundSardine_smoltyr,-0.9984455136305526,-33.06120998714114,-27.26456533421091,-5.796644652930226
+PredAK,X15_DFA_sleeperSharkBSAI_predAK,X15_DFA_sleeperSharkBSAI_predAK_smoltyr,Supported (-),-0.469,Joint SST + 1 AltPrey,capelin_WGoA_smoltyr,-0.4740950930444788,-29.827670443908715,-26.42670311144964,-3.400967332459075
+PredAK,X10_Harbour_s_WS_adultyr,X10_Harbour_s_WS_adultyr,Supported (-),-0.33,Raw Baseline,None,-0.5297125965946802,-29.04797640312224,-29.04797640312224,0
+PredAK,X15_sablefishAK_biomass3plus,X15_sablefishAK_biomass3plus_smoltyr,Flipped (+),0.346,Joint SST + 2 AltPrey,X13_pollockGOA_age1and2_smoltyr + sitkaHerring_EGoA_smoltyr,-1.928069691822402,-28.79579665954826,-27.57333892994085,-1.222457729607413
+PredAK,X15_DFA_halibutBiomassAge8plus_predAK_adultyr,X15_DFA_halibutBiomassAge8plus_predAK_adultyr,Supported (-),-0.376,Joint SST + 1 AltPrey,capelin_WGoA_adultyr,-0.4428674679428893,-27.137385847008588,-25.107386361984695,-2.029999485023893
+PredAK,X10_Killer_whales_NR_BC_adultyr,X10_Killer_whales_NR_BC_adultyr,Flipped (+),0.316,Raw Baseline,None,0.277592885412382,-25.41361902551695,-25.41361902551695,0
+PredAK,X15_pollockGOA_SSB,X15_pollockGOA_SSB_smoltyr,Supported (-),-0.71,AltPrey Only (1 Prey),X13_pollockGOA_age1and2_smoltyr,0.2904811903123353,-24.710343432887058,-24.0695846433398,-0.640758789547256
+PredAK,X10_Northern_f_s_WS_adultyr,X10_Northern_f_s_WS_adultyr,Flipped (+),0.282,Raw Baseline,None,0.3248877425227867,-24.43390399855651,-24.43390399855651,0
+PredAK,X10_DFA_AllSeaLionsEMB_adultyr,X10_DFA_AllSeaLionsEMB_adultyr,Supported (-),-0.31,Raw Baseline,None,0.09716125164723172,-22.55627768407973,-22.55627768407973,0
