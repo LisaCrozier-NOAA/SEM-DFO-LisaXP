@@ -83,7 +83,8 @@ rankings_long <- rankings_all %>%
   )
 
 cr_seal_keys <- rankings_long %>%
-  filter(LisaName %in% c("X10_Harbor_seal_CR_2yrLead", "X11_Harbor_seal_CR", "11.PredMammalSmolt_0_smoothed")) %>%
+  filter(LisaName %in% c("X21_DFA_SST_NCC_aprjun_DFObccm","X15_sablefishAK_biomass4plus","X15_pollockGOA_SSB_lag1","X15_DFA_sleeperSharkBSAI_predAK_adultyr")) %>%
+#  filter(LisaName %in% c("X10_Harbor_seal_CR_2yrLead", "X11_Harbor_seal_CR", "11.PredMammalSmolt_0_smoothed")) %>%
   select(model_id, modNum) %>%
   distinct()
 
@@ -120,10 +121,10 @@ indicator_analysis <- estimates_all %>%
     is_significant = if_else(pvalue < 0.05, 1, 0),
     is_positive    = if_else(est > 0, 1, 0),
     is_negative    = if_else(est < 0, 1, 0),
-    is_competitor  = grepl("X04|X05|X14|X13_DFA_WGOA_DFA_midTrophic", LisaName),
+    is_competitor  = grepl("X02|X04|X05|X14|X13_DFA_WGOA_DFA_midTrophic", LisaName),
     
     Expected_Sign = case_when(
-      LisaName %in% c("05.ForageFishNCC_DFA1", "X05_DFA_abundSardine") ~ "Negative (-)",
+ #     LisaName %in% c("05.ForageFishNCC_DFA1", "X05_DFA_abundSardine") ~ "Negative (-)",
       is_competitor                                                   ~ "Negative (-)",
       rhs %in% c("PredNCC", "PredAK")                                 ~ "Negative (-)",
       TRUE                                                            ~ "Positive (+)"
