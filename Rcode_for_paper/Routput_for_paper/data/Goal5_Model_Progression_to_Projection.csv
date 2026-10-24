@@ -1,0 +1,11 @@
+Step_ID,Step_Name,Model_Type,SAR_R2,CPUE_R2,AIC,Estimates
+1a,Baseline (No AK Preds),2-Stage (CPUE),0.382,0.749,-24.3,"X07_cpue_IntSprJunHW_smoltyr (β_std=0.62, p=0.000)"
+2a,Raw Sleeper (No Covariates),2-Stage (CPUE),0.481,0.749,-26.43,"X07_cpue_IntSprJunHW_smoltyr (β_std=0.63, p=0.000); P_raw_sleeper (β_std=-0.31, p=0.034)"
+2b,Raw Sablefish (No Covariates),2-Stage (CPUE),0.519,0.749,-27.57,"X07_cpue_IntSprJunHW_smoltyr (β_std=0.75, p=0.000); P_raw_sable (β_std=0.37, p=0.015)"
+3a,Sleeper + SST + Capelin,2-Stage (CPUE),0.556,0.749,-29.83,"X07_cpue_IntSprJunHW_smoltyr (β_std=0.54, p=0.000); P_eff_sleeper (β_std=-0.41, p=0.003)"
+3b,Sablefish + SST + Pollock/Herring,2-Stage (CPUE),0.534,0.749,-28.8,"X07_cpue_IntSprJunHW_smoltyr (β_std=0.47, p=0.002); P_eff_sable (β_std=-0.41, p=0.006)"
+4a,Final A: Sleeper + Covs + embSSL,2-Stage (CPUE),0.61,0.749,-30.11,"X07_cpue_IntSprJunHW_smoltyr (β_std=0.50, p=0.000); P_eff_sleeper (β_std=-0.55, p=0.001); X10_DFA_AllSeaLionsEMB_adultyr (β_std=-0.25, p=0.122)"
+4b,Final B: Sablefish + Covs + embSSL,2-Stage (CPUE),0.577,0.749,-28.56,"X07_cpue_IntSprJunHW_smoltyr (β_std=0.40, p=0.008); P_eff_sable (β_std=-0.55, p=0.002); X10_DFA_AllSeaLionsEMB_adultyr (β_std=-0.22, p=0.176)"
+5a,Direct Projection: Hake Only,Projection (No CPUE),0.397,NA,4.2,"X09_DFA_HakeAge5Plus_smoltyr (β_std=-0.63, p=0.000)"
+5b,Direct Projection: Final A (Hake + Sleeper_eff + embSSL),Projection (No CPUE),0.538,NA,1.81,"X09_DFA_HakeAge5Plus_smoltyr (β_std=-0.50, p=0.002); P_eff_sleeper (β_std=-0.45, p=0.017); X10_DFA_AllSeaLionsEMB_adultyr (β_std=-0.11, p=0.551)"
+5c,Direct Projection: Final B (Hake + Sable_eff + embSSL),Projection (No CPUE),0.515,NA,2.98,"X09_DFA_HakeAge5Plus_smoltyr (β_std=-0.39, p=0.045); P_eff_sable (β_std=-0.47, p=0.040); X10_DFA_AllSeaLionsEMB_adultyr (β_std=-0.12, p=0.552)"

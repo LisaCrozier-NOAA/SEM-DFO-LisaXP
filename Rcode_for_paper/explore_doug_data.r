@@ -14,6 +14,9 @@ doug_dat<-doug_data %>% select(shortName,yearType,date,finalVal,smoothed) %>%
   filter(year>=1996, year<=2023)
 tail(doug_dat)
 
+doug_guilds  %>% filter(!is.na(Lisa_21oct26)|exclusionReason) %>% head()
+doug_guilds %>% select(shortName,SEMnode,exclusionReason,replacementShortName,pastGuild,Lisa_21oct26)
+
 doug_dat %>% filter(year==1998,!is.na(latestGuild)) %>% head()
 doug_dat %>% filter(year==1998,yearType=="adult",!is.na(latestGuild)) %>% head()
 
@@ -218,5 +221,34 @@ doug_guilds_Lisa %>% filter(shortName=="chubMack_NCC")
 
                     
           
-          
+      #how stronlgy correlated are birds and seanettles?------
+path_doug<-"C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results/"
+#"C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results/2026_10_23_SEM/shiftLisa_1_Lisa_22oct26/DAG1A_long/completeness.csv"
+doug_complete<-read.csv(file.path(path_doug,"2026_10_23_SEM/shiftLisa_1_Lisa_22oct26/DAG1A_long/completeness.csv")) %>%
+    rename(year=date) %>% mutate(year=year(year));
+head(doug_complete[,1:5])
+
+head(master_crosswalk)
+crosswalk<-master_crosswalk
+
+doug_data<-readRDS(file.path("Rcode_for_paper","metadata","Doug_10132026_adultyr_allData.rds"));head(doug_data)
+doug_guilds<-read.csv(file.path(path_doug,"guilds.csv"))%>% filter(!is.na(latestGuild));head(doug_guilds)
+
+
+library(dplyr)
+library(tibble)
+
+# 1. Create a named vector: names are old column names (dfa_cols), values are new column names (LisaName)
+name_map <- deframe(master_crosswalk %>% select(dfa_cols, LisaName))
+
+# 2. Rename columns dynamically
+doug_complete <- doug_complete %>%
+  rename_with(~ ifelse(.x %in% names(name_map), name_map[.x], .x))
+
+master_crosswalk %>% filter(grepl("X01",LisaName))
+
+dat<-doug_complete[,c()]
+n<-ncol(dat)-1
+matplot(dat$year,dat[,c("X08")])
+
           

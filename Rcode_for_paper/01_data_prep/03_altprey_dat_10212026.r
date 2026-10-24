@@ -9,7 +9,8 @@ library(MARSS)
 
 # --- Configuration & Paths ---
 proj_dir     <- file.path(getwd(), "Rcode_for_paper")
-doug_dir     <- "2026_10_21_SEM"
+doug_dir     <- "C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results/2026_10_23_SEM"
+#doug_dir     <- "2026_10_21_SEM"
 
 master_out   <- file.path(proj_dir, "Routput_for_paper")
 data_out_dir <- file.path(master_out, "data")
@@ -20,7 +21,7 @@ crosswalk_path <- file.path(proj_dir, "metadata", "master_name_crosswalk.csv")
 
 master_crosswalk <- read.csv(crosswalk_path, stringsAsFactors = FALSE)
 
-dfa_file  <- file.path(doug_dir, "shiftLisa_1_Lisa_21oct26/DFA/clusDataDFA.rds")
+dfa_file  <- file.path(doug_dir, "shiftLisa_1_Lisa_22oct26/DFA/clusDataDFA.rds")
 singletons_file  <- file.path(doug_dir, "allData.rds")
 
 
@@ -41,7 +42,8 @@ singletons_df <- readRDS(singletons_file)%>% mutate(year=year(date)) %>%
 
 prey_from_singletons_df<-c("biomassEuphShelfSum","sitkaHerring_EGoA","capelin_WGoA","pollockGOA_age1and2",
                            #   "biomassEuphShelfSum_adultyr", #excluded because it has NAs and I am not planning to use it right now
-                           "sitkaHerring_EGoA_adultyr","capelin_WGoA_adultyr","pollockGOA_age1and2_adultyr")
+                           "sitkaHerring_EGoA_adultyr","capelin_WGoA_adultyr","pollockGOA_age1and2_adultyr",
+                           "HCI","HCI_adultyr","SST_NCC_aprjun_DFObccm","SST_NCC_aprjun_DFObccm_adultyr","SST_EGOA_junaug","SST_EGOA_junaug_adultyr")
 
 
 

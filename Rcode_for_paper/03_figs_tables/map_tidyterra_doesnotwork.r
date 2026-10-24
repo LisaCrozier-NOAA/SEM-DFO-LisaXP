@@ -26,7 +26,7 @@ bbox_sf <- st_bbox(c(xmin = -170, xmax = -119, ymin = 43, ymax = 62), crs = st_c
 
 # Download faint relief raster tiles (Esri World Ocean / World Hillshade)
 # Note: "Esri.WorldOceanBase" or "Esri.WorldImagery" can also be used
-bg_tiles <- get_tiles(bbox_sf, provider = "Esri.WorldPhysical", zoom = 5, crop = TRUE)
+bg_tiles <- get_tiles(bbox_sf, provider = "CartoDB.Positron", zoom = 5, crop = TRUE)
 
 # Place labels (adjusted coordinate placement)
 labels_df <- tribble(
