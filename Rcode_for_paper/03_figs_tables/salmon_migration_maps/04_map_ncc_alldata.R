@@ -1,5 +1,5 @@
 # ==============================================================================
-# Script: 03_figs_tables/04_map_alldata_spaced.R
+# Script: 03_figs_tables/04_map_alldata.R
 # Purpose: Ocean-basin scale map restoring exact Canadian layout
 #          (WCVI krill cluster, Canadian maple leaves, mammals, herring)
 #          while keeping spaced-out NCC fauna and GOA layout.

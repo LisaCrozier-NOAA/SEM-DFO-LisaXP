@@ -67,6 +67,8 @@ ak24 %>% filter(abs_pvalue<0.05) %>% select(predator,base_aic,abs_final_aic,neg_
 ak24 %>% filter(abs_beta_peff<0,abs_pvalue<0.05) %>% select(predator,base_aic,abs_final_aic,base_beta,abs_beta_peff,base_r2,abs_final_r2,abs_variant_type,abs_prey) 
 ak24 %>% filter(abs_beta_peff<0,abs_pvalue<0.05,Q4_impact_increased==TRUE) %>% select(predator,base_aic,abs_final_aic,base_beta,abs_beta_peff,abs_beta_std,base_r2,abs_final_r2,abs_variant_type,abs_prey) 
 
+ak24 %>% filter(predator=="X11_ssl_seak_pup_pred_smoltyr"|predator=="X15_DFA_halibutBiomassAge8plus_predAK_adultyr") %>% select(predator,abs_variant_type,abs_prey,abs_final_r2,abs_final_aic)
+
 # predator                                      base_aic abs_final_aic base_beta abs_beta_peff base_r2 abs_final_r2 abs_variant_type       abs_prey                                                   
 # 1 X15_DFA_sleeperSharkBSAI_predAK_smoltyr          -26.4         -29.8    -0.246        -0.593   0.481        0.556 Joint Temp + 1 AltPrey capelin_WGoA_smoltyr                                       
 # 2 X10_Harbour_s_WS_adultyr                         -29.0         -29.0    -0.530        -0.530   0.516        0.516 Raw Baseline           None                                                       

@@ -1,5 +1,5 @@
 # ==============================================================================
-# Script: cache_phylopic_icons.R
+# Script: rphylopic_icons_saved.R
 # Purpose: Download and save all project PhyloPic icons locally for offline use.
 # ==============================================================================
 
