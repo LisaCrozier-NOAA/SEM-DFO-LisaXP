@@ -1,0 +1,5 @@
+Model,AIC,p_Chi2,CFI,SRMR,SAR_R2,SAR_Paths
+Model_A_Full_with_Growth,312.1,0,0.495,0.278,0.732,Growth: beta=-0.228 (p=0.264) | CPUE: beta=0.540 (p=0.001) | Latent_AK: beta=-0.396 (p=0.080) | P_ocean_eff: beta=-0.336 (p=0.029)
+Model_B_Drop_Growth,311.25,4e-4,0.682,0.195,0.626,CPUE: beta=0.606 (p=0.001) | Latent_AK: beta=-0.246 (p=0.224) | P_ocean_eff: beta=-0.278 (p=0.070)
+Model_C_Separate_Pink,242.53,0,0.474,0.252,0.616,Growth: beta=-0.115 (p=0.636) | CPUE: beta=0.497 (p=0.003) | Latent_PreyAK: beta=-0.087 (p=0.668) | X14_pinkSalmonNorthAmerica: beta=-0.275 (p=0.047) | P_ocean_eff: beta=-0.417 (p=0.022)
+Model_D_Separate_Pink_NoGr,240.75,1e-4,0.659,0.206,0.61,CPUE: beta=0.523 (p=0.001) | Latent_PreyAK: beta=-0.030 (p=0.821) | X14_pinkSalmonNorthAmerica: beta=-0.278 (p=0.042) | P_ocean_eff: beta=-0.372 (p=0.016)

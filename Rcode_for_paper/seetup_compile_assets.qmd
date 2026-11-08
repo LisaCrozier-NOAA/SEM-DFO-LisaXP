@@ -1,0 +1,48 @@
+library("quarto")
+library("tinytex")
+# quarto::quarto_render("compile_assets.qmd")
+# install.packages("tinytex")
+# tinytex::install_tinytex()
+tinytex::tlmgr_update()
+
+tinytex::tlmgr("update --self")
+
+tinytex::tlmgr_install("caption")
+
+tinytex::tlmgr_install(c("hyperref", "oberdiek", "caption", "bookmark"))
+
+---
+  title: "Manuscript Figures and Tables"
+author: "Your Name"
+date: today
+format:
+  pdf:
+  documentclass: article
+geometry:
+  - margin=1in
+toc: true
+toc-depth: 2
+number-sections: true
+colorlinks: true
+execute:
+  echo: false
+warning: false
+message: false
+---
+  
+  \newpage
+
+# Section 1: Cohort Overview & Baseline Characteristics
+
+## Figure 1: Study Cohort Flowchart
+```{r}
+#| fig-align: center
+#| out-width: "95%"
+knitr::include_graphics("output_assets/s1_fig_01_flowchart.pdf")
+```
+\vspace{1em}
+Figure 1. Flowchart detailing patient selection, inclusion criteria, and exclusion filters.
+
+\newpage
+
+Table 1: Baseline Demographics

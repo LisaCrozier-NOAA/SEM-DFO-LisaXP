@@ -1,0 +1,410 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={Columbia River Spring Chinook Marine Survival: Synthesis of Multi-Stage SEM Deliverables},
+  pdfauthor={Lisa Crozier et al.},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Columbia River Spring Chinook Marine Survival: Synthesis of
+Multi-Stage SEM Deliverables}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Consolidated Results Across Objectives 1--5}
+\author{Lisa Crozier et al.}
+\date{2026-11-06}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\newpage
+
+\section{Objective 1 \& 2: Ecosystem Drivers \& Multi-Model Variable
+Importance}\label{objective-1-2-ecosystem-drivers-multi-model-variable-importance}
+
+\subsection{Overview}\label{overview}
+
+Model selection across candidate single-indicator structural equation
+models (SEMs) evaluated the relative influence of coastal Northern
+California Current (NCC) and Gulf of Alaska (AK) drivers on early marine
+survival (SAR). Multi-model inference via Akaike weights (\(w_i\)) was
+calculated across all statistically valid models
+(\(p(\chi^2) \ge 0.05\), \(\text{CFI} \ge 0.80\),
+\(\text{SRMR} \le 0.10\), \(\text{AGFI} \ge 0.80\)) following baseline
+exclusions (\texttt{sablefishAK\_biomass4plus} and
+\texttt{pollockGOA\_SSB\_lag1}).
+
+\subsection{Figure 1: Relative Variable Importance across Ecosystem
+Indicators}\label{figure-1-relative-variable-importance-across-ecosystem-indicators}
+
+Relative variable importance (\(w_i\)) across all ecosystem indicators
+meeting the \(\max(w_i) \ge 0.05\) threshold, comparing sequential
+mediation (DAG 1A) and direct growth mediation (DAG 1B) topologies
+across the 24-year complete dataset and 19-year expanded series.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{Outputs/figures/obj2_fig1_variable_importance_barchart.pdf}
+
+}
+
+\caption{\label{fig-obj2-importance}Relative variable importance (Akaike
+weights) across candidate functional ecosystem indicators.}
+
+\end{figure}%
+
+\newpage
+
+\section{Objective 3: Direct vs.~Modulated Predation
+Topologies}\label{objective-3-direct-vs.-modulated-predation-topologies}
+
+\subsection{Overview}\label{overview-1}
+
+To address counter-intuitive positive relationships between raw predator
+abundance and salmon survival, candidate predators were evaluated under
+an effective predation framework (\(P_{\text{eff}}\)):
+\[P_{\text{eff}} = P_{\text{norm}} \cdot \text{SST}_{\text{gate}} \cdot (1 - \text{AltPrey}_{\text{gate}})\]
+where thermal spatial overlap (\(\text{SST}\)) and alternative forage
+buffering (\(\text{AltPrey}\)) were scaled with a 0.2 baseline floor to
+prevent complete zero-multiplication.
+
+\subsection{\texorpdfstring{Table 3: Effective Predation
+(\(P_{\text{eff}}\)) Model
+Comparisons}{Table 3: Effective Predation (P\_\{\textbackslash text\{eff\}\}) Model Comparisons}}\label{table-3-effective-predation-p_texteff-model-comparisons}
+
+Comparison of nominal predator biomass models versus top-ranked
+modulated \(P_{\text{eff}}\) formulations. Shaded green cells indicate
+models where thermal gating and/or alternative prey buffering restored
+ecologically coherent top-down control (\(\beta < 0\), \(p \le 0.05\))
+with substantial AIC improvement (\(\Delta\text{AIC} \le -2.0\)).
+
+\begin{table}
+
+\caption{\label{tbl-obj3-peff}}
+
+\centering{
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio,alt={Modulation of marine predator exposure: Nominal biomass vs.~effective predation exposure (Peff).}]{Outputs/tables/obj3_table1_peff_model_comparisons.png}
+\caption{Modulation of marine predator exposure: Nominal biomass
+vs.~effective predation exposure (Peff).}
+\end{figure}
+
+}
+
+\end{table}%
+
+\newpage
+
+\section{Objective 4: Multi-Basin Life-Stage
+Bottlenecks}\label{objective-4-multi-basin-life-stage-bottlenecks}
+
+\subsection{Overview}\label{overview-2}
+
+The life-stage hypothesis ladder was tested sequentially across the
+24-year complete dataset (1998--2021) to evaluate the spatial and
+temporal bounds of survival bottlenecks:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Single-Arena (Early Marine NCC Only):}
+  \(\text{SAR} \sim \text{Growth}_{\text{NCC}} + \text{CPUE}_{\text{NCC}}\)
+\item
+  \textbf{Dual-Arena (+ Subarctic Alaska Marine):}
+  \(\text{SAR} \sim \text{Growth}_{\text{NCC}} + \text{CPUE}_{\text{NCC}} + \text{Prey}_{\text{AK}} + P_{\text{ocean\_eff}}\)
+\item
+  \textbf{Triple-Arena (+ Adult Columbia River Pinnipeds):}
+  \(\text{SAR} \sim \text{Growth}_{\text{NCC}} + \text{CPUE}_{\text{NCC}} + \text{Prey}_{\text{AK}} + P_{\text{ocean\_eff}} + P_{\text{river\_adult}}\)
+\end{enumerate}
+
+\#\# Table 4: Single-, Dual-, and Triple-Arena Model Comparisons
+
+\begin{table}
+
+\caption{\label{tbl-obj4-arenas}}
+
+\centering{
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={Life-stage arena bottlenecks: Single- (coastal baseline), Dual- (adding subarctic marine), and Triple-Arena (adding adult in-river pinnipeds) SEM comparisons.}]{Outputs/tables/obj4_table1_ocean_plus_CR_predation_24yr.png}
+\caption{Life-stage arena bottlenecks: Single- (coastal baseline), Dual-
+(adding subarctic marine), and Triple-Arena (adding adult in-river
+pinnipeds) SEM comparisons.}
+\end{figure}
+
+}
+
+\end{table}%
+
+\newpage
+
+\section{Final Pruned Latent Structural Equation
+Models}\label{final-pruned-latent-structural-equation-models}
+
+\subsection{Candidate 2: Subarctic Groundfish Piscivore (Sablefish Age
+3+)}\label{candidate-2-subarctic-groundfish-piscivore-sablefish-age-3}
+
+Final pruned structural model retaining both coastal early marine and
+subarctic marine stages.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=0.9\linewidth,height=\textheight,keepaspectratio]{Outputs/figures/obj4_fig1A_sablefish_model.png}
+
+}
+
+\caption{\label{fig-obj4-sablefish}Final pruned structural equation
+model: Sablefish Age 3+ Peff model (AIC = -23.22, SAR R² = 0.73).}
+
+\end{figure}%
+
+\newpage
+
+\subsection{Candidate 4: Subarctic Apex Shark (Sleeper
+Shark)}\label{candidate-4-subarctic-apex-shark-sleeper-shark}
+
+Final pruned structural model retaining top-down subarctic apex shark
+predation.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=0.9\linewidth,height=\textheight,keepaspectratio]{Outputs/figures/obj4_fig1B_sleepershark_model.png}
+
+}
+
+\caption{\label{fig-obj4-sleepershark}Final pruned structural equation
+model: Sleeper Shark Peff model.}
+
+\end{figure}%
+
+\newpage
+
+\subsection{Candidate 1 / Baseline: Coastal-Only Pruned
+Architecture}\label{candidate-1-baseline-coastal-only-pruned-architecture}
+
+Pruned architecture resulting when candidate subarctic marine predators
+drop out (\(p \ge 0.05\)).
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=0.9\linewidth,height=\textheight,keepaspectratio]{Outputs/figures/obj4_fig1C_coastal_baseline_model.png}
+
+}
+
+\caption{\label{fig-obj4-baseline}Final pruned baseline structural
+architecture (Coastal-only survival; AIC = -21.58, SAR R² = 0.83).}
+
+\end{figure}%
+
+\newpage
+
+\section{Supplementary Material}\label{supplementary-material}
+
+\subsection{Table S1: Complete Variable Importance Across All Evaluated
+Indicators}\label{table-s1-complete-variable-importance-across-all-evaluated-indicators}
+
+Full numerical compilation of cumulative Akaike weights (\(w_i\)) across
+all candidate indicators, including those falling below the main text
+\(\max(w_i) \ge 0.05\) plotting threshold.
+
+\begin{table}
+
+\caption{\label{tbl-supp-varimp}}
+
+\centering{
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth,height=\textheight,keepaspectratio,alt={Supplemental Table S1: Full compilation of relative variable importance across all candidate ecosystem indicators.}]{Outputs/tables/obj2_tableS3_variable_importance_wide.png}
+\caption{Supplemental Table S1: Full compilation of relative variable
+importance across all candidate ecosystem indicators.}
+\end{figure}
+
+}
+
+\end{table}%
+
+
+
+
+\end{document}

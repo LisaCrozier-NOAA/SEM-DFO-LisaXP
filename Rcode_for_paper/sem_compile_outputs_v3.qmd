@@ -1,0 +1,124 @@
+---
+title: "Manuscript Figures"
+author: "Lisa Crozier"
+date: today
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry:
+     - margin=1in
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    colorlinks: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+  
+\newpage
+
+# Objective 1 & 2: Ecosystem Drivers & Multi-Model Variable Importance
+
+## Overview
+Model selection across candidate single-indicator structural equation models (SEMs) evaluated the relative influence of coastal Northern California Current (NCC) and Gulf of Alaska (AK) drivers on early marine survival (SAR). Multi-model inference via Akaike weights ($w_i$) was calculated across all statistically valid models ($p(\chi^2) \ge 0.05$, $\text{CFI} \ge 0.80$, $\text{SRMR} \le 0.10$, $\text{AGFI} \ge 0.80$) following baseline exclusions (`sablefishAK_biomass4plus` and `pollockGOA_SSB_lag1`).
+
+## Figure 1: Relative Variable Importance across Ecosystem Indicators
+Relative variable importance ($w_i$) across all ecosystem indicators meeting the $\max(w_i) \ge 0.05$ threshold, comparing sequential mediation (DAG 1A) and direct growth mediation (DAG 1B) topologies across the 24-year complete dataset and 19-year expanded series.
+
+```{r}
+#| label: fig-obj2-importance
+#| fig-cap: "Relative variable importance (Akaike weights) across candidate functional ecosystem indicators."
+#| fig-align: center
+#| out-width: "100%"
+knitr::include_graphics("Outputs/figures/obj2_fig1_variable_importance_barchart.pdf")
+```
+\newpage
+
+
+# Objective 3: Direct vs. Modulated Predation Topologies
+
+## Overview
+To address counter-intuitive positive relationships between raw predator abundance and salmon survival, candidate predators were evaluated under an effective predation framework ($P_{\text{eff}}$):
+  $$P_{\text{eff}} = P_{\text{norm}} \cdot \text{SST}_{\text{gate}} \cdot (1 - \text{AltPrey}_{\text{gate}})$$
+  where thermal spatial overlap ($\text{SST}$) and alternative forage buffering ($\text{AltPrey}$) were scaled with a 0.2 baseline floor to prevent complete zero-multiplication.
+
+## Table 3: Effective Predation ($P_{\text{eff}}$) Model Comparisons
+Comparison of nominal predator biomass models versus top-ranked modulated $P_{\text{eff}}$ formulations. Shaded green cells indicate models where thermal gating and/or alternative prey buffering restored ecologically coherent top-down control ($\beta < 0$, $p \le 0.05$) with substantial AIC improvement ($\Delta\text{AIC} \le -2.0$).
+
+
+```{r}
+#| label: fig-obj3-peff
+#| fig-cap: "Modulation of marine predator exposure"
+#| fig-align: center
+#| out-width: "100%"
+knitr::include_graphics("Outputs/tables/obj3_table1_peff_model_comparisons.pdf")
+```
+\newpage
+
+# Objective 4: Multi-Basin Life-Stage Bottlenecks
+
+## Overview
+The life-stage hypothesis ladder was tested sequentially across the 24-year complete dataset (1998–2021) to evaluate the spatial and temporal bounds of survival bottlenecks:
+  
+  1. **Single-Arena (Early Marine NCC Only):** $\text{SAR} \sim \text{Growth}_{\text{NCC}} + \text{CPUE}_{\text{NCC}}$
+  2. **Dual-Arena (+ Subarctic Alaska Marine):** $\text{SAR} \sim \text{Growth}_{\text{NCC}} + \text{CPUE}_{\text{NCC}} + \text{Prey}_{\text{AK}} + P_{\text{ocean\_eff}}$
+  3. **Triple-Arena (+ Adult Columbia River Pinnipeds):** $\text{SAR} \sim \text{Growth}_{\text{NCC}} + \text{CPUE}_{\text{NCC}} + \text{Prey}_{\text{AK}} + P_{\text{ocean\_eff}} + P_{\text{river\_adult}}$
+  
+  ## Table 4: Single-, Dual-, and Triple-Arena Model Comparisons
+  
+```{r}
+#| label: fig-obj4-arenas
+#| fig-cap: "Life-stage arena bottlenecks: Single- (coastal baseline), Dual- (adding subarctic marine), and Triple-Arena (adding adult in-river pinnipeds) SEM comparisons."
+#| fig-align: center
+#| out-width: "95%"
+knitr::include_graphics("Outputs/tables/obj4_table1_ocean_plus_CR_predation_24yr.png")
+```
+  
+\newpage
+
+# Variable Importance and Selection
+
+## Variable Importance Barchart (dAIC < 3)
+
+```{r}
+#| fig-align: center
+#| out-width: "100%"
+knitr::include_graphics("Routput_for_paper/figures/DAG1A_DAG1B_importance_barchart_dAIC3_allvars.pdf")
+```
+
+\newpage
+
+# Pruned Models
+
+## Final 4 Pruned Models (2x2 Grid)
+
+```{r}
+#| fig-align: center
+#| out-width: "100%"
+knitr::include_graphics("Routput_for_paper/figures/DAG1B_Final_4_Pruned_Models_2x2.pdf")
+```
+
+\newpage
+
+# Candidate Models
+
+## Candidate Models DAG 1B (24-Year Series)
+
+```{r}
+#| fig-align: center
+#| out-width: "100%"
+knitr::include_graphics("Routput_for_paper/figures/Peff/Candidate_Models_DAG1B_24yr.pdf")
+```
+
+# Objective 3: Direct vs. Modulated Predation Topologies
+
+## Table 3: Effective Predation (Peff) Model Selection
+
+```{r}
+#| fig-align: center
+#| out-width: "90%"
+knitr::include_graphics("Outputs/tables/obj3_table1_peff_model_comparisons.png")
+```

@@ -1,0 +1,6 @@
+ocean_predator,alt_prey,single_aic,single_r2,single_beta_ocean,single_std_ocean,single_p_ocean,dual_aic,delta_aic,dual_r2,r2_gain,dual_std_ocean,dual_p_ocean,dual_std_inriver,dual_p_inriver
+X15_DFA_sleeperSharkBSAI_predAK_smoltyr,capelin_WGoA_smoltyr,-29.83,0.556,-0.593,-0.41,0.0029,-30.11,-0.28,0.61,0.054,-0.552,6e-4,-0.246,0.1222
+X15_sablefishAK_biomass3plus_smoltyr,X13_pollockGOA_age1and2_smoltyr + sitkaHerring_EGoA_smoltyr,-28.8,0.534,-2.41,-0.408,0.0063,-28.56,0.23,0.577,0.043,-0.546,0.0021,-0.224,0.1757
+X11_ssl_seak_pup_pred_smoltyr,sitkaHerring_EGoA_smoltyr + capelin_WGoA_smoltyr,-27.1,0.491,-0.583,-0.39,0.0211,-27.22,-0.12,0.524,0.033,-0.482,0.0056,0.223,0.137
+X15_DFA_halibutBiomassAge8plus_predAK_adultyr,capelin_WGoA_adultyr,-26.93,0.5,-0.509,-0.328,0.0238,-25.11,1.82,0.499,-0.001,-0.325,0.0251,0.061,0.672
+X15_salmonSharkGoA_predAK_smoltyr,sitkaHerring_EGoA_smoltyr + capelin_WGoA_smoltyr,-24.33,0.432,-0.503,-0.229,0.1454,-23.52,0.81,0.445,0.014,-0.293,0.0756,0.179,0.2686

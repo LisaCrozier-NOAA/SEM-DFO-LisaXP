@@ -251,4 +251,57 @@ dat<-doug_complete[,c()]
 n<-ncol(dat)-1
 matplot(dat$year,dat[,c("X08")])
 
+
+#top models to flesh out-------------
+#Top models to flesh out
+
+
+#DAG1A and B:
+"C:\Users\Lisa.Crozier\Documents\Marine survival\Doug results\2026_10_23_SEM\shiftLisa_1_Lisa_22oct26\DAG1A_long\SEMresultsByClus.csv"
+"C:\Users\Lisa.Crozier\Documents\Marine survival\Doug results\2026_10_23_SEM\shiftLisa_1_Lisa_22oct26\DAG1B_long\SEMresultsByClus.csv"
+"C:\Users\Lisa.Crozier\Documents\Marine survival\Doug results\2026_10_23_SEM\shiftLisa_1_Lisa_22oct26\DAG1A_short\SEMresultsByClus.csv"
+"C:\Users\Lisa.Crozier\Documents\Marine survival\Doug results\2026_10_23_SEM\shiftLisa_1_Lisa_22oct26\DAG1B_short\SEMresultsByClus.csv"
+
+#colnames and example entries
+# PreyNCCindNames	PredNCCindNames	GrowthIndNames	AbundanceIndNames	PreyAKindNames	PredAKindNames
+# 04.CompFishNCC_smoothed	09.PredFishNCC_b_DFA1	06.Cond1NCC_DFA1	07.Cond2NCC_smoothed	12.ZooPreyAK_0_smoothed	15.PredFishAK_2_smoothed
+# 04.CompFishNCC_smoothed	09.PredFishNCC_b_DFA1	06.Cond1NCC_DFA1	07.Cond2NCC_smoothed	12.ZooPreyAK_0_smoothed	15.PredFishAK_3_smoothed
+# 05.ForageFishNCC_DFA1	09.PredFishNCC_b_DFA1	06.Cond1NCC_DFA1	07.Cond2NCC_smoothed	12.ZooPreyAK_0_smoothed	15.PredFishAK_2_smoothed
+# 04.CompFishNCC_smoothed	09.PredFishNCC_b_DFA1	06.Cond1NCC_DFA1	07.Cond2NCC_smoothed	12.ZooPreyAK_0_smoothed	15.PredFishAK_0_smoothed
+
+#require crosswalk:
+"C:\Users\Lisa.Crozier\Documents\Marine survival\SEM-DFO-LisaXP\Rcode_for_paper\metadata\crosswalk_names.csv"
+
+#colnames and example entries
+# DFAname	type	dfa_cols	indicator1	node	LisaName	rankedIndicators
+# 01.ZooPreyNCC_JSOES_0_smoothed	smoothed	X01.ZooPreyNCC_JSOES_0_smoothed	Cassin_s_aukl_WS	X01	X01_Cassin_s_aukl_WS	Cassin_s_aukl_WS
+# 01.ZooPreyNCC_JSOES_DFA1	DFA	X01.ZooPreyNCC_JSOES_DFA1	sumPreyOfPrey_planktonJun	X01	X01_DFA_sumPreyOfPrey_planktonJun	sumPreyOfPrey_planktonJun - sumPrey_planktonJun - cassAuk_JSOES
+# 01.ZooPreyNCC_NHL_0_smoothed	smoothed	X01.ZooPreyNCC_NHL_0_smoothed	NHLlogSum_win_05	X01	X01_NHLlogSum_win_05	NHLlogSum_win_05
+# 01.ZooPreyNCC_NHL_1_smoothed	smoothed	X01.ZooPreyNCC_NHL_1_smoothed	NHLlogSum_win_15	X01	X01_NHLlogSum_win_15	NHLlogSum_win_15
+# 01.ZooPreyNCC_NHL_2_smoothed	smoothed	X01.ZooPreyNCC_NHL_2_smoothed	NHLlogSum_win_25	X01	X01_NHLlogSum_win_25	NHLlogSum_win_25
+
+
+#DAGs can be found in here:
+"C:\Users\Lisa.Crozier\Documents\Marine survival\SEM-DFO-LisaXP\Rcode_for_paper\03_figs_tables\Fig_DAG_Tab_Hypo.r"
+"C:\Users\Lisa.Crozier\Documents\Marine survival\SEM-DFO-LisaXP\Rcode_for_paper\figures\Figure_Conceptual_DAGs_Combined.png"
+
+
+#The winners from DAG1D are here, for both NCC/AK and 19yr/24yr permutations:
+"C:\Users\Lisa.Crozier\Documents\Marine survival\SEM-DFO-LisaXP\Rcode_for_paper\Routput_for_paper\data\Goal3_Competition_Sweep_AK_24yr.csv"
+
+#and my ultimate model here:
+"C:\Users\Lisa.Crozier\Documents\Marine survival\SEM-DFO-LisaXP\Rcode_for_paper\Routput_for_paper\data\Goal4_OceanPred_plus_EMBssl_24yr.csv"
+
+
+# Run in R and share output:
+d1a_long <- read.csv("C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results/2026_10_23_SEM/shiftLisa_1_Lisa_22oct26/DAG1A_long/SEMresultsByClus.csv")
+names(d1a_long)
+head(d1a_long, 2)
+
+
+g3 <- read.csv("C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP/Rcode_for_paper/Routput_for_paper/data/Goal3_Competition_Sweep_AK_24yr.csv")
+g4 <- read.csv("C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP/Rcode_for_paper/Routput_for_paper/data/Goal4_OceanPred_plus_EMBssl_24yr.csv")
+names(g3); names(g4)
+head(g3, 2); head(g4, 2)  
+
           

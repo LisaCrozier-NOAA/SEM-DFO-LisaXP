@@ -1,0 +1,7 @@
+ocean_predator,mod_mechanism,alt_prey,single_aic,single_r2,dual_aic,delta_aic_dual_v_sng,dual_r2,dual_b_ocean,dual_p_ocean,triple_aic,delta_aic_trp_v_dual,triple_r2,triple_b_ocean,triple_p_ocean,triple_b_river,triple_p_river
+ssl_seak_pup_pred,AltPrey Buffered (2),sitkaHerring_EGoA + egoa_krill,-39.31,0.48,-51.36,-12.05,0.8,-0.51,0,-49.37,1.99,0.8,-0.52,0,0.02,0.911
+sablefishAK_biomass3plus,Joint Temp + AltPrey (2),pollockGOA_age1and2 + sitkaHerring_EGoA,-39.31,0.48,-44.78,-5.47,0.64,-0.46,0.011,-44.3,0.49,0.68,-0.49,0.005,-0.22,0.211
+Killer_whales_NR_BC,Temp Overlap Only,None,-39.31,0.48,-43.66,-4.36,0.72,-0.6,0.023,-43.61,0.06,0.76,-0.95,0.008,0.31,0.155
+harbour_seal_DFO_WCVI,AltPrey Buffered (1),anchovy_GAM,-39.31,0.48,-45.4,-6.1,0.73,-0.44,0.007,-43.47,1.93,0.74,-0.43,0.009,-0.04,0.795
+sleeperSharkBSAI,Joint Temp + AltPrey (1),capelin_WGoA,-39.31,0.48,-42.61,-3.3,0.61,-0.55,0.049,-41.19,1.42,0.62,-0.55,0.043,-0.14,0.444
+Steller_s_l_WS,Joint Temp + AltPrey (1),eulachon_during_chinook,-39.31,0.48,-42.82,-3.51,0.7,-0.48,0.042,-41.11,1.72,0.7,-0.56,0.045,0.11,0.594

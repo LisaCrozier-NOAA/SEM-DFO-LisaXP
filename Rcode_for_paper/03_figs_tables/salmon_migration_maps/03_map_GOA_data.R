@@ -259,9 +259,10 @@ p <- p + coord_sf(
 
 # 9. Save Output Image
 print(p)
+goa_map<-p
 
 ggsave(
-  filename = file.path(fig_out_dir, "03_map_GOA_data.png"),
+  filename = file.path(fig_out_dir, "figs/03_map_GOA_data.png"),
   plot     = p,
   width    = 10,
   height   = 7.5,

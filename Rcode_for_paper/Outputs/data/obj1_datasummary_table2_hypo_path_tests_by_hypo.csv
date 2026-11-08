@@ -1,0 +1,25 @@
+model_id,H_code,path_label,N_Models,Pct_Sig,Pct_Positive,Pct_Supported,Mean_Beta,Baseline_Expectation,Verdict,Cell_Display
+DAG1A_long,H1a,PreyNCC -> Growth,26,100,57.7,42.3,0.143,Positive (+),Flipped Sign,<b>Flipped Sign</b><br>100% Sig | 57.7% +<br><span style='font-size:9.5px; color:#555;'>(N=26)</span>
+DAG1A_long,H1b,Growth -> CPUE,26,0,0,0,-0.034,Positive (+),NS,<b>NS</b><br>0% Sig | 0% +<br><span style='font-size:9.5px; color:#555;'>(N=26)</span>
+DAG1A_long,H1e,PreyAK -> SAR,26,23.1,30.8,50,-0.139,Positive (+),NS,<b>NS</b><br>23.1% Sig | 30.8% +<br><span style='font-size:9.5px; color:#555;'>(N=26)</span>
+DAG1A_long,H2a,PredNCC -> CPUE,26,100,0,100,-0.856,Negative (-),Supported,<b>Supported</b><br>100% Sig | 0% +<br><span style='font-size:9.5px; color:#555;'>(N=26)</span>
+DAG1A_long,H2c,PredAK -> SAR,26,65.4,42.3,57.7,-0.086,Negative (-),Supported,<b>Supported</b><br>65.4% Sig | 42.3% +<br><span style='font-size:9.5px; color:#555;'>(N=26)</span>
+DAG1A_long,H4a,CPUE -> SAR,26,100,100,100,0.565,Positive (+),Supported,<b>Supported</b><br>100% Sig | 100% +<br><span style='font-size:9.5px; color:#555;'>(N=26)</span>
+DAG1A_short,H1a,PreyNCC -> Growth,15,100,0,100,-0.946,Positive (+),Supported,<b>Supported</b><br>100% Sig | 0% +<br><span style='font-size:9.5px; color:#555;'>(N=15)</span>
+DAG1A_short,H1b,Growth -> CPUE,15,0,0,0,-0.132,Positive (+),NS,<b>NS</b><br>0% Sig | 0% +<br><span style='font-size:9.5px; color:#555;'>(N=15)</span>
+DAG1A_short,H1e,PreyAK -> SAR,15,20,33.3,53.3,-0.06,Positive (+),NS,<b>NS</b><br>20% Sig | 33.3% +<br><span style='font-size:9.5px; color:#555;'>(N=15)</span>
+DAG1A_short,H2a,PredNCC -> CPUE,15,100,0,100,-0.883,Negative (-),Supported,<b>Supported</b><br>100% Sig | 0% +<br><span style='font-size:9.5px; color:#555;'>(N=15)</span>
+DAG1A_short,H2c,PredAK -> SAR,15,100,6.7,93.3,-0.34,Negative (-),Supported,<b>Supported</b><br>100% Sig | 6.7% +<br><span style='font-size:9.5px; color:#555;'>(N=15)</span>
+DAG1A_short,H4a,CPUE -> SAR,15,100,100,100,0.563,Positive (+),Supported,<b>Supported</b><br>100% Sig | 100% +<br><span style='font-size:9.5px; color:#555;'>(N=15)</span>
+DAG1B_long,H1a,PreyNCC -> Growth,2,100,50,50,0.004,Positive (+),Supported,<b>Supported</b><br>100% Sig | 50% +<br><span style='font-size:9.5px; color:#555;'>(N=2)</span>
+DAG1B_long,H1c,Growth -> SAR,2,100,100,100,0.337,Positive (+),Supported,<b>Supported</b><br>100% Sig | 100% +<br><span style='font-size:9.5px; color:#555;'>(N=2)</span>
+DAG1B_long,H1e,PreyAK -> SAR,2,100,0,0,-0.41,Positive (+),Flipped Sign,<b>Flipped Sign</b><br>100% Sig | 0% +<br><span style='font-size:9.5px; color:#555;'>(N=2)</span>
+DAG1B_long,H2a,PredNCC -> CPUE,2,100,0,100,-0.865,Negative (-),Supported,<b>Supported</b><br>100% Sig | 0% +<br><span style='font-size:9.5px; color:#555;'>(N=2)</span>
+DAG1B_long,H2c,PredAK -> SAR,2,100,100,0,0.349,Negative (-),Flipped Sign,<b>Flipped Sign</b><br>100% Sig | 100% +<br><span style='font-size:9.5px; color:#555;'>(N=2)</span>
+DAG1B_long,H4a,CPUE -> SAR,2,100,100,100,0.523,Positive (+),Supported,<b>Supported</b><br>100% Sig | 100% +<br><span style='font-size:9.5px; color:#555;'>(N=2)</span>
+DAG1B_short,H1a,PreyNCC -> Growth,20,100,10,100,-0.757,Positive (+),Supported,<b>Supported</b><br>100% Sig | 10% +<br><span style='font-size:9.5px; color:#555;'>(N=20)</span>
+DAG1B_short,H1c,Growth -> SAR,20,55,85,85,0.276,Positive (+),Supported,<b>Supported</b><br>55% Sig | 85% +<br><span style='font-size:9.5px; color:#555;'>(N=20)</span>
+DAG1B_short,H1e,PreyAK -> SAR,20,60,50,65,0.097,Positive (+),Supported,<b>Supported</b><br>60% Sig | 50% +<br><span style='font-size:9.5px; color:#555;'>(N=20)</span>
+DAG1B_short,H2a,PredNCC -> CPUE,20,100,0,100,-0.9,Negative (-),Supported,<b>Supported</b><br>100% Sig | 0% +<br><span style='font-size:9.5px; color:#555;'>(N=20)</span>
+DAG1B_short,H2c,PredAK -> SAR,20,80,25,75,-0.177,Negative (-),Supported,<b>Supported</b><br>80% Sig | 25% +<br><span style='font-size:9.5px; color:#555;'>(N=20)</span>
+DAG1B_short,H4a,CPUE -> SAR,20,100,100,100,0.501,Positive (+),Supported,<b>Supported</b><br>100% Sig | 100% +<br><span style='font-size:9.5px; color:#555;'>(N=20)</span>

@@ -1,0 +1,26 @@
+"Node","Variable","Region","Role","1A (Long)","1A (Short)","1B (Long)","1B (Short)"
+"Abundance","cpue IntSprJunHW","NCC","Abundance",1,1,1,1
+"Growth","DFA IGF mu","NCC","Growth",1,1,1,1
+"PreyNCC","DFA SeaNettle","NCC","Competitor",NA,1,NA,1
+"PreyNCC","marketsquid GAM","NCC","Competitor",0.8569,NA,0.8224,NA
+"PreyNCC","DFA abundSardine","NCC","Competitor",0.1431,NA,0.1776,NA
+"PredNCC","DFA HakeAge5Plus","NCC","Predator",1,1,1,1
+"PreyAK","biomassDecaShelfSum","AK","Prey",0.316168383161684,0.1291,1,0.145714571457146
+"PreyAK","DFA EGOA DFA lowerTrophic","AK","Prey",0.0250974902509749,0.5837,NA,0.58005800580058
+"PreyAK","DFA WGOA DFA midTrophic","AK","Competitor",0.38026197380262,0.096,NA,NA
+"PreyAK","biomassMysidShelfSum","AK","Prey",0.197680231976802,NA,NA,NA
+"PreyAK","EGOA DFA seabirds","AK","Prey",NA,0.1912,NA,0.0535053505350535
+"PreyAK","WGOA DFA lowerTrophic","AK","Prey",0.0557944205579442,NA,NA,0.11041104110411
+"PreyAK","pinkSalmonNorthAmerica","AK","Competitor",0.024997500249975,NA,NA,0.11031103110311
+"PredAK","sablefishAK biomass3plus","AK","Predator",0.0507567998179128,NA,0.851024454725711,NA
+"PredAK","DFA sleeperSharkBSAI predAK","AK","Predator",0.140207124160692,0.5386,NA,0.26505301060212
+"PredAK","Harbour s WS adultyr","AK","Predator",0.31671787868442,0.096,NA,NA
+"PredAK","pollockGOA SSB","AK","Predator",0.0372140662342096,0.1742,0.148975545274289,0.214842968593719
+"PredAK","DFA sleeperSharkBSAI predAK adultyr","AK","Predator",NA,0.1912,NA,0.0535107021404281
+"PredAK","harbour seal DFO Coastwide","AK","Predator",0.189029247752361,NA,NA,NA
+"PredAK","Northern f s WS adultyr","AK","Predator",0.185159895299875,NA,NA,NA
+"PredAK","salmonSharkBSAI predAK adultyr","AK","Predator",NA,NA,NA,0.18253650730146
+"PredAK","spinyDogfishBSAI predAK","AK","Predator",NA,NA,NA,0.138127625525105
+"PredAK","DFA AllSeaLionsEMB adultyr","AK","Predator",NA,NA,NA,0.0773154630926185
+"PredAK","DFA halibutBiomassAge8plus predAK adultyr","AK","Predator",0.0483669056560828,NA,NA,0.0686137227445489
+"PredAK","Killer whales NR BC adultyr","AK","Predator",0.0325480823944463,NA,NA,NA

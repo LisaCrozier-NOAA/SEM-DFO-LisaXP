@@ -1,4 +1,6 @@
 
+#Script: "DAG1 13c Run top models with latent var.R"
+
 #CONCLUSIONS
 #only 2 models still had latent variables when all NS removed
 #or they didn't have any to start with

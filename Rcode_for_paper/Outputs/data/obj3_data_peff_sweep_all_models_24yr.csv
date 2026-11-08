@@ -1,0 +1,14 @@
+years_set,predator,base_beta,base_p,base_aic,mod_variant,mod_prey,mod_beta,mod_p,mod_aic,delta_aic,sign_restored
+24yr,X10_DFA_AllSeaLionsEMB_adultyr,-0.124,0.531,-39.39,AltPrey Buffered (1),eulachon_during_chinook,-0.208,0.284,-40.13,-0.73,Consistent
+24yr,X10_DFA_Steller_s_l_WS_adultyr,-0.446,0.229,-40.41,Joint Temp + AltPrey (1),eulachon_during_chinook,-0.478,0.042,-42.82,-2.42,Consistent
+24yr,X10_Harbour_s_WS_adultyr,-0.285,0.1,-41.58,Nominal Biomass (Base),None,-0.285,0.1,-41.58,0,Consistent
+24yr,X10_harbour_seal_DFO_Coastwide_smoltyr,-0.09,0.865,-39.03,Joint Temp + AltPrey (1),herring_NCC,-0.196,0.177,-40.77,-1.73,Consistent
+24yr,X10_harbour_seal_DFO_WCVI_smoltyr,-0.701,0.019,-43.99,AltPrey Buffered (1),anchovy_GAM,-0.444,0.007,-45.41,-1.41,Consistent
+24yr,X10_Killer_whales_NR_BC_adultyr,-0.471,0.166,-40.85,Temp Overlap Only,None,-0.6,0.023,-43.67,-2.82,Consistent
+24yr,X10_Northern_f_s_WS_adultyr,0.21,0.131,-41.18,Nominal Biomass (Base),None,0.21,0.131,-41.18,0,Consistent
+24yr,X11_ssl_seak_pup_pred_smoltyr,-0.457,0.022,-43.78,AltPrey Buffered (2),sitkaHerring_EGoA + egoa_krill,-0.514,0,-51.36,-7.59,Consistent
+24yr,X15_DFA_halibutBiomassAge8plus_predAK_adultyr,0.53,0.109,-41.45,Joint Temp + AltPrey (1),capelin_WGoA,-0.056,0.81,-39.06,2.38,Restored (-)
+24yr,X15_DFA_sleeperSharkBSAI_predAK_smoltyr,-0.079,0.814,-39.06,Joint Temp + AltPrey (1),capelin_WGoA,-0.548,0.049,-42.61,-3.55,Consistent
+24yr,X15_pollockGOA_SSB_smoltyr,-0.101,0.749,-39.11,Joint Temp + AltPrey (2),sitkaHerring_EGoA + egoa_krill,-0.378,0.054,-42.47,-3.36,Consistent
+24yr,X15_sablefishAK_biomass3plus_smoltyr,0.327,0.077,-41.94,Joint Temp + AltPrey (2),pollockGOA_age1and2 + sitkaHerring_EGoA,-0.457,0.011,-44.78,-2.84,Restored (-)
+24yr,X15_salmonSharkGoA_predAK_smoltyr,-0.058,0.732,-39.12,Joint Temp + AltPrey (1),capelin_WGoA,-0.148,0.354,-39.85,-0.73,Consistent

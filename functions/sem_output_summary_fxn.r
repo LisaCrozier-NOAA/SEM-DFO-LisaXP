@@ -1,8 +1,19 @@
+
+#"functions/sem_output_summary_fxn.r"
+
+
+# Structural endpoints
+# var_growth  <- "X06_DFA_IGF_mu_smoltyr"
+# var_cpue    <- "X07_cpue_IntSprJunHW_smoltyr"
+# var_sar     <- "X16_DFA_sar_UCsprCh_smoltyr"
+# var_prey_ak <- "X12_DFA_EGOA_DFA_lowerTrophic_smoltyr"
+
 sem_output_summary_fxn <- function(model_fit) {
   
   # 1. Extract R-Squared for available endogenous variables
   r2_all <- lavInspect(model_fit, "rsquare")
-  target_vars <- c("x16_sar","X16_SAR", "x06_dfa_igf_mu  ", "x07_dfa_cpue_intsprjunhw","X07_DFA_cpue_IntSprJunHW")
+  target_vars <- c("X16_DFA_sar_UCsprCh_smoltyr", "X06_DFA_IGF_mu_smoltyr  ", "X07_cpue_IntSprJunHW_smoltyr")
+#  target_vars <- c("x16_sar","X16_SAR", "x06_dfa_igf_mu  ", "x07_dfa_cpue_intsprjunhw","X07_DFA_cpue_IntSprJunHW")
 #  target_vars <- c("X16_SAR", "X06_DFA_IGF_mu  ", "X07_DFA_cpue_IntSprJunHW","x16_sar", "x07_dfa_cpue_int_spr_jun_hw")
 #  target_vars <- c("X15.SAR", "X06.Cond1NCC_DFA1_IGF_mu", "X07.Cond2NCC_DFA1_cpue_IntSprJunHW")
   existing_r2 <- r2_all[names(r2_all) %in% target_vars]
@@ -49,3 +60,6 @@ sem_output_summary_fxn <- function(model_fit) {
     fit = metrics
   )))
 }
+
+
+

@@ -14,7 +14,7 @@ library(rphylopic)
 
 # 1. Output directory setup
 proj_dir <- file.path(getwd(), "Rcode_for_paper")
-fig_out_dir <- file.path(proj_dir, "03_figs_tables","salmon_migration_maps")
+fig_out_dir <- file.path(proj_dir, "03_figs_tables","salmon_migration_maps","figs")
 dir.create(fig_out_dir, showWarnings = FALSE, recursive = TRUE)
 
 # 2. Base vector landmass & PhyloPic UUID retrieval
@@ -161,9 +161,10 @@ p <- p + coord_sf(
 
 # 7. Save Output Image
 print(p)
+sslcool<-p
 
 ggsave(
-  filename = file.path(fig_out_dir, "map_layer_with_forage_and_ssl_cool.png"),
+  filename = file.path(fig_out_dir, "06_map_ssl_herring_cool.png"),
   plot = p,
   width = 10,
   height = 7.5,

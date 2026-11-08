@@ -1,0 +1,132 @@
+---
+title: "Columbia River Spring Chinook Marine Survival: Synthesis of Multi-Stage SEM Deliverables"
+subtitle: "Consolidated Results Across Objectives 1–5"
+author: "Lisa Crozier et al."
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    theme: cosmo
+    embed-resources: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+  
+\newpage
+
+# Objective 1 & 2: Ecosystem Drivers & Multi-Model Variable Importance
+
+## Overview
+Model selection across candidate single-indicator structural equation models (SEMs) evaluated the relative influence of coastal Northern California Current (NCC) and Gulf of Alaska (AK) drivers on early marine survival (SAR). Multi-model inference via Akaike weights ($w_i$) was calculated across all statistically valid models ($p(\chi^2) \ge 0.05$, $\text{CFI} \ge 0.80$, $\text{SRMR} \le 0.10$, $\text{AGFI} \ge 0.80$) following baseline exclusions (`sablefishAK_biomass4plus` and `pollockGOA_SSB_lag1`).
+
+## Figure 1: Relative Variable Importance across Ecosystem Indicators
+Relative variable importance ($w_i$) across all ecosystem indicators meeting the $\max(w_i) \ge 0.05$ threshold, comparing sequential mediation (DAG 1A) and direct growth mediation (DAG 1B) topologies across the 24-year complete dataset and 19-year expanded series.
+
+```{r}
+#| label: fig-obj2-importance
+#| fig-cap: "Relative variable importance (Akaike weights) across candidate functional ecosystem indicators."
+#| fig-align: center
+#| out-width: "100%"
+knitr::include_graphics("Outputs/figures/obj2_fig1_variable_importance_barchart.pdf")
+```
+
+\newpage
+
+# Objective 3: Direct vs. Modulated Predation Topologies
+
+## Overview
+To address counter-intuitive positive relationships between raw predator abundance and salmon survival, candidate predators were evaluated under an effective predation framework ($P_{\text{eff}}$):
+  $$P_{\text{eff}} = P_{\text{norm}} \cdot \text{SST}_{\text{gate}} \cdot (1 - \text{AltPrey}_{\text{gate}})$$
+  where thermal spatial overlap ($\text{SST}$) and alternative forage buffering ($\text{AltPrey}$) were scaled with a 0.2 baseline floor to prevent complete zero-multiplication.
+
+## Table 3: Effective Predation ($P_{\text{eff}}$) Model Comparisons
+Comparison of nominal predator biomass models versus top-ranked modulated $P_{\text{eff}}$ formulations. Shaded green cells indicate models where thermal gating and/or alternative prey buffering restored ecologically coherent top-down control ($\beta < 0$, $p \le 0.05$) with substantial AIC improvement ($\Delta\text{AIC} \le -2.0$).
+
+```{r}
+#| label: tbl-obj3-peff
+#| fig-cap: "Modulation of marine predator exposure: Nominal biomass vs. effective predation exposure (Peff)."
+#| fig-align: center
+#| out-width: "100%"
+knitr::include_graphics("Outputs/tables/obj3_table1_peff_model_comparisons.png")
+```
+
+\newpage
+
+# Objective 4: Multi-Basin Life-Stage Bottlenecks
+
+## Overview
+The life-stage hypothesis ladder was tested sequentially across the 24-year complete dataset (1998–2021) to evaluate the spatial and temporal bounds of survival bottlenecks:
+  
+  1. **Single-Arena (Early Marine NCC Only):** $\text{SAR} \sim \text{Growth}_{\text{NCC}} + \text{CPUE}_{\text{NCC}}$
+  2. **Dual-Arena (+ Subarctic Alaska Marine):** $\text{SAR} \sim \text{Growth}_{\text{NCC}} + \text{CPUE}_{\text{NCC}} + \text{Prey}_{\text{AK}} + P_{\text{ocean\_eff}}$
+  3. **Triple-Arena (+ Adult Columbia River Pinnipeds):** $\text{SAR} \sim \text{Growth}_{\text{NCC}} + \text{CPUE}_{\text{NCC}} + \text{Prey}_{\text{AK}} + P_{\text{ocean\_eff}} + P_{\text{river\_adult}}$
+  
+  ## Table 4: Single-, Dual-, and Triple-Arena Model Comparisons
+  
+```{r}
+#| label: tbl-obj4-arenas
+#| fig-cap: "Life-stage arena bottlenecks: Single- (coastal baseline), Dual- (adding subarctic marine), and Triple-Arena (adding adult in-river pinnipeds) SEM comparisons."
+#| fig-align: center
+#| out-width: "95%"
+knitr::include_graphics("Outputs/tables/obj4_table1_ocean_plus_CR_predation_24yr.png")
+```
+
+\newpage
+
+# Final Pruned Latent Structural Equation Models
+
+## Candidate 2: Subarctic Groundfish Piscivore (Sablefish Age 3+)
+Final pruned structural model retaining both coastal early marine and subarctic marine stages.
+
+```{r}
+#| label: fig-obj4-sablefish
+#| fig-cap: "Final pruned structural equation model: Sablefish Age 3+ Peff model (AIC = -23.22, SAR R² = 0.73)."
+#| fig-align: center
+#| out-width: "90%"
+knitr::include_graphics("Outputs/figures/obj4_fig1A_sablefish_model.png")
+```
+
+\newpage
+
+## Candidate 4: Subarctic Apex Shark (Sleeper Shark)
+Final pruned structural model retaining top-down subarctic apex shark predation.
+
+```{r}
+#| label: fig-obj4-sleepershark
+#| fig-cap: "Final pruned structural equation model: Sleeper Shark Peff model."
+#| fig-align: center
+#| out-width: "90%"
+knitr::include_graphics("Outputs/figures/obj4_fig1B_sleepershark_model.png")
+```
+
+\newpage
+
+## Candidate 1 / Baseline: Coastal-Only Pruned Architecture
+Pruned architecture resulting when candidate subarctic marine predators drop out ($p \ge 0.05$).
+
+```{r}
+#| label: fig-obj4-baseline
+#| fig-cap: "Final pruned baseline structural architecture (Coastal-only survival; AIC = -21.58, SAR R² = 0.83)."
+#| fig-align: center
+#| out-width: "90%"
+knitr::include_graphics("Outputs/figures/obj4_fig1C_coastal_baseline_model.png")
+```
+
+\newpage
+
+# Supplementary Material
+
+## Table S1: Complete Variable Importance Across All Evaluated Indicators
+Full numerical compilation of cumulative Akaike weights ($w_i$) across all candidate indicators, including those falling below the main text $\max(w_i) \ge 0.05$ plotting threshold.
+
+```{r}
+#| label: tbl-supp-varimp
+#| fig-cap: "Supplemental Table S1: Full compilation of relative variable importance across all candidate ecosystem indicators."
+#| fig-align: center
+#| out-width: "90%"
+knitr::include_graphics("Outputs/tables/obj2_tableS3_variable_importance_wide.png")
+```

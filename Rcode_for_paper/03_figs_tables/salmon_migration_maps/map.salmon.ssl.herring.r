@@ -12,7 +12,7 @@ library(rphylopic)
 
 # 1. Output directory setup
 proj_dir <- file.path(getwd(), "Rcode_for_paper")
-fig_out_dir <- file.path(proj_dir, "figures")
+fig_out_dir <- file.path(proj_dir, "03_figs_tables","figures")
 dir.create(fig_out_dir, showWarnings = FALSE, recursive = TRUE)
 
 # 2. Base vector landmass & PhyloPic UUID retrieval
