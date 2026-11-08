@@ -2,11 +2,41 @@
 library(lubridate)
 library(tidyverse)
 
-path_doug<-"C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results/analyzeAKindices"
-doug_data<-readRDS(file.path("Rcode_for_paper","metadata","Doug_10132026_adultyr_allData.rds"));head(doug_data)
-doug_guilds<-read.csv(file.path(path_doug,"guilds.csv"))%>% filter(!is.na(latestGuild));head(doug_guilds)
+"C:\Users\Lisa.Crozier C drive from work\Marine survival\Doug results\analyzeAKindices\guilds.csv"
+path_pc<-"C:/Users/Lisa.Crozier C drive from work/Marine survival/Doug results/analyzeAKindices"
+path_doug<-c("C:/Users/Lisa.Crozier/Documents/Marine survival/Doug results/analyzeAKindices",
+            "C:/Users/Lisa.Crozier C drive from work/Marine survival/Doug results/analyzeAKindices")[2]
+
+doug_data<-readRDS(file.path("Rcode_for_paper","metadata","Doug_10132026_adultyr_allData.rds"));names(doug_data)
+
+doug_guilds<-read.csv(file.path(path_doug,"guilds.csv"),na.strings = c("","NA"))%>% select(-mismatch_09oct26_vs_shortName);names(doug_guilds)
+guilds<-doug_guilds %>% select(node,SEMnode,region,source_short,source_raw,shortName,Lisa_21oct26,region);guilds %>% head()
+
+guilds_current<-guilds %>% filter(!is.na(Lisa_21oct26)) ;guilds_current %>% head()
+guilds_current %>% group_by(SEMnode) %>%
+  summarize(source_short=n())
+
+print(guilds_current %>% group_by(source_short) %>%
+  summarize(SEMnode=n()),n=Inf)
+
+guilds_current %>% head()
+guilds_current %>% filter(is.na(source_short))
+guilds_current %>% filter(source_short=="erddap")
+erddap
+tapply(guilds_current,list(region))
+
+guilds_current %>% group_by(region) %>%
+  summarize(SEMnode=n())
+
+
+guilds_current %>%   summarize(region=n())
+
+guilds<-doug_guilds %>% select(shortName,Lisa_21oct26,region);guilds
+
+guilds %>% filter(region=="CC")
+
+
 doug_guilds_10092026 <-doug_guilds
-guilds<-doug_guilds %>% select(shortName,latestGuild)
 doug_dat<-doug_data %>% select(shortName,yearType,date,finalVal,smoothed) %>%
   left_join(guilds,by="shortName") %>%
   mutate(date=year(date)) %>%

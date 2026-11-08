@@ -7,6 +7,11 @@
 
 library(tidyverse)
 library(ggrepel)
+proj_dir    <- file.path(getwd(), "Rcode_for_paper")
+master_out   <- file.path(proj_dir, "Routput_for_paper")
+data_out_dir <- file.path(master_out, "data")
+tbl_out_dir  <- file.path(master_out, "tables")
+fig_out_dir  <- file.path(master_out, "figures")
 
 # ------------------------------------------------------------------------------
 # STEP 1: LOAD & PREPARE ALL-MODEL IMPORTANCE SCORES
@@ -24,6 +29,7 @@ importance_by_model <- read_csv(by_model_path, show_col_types = FALSE)
 importance_summary <- importance_by_model %>%
   # Exclude salmon response nodes
   filter(!generic_node %in% c("Abundance", "Growth")) %>%
+  filter(!grepl("sleeperSharkBSAI_predAK_adult",LisaName)) %>%
   mutate(
     # Classify into 4 subpanels
     Region = if_else(grepl("NCC", generic_node) | grepl("^X0[1-9]", LisaName), "NCC", "AK"),
@@ -116,13 +122,16 @@ plot_nolabels <- ggplot(
   ) +
   theme_publication_panels()
 
+print(plot_nolabels)
+
+
 # Save Variant A
 ggsave(
-  file.path(fig_out_dir, "Goal1_Importance_PointWhisker_NoLabels.png"),
+  file.path(fig_out_dir, "Goal1_Importance_PointWhisker_NoLabels_condensed.png"),
   plot_nolabels, width = 10, height = 4.5, dpi = 300
 )
 ggsave(
-  file.path(fig_out_dir, "Goal1_Importance_PointWhisker_NoLabels.pdf"),
+  file.path(fig_out_dir, "Goal1_Importance_PointWhisker_NoLabels_condensed.pdf"),
   plot_nolabels, width = 10, height = 4.5
 )
 
@@ -150,12 +159,13 @@ labels_ncc_pred <- importance_summary %>%
 
 # 3. Fixed Manual Coordinates for AK Panels (Staggered staircase above points)
 labels_ak <- importance_summary %>%
-  filter(str_detect(Subpanel, "^AK") & Rank <= 3) %>%
+  filter(str_detect(Subpanel, "^AK") & Rank <= 4) %>%
   mutate(
     y_pos = case_when(
       Rank == 1 ~ 0.45,
       Rank == 2 ~ 0.40,
-      Rank == 3 ~ 0.35
+      Rank == 3 ~ 0.35,
+      Rank == 3 ~ 0.30
     )
   )
 
@@ -201,11 +211,11 @@ plot_top3labels <- plot_nolabels +
 
 # Save Updated Variant B
 ggsave(
-  file.path(fig_out_dir, "Goal1_Importance_PointWhisker_Top3Labeled_StaggeredAK.png"),
+  file.path(fig_out_dir, "Goal1_Importance_PointWhisker_Top3Labeled_StaggeredAK_condensed.png"),
   plot_top3labels, width = 11, height = 5.2, dpi = 300
 )
 ggsave(
-  file.path(fig_out_dir, "Goal1_Importance_PointWhisker_Top3Labeled_StaggeredAK.pdf"),
+  file.path(fig_out_dir, "Goal1_Importance_PointWhisker_Top3Labeled_StaggeredAK_condensed.pdf"),
   plot_top3labels, width = 11, height = 5.2
 )
 
