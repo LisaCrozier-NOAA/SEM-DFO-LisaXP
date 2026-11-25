@@ -19,8 +19,10 @@ library(stringr)
 # 1. Directory & Color Palette Setup
 # ------------------------------------------------------------------------------
 proj_dir    <- file.path(getwd(), "Rcode_for_paper")
-fig_out_dir <- file.path(proj_dir, "figures")
-tbl_out_dir <- file.path(proj_dir, "tables")
+master_out   <- file.path(proj_dir, "Outputs")
+fig_out_dir <- file.path(master_out, "figures")
+tbl_out_dir  <- file.path(master_out, "tables")
+
 dir.create(fig_out_dir, showWarnings = FALSE, recursive = TRUE)
 dir.create(tbl_out_dir, showWarnings = FALSE, recursive = TRUE)
 

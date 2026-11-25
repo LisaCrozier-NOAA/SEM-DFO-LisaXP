@@ -41,7 +41,7 @@ salmon_stages <- tribble(
   1,      "CR Exit",                -125.5,   46.8,   100,        10,        40,   FALSE,
   2,      "WCVI Coastal",           -128.2,   49.5,   150,        30,        30,   FALSE,
   3,      "BC Coast",               -132.2,   52.2,   150,        50,        30,   FALSE,
-  8,      "GOA Swing Back (Adult)", -130.5,   45.2,   450,       180,        10,   TRUE
+  8,      "GOA Swing Back (Adult)", -131.5,   45.2,   450,       180,        10,   TRUE
 ) %>%
   mutate(icon_size = 0.60 + (length_mm - 100) * (0.80 / 350))
 
@@ -116,12 +116,13 @@ ferriss_arenas <- list(
   # WGOA Low-Trophic: Seward Line
   list(img = icons$copepod, lon = -149.2, lat = 59.1, height = 0.48, angle =  25, flip = FALSE, fill = "#FEF08A", color = "#CA8A04"),
   # WGOA Mid-Trophic: Shelikof / Kodiak shelf
-  list(img = icons$capelin, lon = -153.2, lat = 57.5, height = 0.48, angle = -15, flip = FALSE, fill = "#7DD3FC", color = "#0284C7"),
+  list(img = icons$capelin, lon = -151.8, lat = 56.5, height = 0.48, angle = -15, flip = FALSE, fill = "#7DD3FC", color = "#0284C7"),
+  list(img = icons$capelin, lon = -155.0, lat = 57.6, height = 0.48, angle = -15, flip = FALSE, fill = "#7DD3FC", color = "#0284C7"),
   # WGOA Seabirds: Middleton Island (Facing west)
   list(img = icons$murre,   lon = -145.4, lat = 59.3, height = 0.65, angle =   5, flip = FALSE, fill = "#0F172A", color = "#020617"),
   
   # EGOA Low-Trophic: Icy Strait / SECM
-  list(img = icons$copepod, lon = -136.2, lat = 57.8, height = 0.48, angle =  15, flip = FALSE, fill = "#FEF08A", color = "#CA8A04"),
+  list(img = icons$copepod, lon = -137.8, lat = 57.6, height = 0.48, angle =  15, flip = FALSE, fill = "#FEF08A", color = "#CA8A04"),
   # EGOA Seabirds: St. Lazaria Island (Facing west out to sea)
   list(img = icons$murre,   lon = -135.2, lat = 56.5, height = 0.65, angle = -10, flip = FALSE, fill = "#0F172A", color = "#020617")
 )
@@ -191,13 +192,13 @@ columbia_pinnipeds <- list(
 labels_df <- tribble(
   ~label,                ~x,       ~y,       ~fontface,   ~size,
   "Aleutian \nIslands", -167.0,   55.5,     "italic",    4.5,
-  "Alaska",             -143.0,   62.0,     "bold",      5.2,
+  "Alaska",             -143.0,   61.3,     "plain",     4.5,
   "British\nColumbia",  -122.5,   53.5,     "plain",     4.5,
   "WCVI",               -125.8,   48.8,     "plain",     4.2,
-  "Columbia \nRiver",   -120.2,   45.8,     "plain",     4.2,
+  "Columbia \nRiver",   -120.2,   46.3,     "plain",     4.2,
   "USA",                -120.5,   47.5,     "plain",     4.5,
   "Pacific Ocean",      -158.0,   45.5,     "plain",     5.5,
-  "NH Line",            -130.6,   44.6,     "italic",    3.4,
+  "NH Line",            -130.9,   44.4,     "italic",    3.4,
   "Line P",             -138.5,   48.8,     "italic",    3.4
 )
 
@@ -390,8 +391,8 @@ for (cr in columbia_pinnipeds) {
 
 # Map Extents
 p <- p + coord_sf(
-  xlim   = c(-170, -119),
-  ylim   = c(43, 62),
+  xlim   = c(-170, -118),
+  ylim   = c(43, 62.5),
   expand = FALSE
 )
 
@@ -400,7 +401,7 @@ p <- p + coord_sf(
 # ------------------------------------------------------------------------------
 print(p)
 
-file_out <- file.path(fig_out_dir, "04_map_alldata_offline.png")
+file_out <- file.path(fig_out_dir, "04_map_alldata_offline_v3.png")
 ggsave(
   filename = file_out,
   plot     = p,

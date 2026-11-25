@@ -1,0 +1,23 @@
+LisaName,Node,Status,N_Missing
+X02_DFA_SeaNettle,PreyNCC,RETAINED,0
+X04_marketsquid_GAM,PreyNCC,RETAINED,0
+X05_DFA_abundSardine,PreyNCC,RETAINED,0
+X01_DFA_sumPreyOfPrey_planktonJun,PreyNCC,RETAINED,1
+X09_DFA_HakeAge5Plus,PredNCC,RETAINED,0
+X12_biomassDecaShelfSum,PreyAK,RETAINED,0
+X12_DFA_EGOA_DFA_lowerTrophic,PreyAK,RETAINED,0
+X14_pinkSalmonNorthAmerica,PreyAK,RETAINED,0
+X12_WGOA_DFA_lowerTrophic,PreyAK,RETAINED,0
+X13_EGOA_DFA_seabirds,PreyAK,RETAINED,0
+X12_biomassMysidShelfSum,PreyAK,RETAINED,0
+X13_DFA_WGOA_DFA_midTrophic,PreyAK,RETAINED,0
+X13_pollockGOA_age1and2,PreyAK,RETAINED,0
+X15_sablefishAK_biomass3plus,PredAK,RETAINED,0
+X15_DFA_sleeperSharkBSAI_predAK_adultyr,PredAK,RETAINED,1
+X10_Harbour_s_WS_adultyr,PredAK,RETAINED,0
+X15_DFA_sleeperSharkBSAI_predAK,PredAK,RETAINED,0
+X15_salmonSharkBSAI_predAK_adultyr,PredAK,DROPPED: >2 Missing Years,4
+X15_DFA_halibutBiomassAge8plus_predAK_adultyr,PredAK,RETAINED,0
+X15_spinyDogfishBSAI_predAK,PredAK,DROPPED: >2 Missing Years,5
+X10_Northern_f_s_WS_adultyr,PredAK,RETAINED,0
+X10_DFA_AllSeaLionsEMB_adultyr,PredAK,RETAINED,0

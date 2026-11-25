@@ -1,0 +1,36 @@
+Indicator_Clean,N_Str,Pct_Supp_Disp,Beta_Supp_Disp,Pct_Flip_Disp,Beta_Flip_Disp
+\multicolumn{6}{l}{\textbf{H1a (PreyNCC $\rightarrow$ Growth)}},,,,,
+X01 DFA sumPreyOfPrey planktonJun,2,\textcolor[HTML]{1B5E20}{\textbf{100.0}},\textcolor[HTML]{1B5E20}{\textbf{0.934}},-,-
+X02 DFA SeaNettle,30,\textcolor[HTML]{1B5E20}{\textbf{100.0}},\textcolor[HTML]{1B5E20}{\textbf{-0.947}},-,-
+X04 marketsquid GAM,16,-,-,\textcolor[HTML]{B71C1C}{\textbf{100.0}},\textcolor[HTML]{B71C1C}{\textbf{0.910}}
+X05 DFA abundSardine,15,\textcolor[HTML]{1B5E20}{\textbf{100.0}},\textcolor[HTML]{1B5E20}{\textbf{-0.907}},-,-
+\multicolumn{6}{l}{\textbf{H1b (Growth $\rightarrow$ CPUE)}},,,,,
+X06 DFA IGF mu,41,-,-,0.0,-0.070
+\multicolumn{6}{l}{\textbf{H1c (Growth $\rightarrow$ SAR)}},,,,,
+X06 DFA IGF mu,22,\textcolor[HTML]{1B5E20}{\textbf{68.4}},\textcolor[HTML]{1B5E20}{\textbf{0.348}},0.0,-0.142
+\multicolumn{6}{l}{\textbf{H1e (PreyAK $\rightarrow$ SAR)}},,,,,
+X12 DFA EGOA DFA lowerTrophic,15,\textcolor[HTML]{1B5E20}{\textbf{66.7}},\textcolor[HTML]{1B5E20}{\textbf{0.356}},-,-
+X12 WGOA DFA lowerTrophic,7,-,-,28.6,-0.295
+X12 biomassDecaShelfSum,12,-,-,\textcolor[HTML]{B71C1C}{\textbf{50.0}},\textcolor[HTML]{B71C1C}{\textbf{-0.272}}
+X12 biomassMysidShelfSum,2,0.0,0.112,-,-
+X13 DFA WGOA DFA midTrophic,3,0.0,-0.200,-,-
+X13 EGOA DFA seabirds,6,0.0,0.217,0.0,-0.245
+X13 pollockGOA age1and2,2,-,-,0.0,-0.081
+X14 DFA pinkSalmonAsia,4,-,-,0.0,0.113
+X14 pinkSalmonNorthAmerica,12,41.7,-0.232,-,-
+\multicolumn{6}{l}{\textbf{H2a (PredNCC $\rightarrow$ CPUE)}},,,,,
+X09 DFA HakeAge5Plus,63,\textcolor[HTML]{1B5E20}{\textbf{100.0}},\textcolor[HTML]{1B5E20}{\textbf{-0.877}},-,-
+\multicolumn{6}{l}{\textbf{H2c (PredAK $\rightarrow$ SAR)}},,,,,
+X10 DFA AllSeaLionsEMB adultyr,2,\textcolor[HTML]{1B5E20}{\textbf{100.0}},\textcolor[HTML]{1B5E20}{\textbf{-0.310}},0.0,0.178
+X10 Harbour s WS adultyr,14,\textcolor[HTML]{1B5E20}{\textbf{92.9}},\textcolor[HTML]{1B5E20}{\textbf{-0.358}},-,-
+X10 Northern f s WS adultyr,4,-,-,0.0,0.215
+X15 DFA halibutBiomassAge8plus predAK adultyr,4,\textcolor[HTML]{1B5E20}{\textbf{100.0}},\textcolor[HTML]{1B5E20}{\textbf{-0.376}},\textcolor[HTML]{B71C1C}{\textbf{50.0}},\textcolor[HTML]{B71C1C}{\textbf{0.317}}
+X15 DFA sleeperSharkBSAI predAK,6,\textcolor[HTML]{1B5E20}{\textbf{83.3}},\textcolor[HTML]{1B5E20}{\textbf{-0.413}},-,-
+X15 DFA sleeperSharkBSAI predAK adultyr,15,\textcolor[HTML]{1B5E20}{\textbf{93.3}},\textcolor[HTML]{1B5E20}{\textbf{-0.376}},-,-
+X15 sablefishAK biomass3plus,7,-,-,\textcolor[HTML]{B71C1C}{\textbf{85.7}},\textcolor[HTML]{B71C1C}{\textbf{0.321}}
+X15 salmonSharkBSAI predAK,1,0.0,-0.096,-,-
+X15 salmonSharkBSAI predAK adultyr,4,\textcolor[HTML]{1B5E20}{\textbf{75.0}},\textcolor[HTML]{1B5E20}{\textbf{-0.343}},-,-
+X15 salmonSharkGoA predAK adultyr,1,0.0,-0.185,-,-
+X15 spinyDogfishBSAI predAK,5,-,-,\textcolor[HTML]{B71C1C}{\textbf{100.0}},\textcolor[HTML]{B71C1C}{\textbf{0.351}}
+\multicolumn{6}{l}{\textbf{H4a (CPUE $\rightarrow$ SAR)}},,,,,
+X07 cpue IntSprJunHW,63,\textcolor[HTML]{1B5E20}{\textbf{100.0}},\textcolor[HTML]{1B5E20}{\textbf{0.543}},-,-

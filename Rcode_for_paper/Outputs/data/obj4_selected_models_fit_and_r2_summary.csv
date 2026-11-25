@@ -1,0 +1,6 @@
+Model_ID,AIC,CFI,SRMR,Growth_R2,CPUE_R2,SAR_R2
+M1_NCC_Prey,187.81,0.934,0.032,0.890,-,-
+M2_AK_Prey_Pink,59.39,1,0,-,-,0.480
+M3_AK_Prey_Latent,330.48,0.475,0.257,-,-,0.959
+M4_AK_Pred_Latent,426.18,0.573,0.137,-,-,0.513
+M5_Confirmatory_Synthesis,638.22,0.612,0.159,0.896,0.749,0.518

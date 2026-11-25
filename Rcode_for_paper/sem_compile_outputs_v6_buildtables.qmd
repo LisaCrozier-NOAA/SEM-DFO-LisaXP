@@ -1,0 +1,153 @@
+---
+title: "Manuscript Figures"
+author: "Lisa Crozier"
+date: today
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    latex-auto-install: false
+    geometry:
+      - margin=1in
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    colorlinks: true
+    fig-pos: "H"
+    tbl-pos: "H"
+    header-includes:
+      - \usepackage{float}
+      - \usepackage{booktabs}
+      - \usepackage{array}
+      - \renewcommand{\arraystretch}{1.35}
+      - \renewcommand{\topfraction}{0.90}
+      - \renewcommand{\bottomfraction}{0.80}
+      - \renewcommand{\textfraction}{0.02}
+      - \renewcommand{\floatpagefraction}{0.85}
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+  
+  \newpage
+
+# Methods
+## Indicator categories (general)
+
+```{r}
+#| label: tbl-obj0-indicator_list
+#| tbl-cap: "Summary of ecosystem indicator screening and subguild consolidation from raw environmental series to Structural Equation Model (SEM) latent nodes."
+#| tbl-pos: "H"
+#| results: asis
+
+library(tidyverse)
+library(knitr)
+
+path <- "C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP/Rcode_for_paper/Routput_for_paper/Supplements/guilds.csv"
+
+doug_guilds <- read.csv(path, stringsAsFactors = FALSE, row.names = NULL, na.strings = c("", "NA")) %>%
+  filter(!is.na(Lisa_15Oct2026)) %>%
+  select(ID, SEMnode, region, subregion, Lisa_21oct26, indicator, source_short, source_raw) %>%
+  arrange(Lisa_21oct26)
+
+indicator_table_data <- doug_guilds %>%
+  filter(SEMnode %in% c("PreyNCC", "PredNCC", "PreyAK", "PredAK", "Growth", "Abundance", "SAR")) %>%
+  group_by(SEMnode) %>%
+  summarise(
+    N_Screened = sum(!is.na(Lisa_21oct26) & Lisa_21oct26 != ""),
+    # Use \newline inside m{} columns and escape underscores for LaTeX
+    Subguild_Codes = paste(
+      gsub("_", "\\\\_", unique(Lisa_21oct26[Lisa_21oct26 != "" & !is.na(Lisa_21oct26)])),
+      collapse = " \\newline "
+    ),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    SEM_Node_Full = case_when(
+      SEMnode == "PreyNCC"   ~ "\\textbf{Northern California Current} \\newline (NCC Prey)",
+      SEMnode == "PredNCC"   ~ "\\textbf{Northern California Current} \\newline (NCC Predators)",
+      SEMnode == "PreyAK"    ~ "\\textbf{BC Coast, Gulf of Alaska} \\newline (AK Prey)",
+      SEMnode == "PredAK"    ~ "\\textbf{BC Coast, Gulf of Alaska} \\newline (AK Predators)",
+      SEMnode == "Growth"    ~ "\\textbf{Salmon Condition}\\newline (Growth)",
+      SEMnode == "Abundance" ~ "\\textbf{Early Marine Survival} (CPUE)",
+      SEMnode == "SAR"       ~ "\\textbf{Smolt to Adult \\newline Survival}  (SAR)",
+      TRUE                   ~ SEMnode
+    ),
+    Subguild_Names = case_when(
+      SEMnode == "PreyNCC"   ~ "Zooplankton (Newport, WA & WCVI surveys), Krill, Forage Fish, Competitors (Juv Sablefish, Market squid, Jellies)",
+      SEMnode == "PredNCC"   ~ "Piscivorous Seabirds, Nearshore/Surface-feeding Groundfish, Marine Mammals",
+      SEMnode == "PreyAK"    ~ "Lower & Mid-Trophic indices (Ferris et al, EGOA/WGOA), WCVI Krill, Forage Fish & Seabirds, Pink Salmon Competitors",
+      SEMnode == "PredAK"    ~ "Predatory Groundfish & Sharks (Dogfish, Sleeper & Salmon Sharks), Marine Mammals",
+      SEMnode == "Growth"    ~ "Juvenile Salmon IGF-1 Condition & Stomach Fullness",
+      SEMnode == "Abundance" ~ "Juvenile Salmon CPUE Indices",
+      SEMnode == "SAR"       ~ "Adult Returns of Pit-tagged Smolts",
+      TRUE                   ~ ""
+    ),
+    # Escape ampersands so LaTeX doesn't treat them as column breaks
+    Subguild_Names = gsub("&", "\\\\&", Subguild_Names),
+    order = match(SEMnode, c("PreyNCC", "PredNCC", "PreyAK", "PredAK", "Growth", "Abundance", "SAR"))
+  ) %>%
+  arrange(order) %>%
+  select(SEM_Node_Full, Subguild_Names, N_Screened, Subguild_Codes)
+
+# Build the raw LaTeX tabular with m{} vertical centering and \midrule between rows
+tbl_latex <- indicator_table_data %>%
+  kable(
+    format = "latex",
+    booktabs = TRUE,
+    escape = FALSE,
+    linesep = "\\midrule",
+    col.names = c(
+      "\\textbf{SEM Node}",
+      "\\textbf{Target Guilds}",
+      "\\textbf{Indicator Count}",
+      "\\textbf{SEM Subguild Codes (Lisa\\_21oct26)}"
+    ),
+    align = c("l", "l", "c", "l")
+  )
+
+# Replace kable's default {llcl} column spec with vertically-centered m{} widths
+# (Total width = 1.55 + 2.35 + 0.70 + 1.50 = 6.10 in, fitting cleanly inside 6.5 in margins)
+tbl_latex <- sub(
+  "\\{llcl\\}",
+  "{>{\\\\raggedright\\\\arraybackslash}m{1.55in} >{\\\\raggedright\\\\arraybackslash}m{2.35in} >{\\\\centering\\\\arraybackslash}m{0.70in} >{\\\\raggedright\\\\arraybackslash}m{1.50in}}",
+  tbl_latex
+)
+
+# Remove the extra \midrule right before \bottomrule so the bottom border isn't doubled
+tbl_latex <- sub("\\\\midrule\\s*\\\\bottomrule", "\\\\bottomrule", tbl_latex)
+
+# Optional: slightly smaller font so multi-line subguild lists breathe cleanly
+cat("\\small\n", tbl_latex, "\n\\normalsize\n", sep = "")
+
+```
+
+
+\newpage
+
+## Model Diagnostics
+
+```{r}
+#| label: tbl-obj5-fit-summary
+#| tbl-cap: "Goodness-of-fit metrics, AIC, and explained variance ($R^2$) across candidate and confirmatory SEM architectures."
+#| tbl-pos: "H"
+
+library(tidyverse)
+library(knitr)
+
+fit_table_path <- "Outputs/data/obj4_selected_models_fit_and_r2_summary.csv"
+
+if (file.exists(fit_table_path)) {
+  read_csv(fit_table_path, show_col_types = FALSE) %>%
+    mutate(Model_ID = gsub("_", " ", Model_ID)) %>%
+    kable(
+      booktabs = TRUE,
+      col.names = c("Model ID", "AIC", "CFI", "SRMR", 
+                    "Growth $R^2$", "CPUE $R^2$", "SAR $R^2$"),
+      digits = 3,
+      align = c("l", rep("r", 6)),
+      escape = FALSE
+    )
+}
+```

@@ -1,0 +1,8 @@
+Path_Type,LHS,Op,RHS,Std_Est,CI_Lower,CI_Upper,SE,P_Value
+Factor Loading,predNCC,=~,X09_latent_HakeAge5Plus,0.558,0.166,0.926,0.194,0.0048
+Factor Loading,predNCC,=~,X09_latent_pacificmackerel_GAM,0.848,0.504,1.157,0.166,0
+Factor Loading,predNCC,=~,X09_latent_jackmackerel_GAM,0.904,0.566,1.203,0.163,0
+Factor Loading,predNCC,=~,X09_latent_hakeFisheryWA,0.346,-0.067,0.744,0.207,0.1018
+Structural Regression,X07_cpue_IntSprJunHW_smoltyr,~,predNCC,-0.793,-1.119,-0.433,0.175,0
+Structural Regression,X16_DFA_sar_UCsprCh_smoltyr,~,X07_cpue_IntSprJunHW_smoltyr,0.635,0.358,0.937,0.148,0
+Structural Regression,X16_DFA_sar_UCsprCh_smoltyr,~,X14_pinkSalmonNorthAmerica_smoltyr,-0.309,-0.604,-0.025,0.148,0.0333

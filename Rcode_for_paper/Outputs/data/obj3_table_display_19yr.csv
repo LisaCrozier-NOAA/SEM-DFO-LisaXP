@@ -1,0 +1,20 @@
+Predator_Clean,Base_Display,Base_AIC_Display,mod_variant,mod_prey_clean,Mod_Display,Mod_AIC_Display,Delta_Display
+harbour seal DFO Coast..,0.42 (0.22),-42.56,AltPrey Only (2),anchovy GAM + herring NCC,0.43 (0.00),-48.66,\textcolor[HTML]{1B5E20}{\textbf{-6.10}}
+spinyDogfishBSAI smoltyr,\textcolor[HTML]{B71C1C}{\textbf{0.38 (0.02)}},-45.87,Joint Temp+Prey (2),capelin WGoA + egoa krill,\textcolor[HTML]{1B5E20}{\textbf{-0.48 (0.00)}},-48.61,\textcolor[HTML]{1B5E20}{\textbf{-2.74}}
+pollockGOA SSB smoltyr,\textcolor[HTML]{B71C1C}{\textbf{0.63 (0.08)}},-43.90,AltPrey Only (2),capelin WGoA + egoa krill,\textcolor[HTML]{1B5E20}{\textbf{-0.46 (0.01)}},-47.34,\textcolor[HTML]{1B5E20}{\textbf{-3.44}}
+salmonSharkBSAI adultyr,\textcolor[HTML]{1B5E20}{\textbf{-0.38 (0.01)}},-46.43,Base (Nominal),None,-0.38 (0.01),-46.43,0.00
+ssl seak pup pred smol..,\textcolor[HTML]{B71C1C}{\textbf{0.46 (0.11)}},-43.52,AltPrey Only (2),capelin WGoA + egoa krill,\textcolor[HTML]{1B5E20}{\textbf{-0.37 (0.02)}},-46.04,\textcolor[HTML]{1B5E20}{\textbf{-2.52}}
+sablefishAK biomass3pl..,-0.10 (0.46),-41.67,Joint Temp+Prey (2),sitkaHerring EGoA + capelin WGoA,\textcolor[HTML]{1B5E20}{\textbf{-0.40 (0.02)}},-45.95,\textcolor[HTML]{1B5E20}{\textbf{-4.28}}
+sleeperSharkBSAI smoltyr,\textcolor[HTML]{1B5E20}{\textbf{-0.68 (0.02)}},-45.89,Base (Nominal),None,-0.68 (0.02),-45.89,0.00
+halibutAge8plus adultyr,\textcolor[HTML]{B71C1C}{\textbf{0.36 (0.06)}},-44.48,AltPrey Only (1),capelin WGoA,-0.28 (0.06),-44.44,0.03
+Killer whales NR BC ad..,-0.33 (0.30),-42.16,Temp Only,None,-0.41 (0.09),-43.75,\textcolor[HTML]{1B5E20}{\textbf{-1.59}}
+harbour seal DFO WCVI ..,-0.35 (0.32),-42.08,AltPrey Only (1),DFA abundSardine,-0.44 (0.10),-43.61,\textcolor[HTML]{1B5E20}{\textbf{-1.53}}
+sleeperSharkBSAI adultyr,-0.25 (0.26),-42.35,AltPrey Only (2),sitkaHerring EGoA + capelin WGoA,-0.28 (0.12),-43.39,\textcolor[HTML]{1B5E20}{\textbf{-1.04}}
+ssl est wholerange adu..,-0.20 (0.64),-41.35,Temp Only,None,-0.41 (0.14),-43.18,\textcolor[HTML]{1B5E20}{\textbf{-1.82}}
+Harbour s WS adultyr,-0.08 (0.73),-41.26,Joint Temp+Prey (1),eulachon during chinook,-0.20 (0.22),-42.58,\textcolor[HTML]{1B5E20}{\textbf{-1.33}}
+salmonSharkBSAI smoltyr,-0.10 (0.43),-41.75,Joint Temp+Prey (2),sitkaHerring EGoA + capelin WGoA,-0.17 (0.24),-42.45,\textcolor[HTML]{1B5E20}{\textbf{-0.71}}
+Northern f s WS adultyr,-0.04 (0.76),-41.23,Joint Temp+Prey (1),eulachon during chinook,-0.10 (0.35),-41.98,\textcolor[HTML]{1B5E20}{\textbf{-0.75}}
+salmonSharkGoA smoltyr,-0.07 (0.60),-41.41,Joint Temp+Prey (1),capelin WGoA,-0.11 (0.36),-41.95,\textcolor[HTML]{1B5E20}{\textbf{-0.55}}
+Steller s l WS adultyr,0.08 (0.83),-41.18,Temp Only,None,-0.15 (0.52),-41.54,\textcolor[HTML]{1B5E20}{\textbf{-0.36}}
+AllSeaLionsEMB adultyr,-0.05 (0.76),-41.23,AltPrey Only (1),eulachon during chinook,-0.06 (0.69),-41.30,\textcolor[HTML]{1B5E20}{\textbf{-0.07}}
+salmonSharkGoA adultyr,0.08 (0.60),-41.41,AltPrey Only (1),capelin WGoA,-0.00 (0.98),-41.14,0.27

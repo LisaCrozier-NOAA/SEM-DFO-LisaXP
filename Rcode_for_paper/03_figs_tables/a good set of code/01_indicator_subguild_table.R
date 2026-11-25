@@ -1,5 +1,5 @@
 # ==============================================================================
-# Script: 05_conference_indicator_summary_table_ppt.R
+# Script: 02_analysis/01_indicator_subguild_table.R
 # Purpose: Presentation Table Summarizing Indicator Filtering & Subguild Codes
 # Output: Rcode_for_paper/Routput_for_paper/tables/
 # ==============================================================================
@@ -10,13 +10,22 @@ library(gt)
 # ------------------------------------------------------------------------------
 # STEP 1: COMPUTE INDICATOR COUNTS & EXTRACT SUBGUILD CODES
 # ------------------------------------------------------------------------------
+path <- "C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP/Rcode_for_paper/Routput_for_paper/Supplements/guilds.csv"
+out_dir <- "C:/Users/Lisa.Crozier/Documents/Marine survival/SEM-DFO-LisaXP/Rcode_for_paper/Outputs/tables/"
+
+doug_guilds <- read.csv(path, stringsAsFactors = FALSE, row.names = NULL, na.strings = c("", "NA")) %>%
+  filter(!is.na(Lisa_15Oct2026)) %>%
+  mutate(Reference = source_short) %>%
+  select(ID, SEMnode, region, subregion, Lisa_21oct26, indicator, source_short, Reference, source_raw) %>%
+  arrange(Lisa_21oct26)
+
 indicator_table_data <- doug_guilds %>%
-  filter(SEMnode %in% c("PreyNCC", "PredNCC", "PreyAK", "PredAK", "Growth", "Abundance")) %>%
+  filter(SEMnode %in% c("PreyNCC", "PredNCC", "PreyAK", "PredAK", "Growth", "Abundance","SAR")) %>%
   
   group_by(SEMnode) %>%
   summarise(
     # Total initial raw series under pastGuild + new entries
-    N_Initial  = sum((!is.na(pastGuild) & pastGuild != "") | (!is.na(Lisa_21oct26) & Lisa_21oct26 != "")),
+    # N_Initial  = sum((!is.na(pastGuild) & pastGuild != "") | (!is.na(Lisa_21oct26) & Lisa_21oct26 != "")),
     
     # Final retained series in Lisa_21oct26
     N_Screened = sum(!is.na(Lisa_21oct26) & Lisa_21oct26 != ""),
@@ -39,6 +48,7 @@ indicator_table_data <- doug_guilds %>%
       SEMnode == "PredAK"    ~ "BC Coast, Gulf of Alaska<br>AK Predators",
       SEMnode == "Growth"    ~ "Salmon Growth / Condition",
       SEMnode == "Abundance" ~ "Salmon Early Abundance (CPUE)",
+      SEMnode == "SAR"       ~ "Smolt to Adult Survival",
       TRUE                   ~ SEMnode
     ),
     
@@ -50,11 +60,12 @@ indicator_table_data <- doug_guilds %>%
       SEMnode == "PredAK"    ~ "Predatory Groundfish & Sharks (Dogfish, Sleeper & Salmon Sharks), Marine Mammals",
       SEMnode == "Growth"    ~ "Juvenile Salmon IGF-1 Condition & Stomach Fullness",
       SEMnode == "Abundance" ~ "Juvenile Salmon CPUE Indices",
+      SEMnode == "SAR"       ~ "Smolt to Adult Survival",
       TRUE                   ~ ""
     ),
     
     # Column 3: Screened Indicator Counts (Your Version)
-    N_Counts = paste0(N_Initial, " → ", N_Screened)
+    N_Counts = N_Screened #paste0(N_Initial, " → ", N_Screened)
   ) %>%
   
   # Ordering for final layout
@@ -66,6 +77,7 @@ indicator_table_data <- doug_guilds %>%
       SEMnode == "PredAK"    ~ 4,
       SEMnode == "Growth"    ~ 5,
       SEMnode == "Abundance" ~ 6,
+      SEMnode == "SAR"       ~ 7,
       TRUE                   ~ 99
     )
   ) %>%
@@ -83,8 +95,8 @@ indicator_summary_gt <- indicator_table_data %>%
   ) %>%
   cols_label(
     SEM_Node_Full       = md("**SEM Node**"),
-    Subguild_Names      = md("**Consolidated Subguilds**"),
-    N_Counts            = md("**Series Count<br>(Raw → Screened)**"),
+    Subguild_Names      = md("**Target Guilds**"),
+    N_Counts            = md("**Indicator Count**"),
     Subguild_Codes_HTML = md("**SEM Subguild Codes<br>(Lisa_21oct26)**")
   ) %>%
   fmt_markdown(columns = c(SEM_Node_Full, Subguild_Codes_HTML)) %>%

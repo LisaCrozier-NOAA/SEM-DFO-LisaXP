@@ -1,6 +1,6 @@
 
 
-#14b_final_test_two_peff_predator_latent_groups.R
+#14b_test_two_peff_predator_latent_groups.R
 #sharks or pink alone worked best:
 
 # ==============================================

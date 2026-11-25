@@ -1,0 +1,17 @@
+Path_Type,LHS,Op,RHS,Std_Est,CI_Lower,CI_Upper,SE,P_Value
+Factor Loading,preyNCC,=~,X01_DFA_sumPreyOfPrey_planktonJun_smoltyr,0.993,0.688,1.244,0.142,0
+Factor Loading,preyNCC,=~,X02_DFA_SeaNettle_smoltyr,-0.623,-0.966,-0.253,0.182,8e-4
+Factor Loading,preyNCC,=~,X04_marketsquid_GAM_smoltyr,0.971,0.666,1.236,0.145,0
+Factor Loading,preyNCC,=~,X05_latent_northAnch_NCC,-0.665,-0.999,-0.304,0.177,2e-4
+Factor Loading,preyNCC,=~,X05_latent_sardine_NCC,-0.726,-1.05,-0.371,0.173,0
+Factor Loading,preyNCC,=~,X05_latent_herring_GAM,0.589,0.219,0.935,0.183,0.0016
+Factor Loading,preyNCC,=~,X05_latent_sardine_GAM,-0.903,-1.186,-0.582,0.154,0
+Factor Loading,predNCC,=~,X09_latent_HakeAge5Plus,0.566,0.172,0.936,0.195,0.0044
+Factor Loading,predNCC,=~,X09_latent_pacificmackerel_GAM,0.857,0.511,1.167,0.167,0
+Factor Loading,predNCC,=~,X09_latent_jackmackerel_GAM,0.88,0.538,1.185,0.165,0
+Factor Loading,predNCC,=~,X09_latent_hakeFisheryWA,0.349,-0.064,0.747,0.207,0.0988
+Structural Regression,X06_DFA_IGF_mu_smoltyr,~,preyNCC,0.946,0.634,1.217,0.149,0
+Structural Regression,X07_cpue_IntSprJunHW_smoltyr,~,predNCC,-0.809,-1.133,-0.45,0.174,0
+Structural Regression,X16_DFA_sar_UCsprCh_smoltyr,~,X07_cpue_IntSprJunHW_smoltyr,0.687,0.421,0.991,0.145,0
+Structural Regression,X16_DFA_sar_UCsprCh_smoltyr,~,X14_pinkSalmonNorthAmerica_smoltyr,-0.258,-0.547,0.018,0.144,0.0664
+Structural Regression,X16_DFA_sar_UCsprCh_smoltyr,~,X06_DFA_IGF_mu_smoltyr,0.229,-0.057,0.527,0.149,0.1147

@@ -103,7 +103,7 @@ run_peff_pipeline_for_years <- function(years_included = "24yr") {
     select(all_of(valid_cols)) %>% 
     filter(complete.cases(.))
   
-  # 2. Scale dataframe: [0.2, 1.0] bounds
+  # 2. Scale dataframe: [0.0, 1.0] bounds
   df_scaled <- df_raw %>%
     mutate(across(where(is.numeric) & !matches("Year|year"), ~ scale_custom_bounds(.x, 0.0, 1.0)))
   
@@ -193,8 +193,6 @@ run_peff_pipeline_for_years <- function(years_included = "24yr") {
     pull(pred_data_col) %>%
     unique()
   pred_candidates <- intersect(pred_candidates, all_cols)
-  
-  # Double check exclusions are removed
   pred_candidates <- pred_candidates[!sapply(pred_candidates, function(x) any(sapply(baseline_exclusions, grepl, x)))]
   
   summary_records <- list()
@@ -259,7 +257,6 @@ run_peff_pipeline_for_years <- function(years_included = "24yr") {
     best_neg_df <- df_runs %>% filter(b_pred < 0) %>% arrange(aic)
     best_neg <- if (nrow(best_neg_df) > 0) best_neg_df %>% slice(1) else NULL
     
-    # Choose Selected Model: Prefer best negative model if delta_AIC within 2.0 of absolute best
     selected_model <- best_abs
     if (!is.null(best_neg)) {
       if (best_abs$b_pred >= 0 || (best_neg$aic - best_abs$aic) <= 2.0) {
@@ -312,83 +309,6 @@ run_peff_pipeline_for_years <- function(years_included = "24yr") {
 res_24 <- run_peff_pipeline_for_years("24yr")
 res_19 <- run_peff_pipeline_for_years("19yr")
 
-# # ------------------------------------------------------------------------------
-# # STEP 3: CONSTRUCT UNIFIED PUBLICATION TABLE (FITS 1 PAGE)
-# # ------------------------------------------------------------------------------
-# cat("\nGenerating Publication Table for Objective 3...\n")
-# 
-# combined_summary <- bind_rows(res_24, res_19) %>%
-#   mutate(
-#     Panel = if_else(years_set == "24yr", "Panel A: Long / 24-Year Series (1998–2021)", "Panel B: Short / 19-Year Series (2003–2021)"),
-#     Predator_Clean = case_when(
-#       predator %in% names(lookup_dict) ~ lookup_dict[predator],
-#       TRUE ~ gsub("^(X08_|X09_|X10_|X11_|X15_)", "", predator)
-#     ),
-#     Base_Display = paste0(sprintf("%.2f", base_beta), " (p=", sprintf("%.2f", base_p), ")"),
-#     Mod_Display  = paste0(sprintf("%.2f", mod_beta), " (p=", sprintf("%.2f", mod_p), ")")
-#   ) %>%
-#   arrange(years_set, mod_aic)
-# 
-# table_obj3_gt <- combined_summary %>%
-#   select(Panel, Predator_Clean, Base_Display, base_aic, mod_variant, mod_prey, Mod_Display, mod_aic, delta_aic) %>%
-#   gt(groupname_col = "Panel") %>%
-#   tab_header(
-#     title = md("**Table 3. Modulation of Marine Predator Exposure: Effective Predation (P<sub>eff</sub>) vs. Nominal Biomass**"),
-#     subtitle = "Evaluation of whether temperature-dependent spatial overlap and alternative forage buffering restore expected top-down control."
-#   ) %>%
-#   tab_spanner(label = "Nominal Predator Biomass (Base)", columns = c(Base_Display, base_aic)) %>%
-#   tab_spanner(label = "Effective Predation Exposure (Peff)", columns = c(mod_variant, mod_prey, Mod_Display, mod_aic, delta_aic)) %>%
-#   cols_label(
-#     Predator_Clean = md("**Predator**"),
-#     Base_Display   = md("**Base &beta; (p)**"),
-#     base_aic       = md("**Base AIC**"),
-#     mod_variant    = md("**Modulation Mechanism**"),
-#     mod_prey       = md("**Alternative Prey Pool**"),
-#     Mod_Display    = md("**P<sub>eff</sub> &beta; (p)**"),
-#     mod_aic        = md("**P<sub>eff</sub> AIC**"),
-#     delta_aic      = md("**&Delta;AIC**")
-#   ) %>%
-#   cols_align(align = "left", columns = c(Predator_Clean, mod_variant, mod_prey)) %>%
-#   cols_align(align = "center", columns = c(Base_Display, base_aic, Mod_Display, mod_aic, delta_aic)) %>%
-#   cols_width(
-#     Predator_Clean ~ px(155),
-#     Base_Display   ~ px(85),
-#     base_aic       ~ px(60),
-#     mod_variant    ~ px(130),
-#     mod_prey       ~ px(150),
-#     Mod_Display    ~ px(85),
-#     mod_aic        ~ px(60),
-#     delta_aic      ~ px(55)
-#   ) %>%
-#   tab_style(
-#     style = list(cell_fill(color = "#E8F5E9"), cell_text(color = "#1B5E20", weight = "bold")),
-#     locations = cells_body(
-#       columns = c(Mod_Display, delta_aic),
-#       rows = str_detect(Mod_Display, "^-") & delta_aic < -2.0
-#     )
-#   ) %>%
-#   tab_source_note(
-#     source_note = md("P<sub>eff</sub> models attenuate predator pressure via temperature gating (P &times; SST) and/or alternative prey buffering (P &times; [1 &minus; AltPrey]). Negative &Delta;AIC values denote model improvement over nominal biomass. Shaded green cells highlight restored negative top-down control (&beta; < 0, p < 0.05) with substantial AIC support (&Delta;AIC &le; -2.0).")
-#   ) %>%
-#   tab_options(
-#     table.font.size            = px(10.0),
-#     heading.title.font.size    = px(12.0),
-#     heading.subtitle.font.size = px(9.5),
-#     column_labels.font.size    = px(10.0),
-#     column_labels.font.weight  = "bold",
-#     row_group.font.size        = px(10.5),
-#     row_group.font.weight      = "bold",
-#     row_group.padding          = px(2),
-#     data_row.padding           = px(1.8),
-#     source_notes.font.size     = px(8.0)
-#   )
-# 
-# gtsave(table_obj3_gt, file.path(tbl_out_dir, "obj3_table1_peff_model_comparisons.pdf"))
-# gtsave(table_obj3_gt, file.path(tbl_out_dir, "obj3_table1_peff_model_comparisons.png"), vwidth = 820, vheight = 980)
-# 
-# cat("\nPipeline Complete! Cleaned table and time-series saved to Outputs/!\n")
-
-#narrower pdf--------
 # ------------------------------------------------------------------------------
 # STEP 3: CONSTRUCT UNIFIED PUBLICATION TABLE (TIGHTENED FOR PORTRAIT PDF)
 # ------------------------------------------------------------------------------
@@ -400,19 +320,28 @@ shorten_pred_label <- function(x) {
   x <- gsub("DFA_", "", x)
   x <- gsub("_predAK", "", x)
   x <- gsub("Biomass", "", x)
-  # Truncate if still overly long to prevent pushing right margins
   x <- ifelse(nchar(x) > 24, paste0(substr(x, 1, 22), ".."), x)
   return(x)
 }
 
+# Combine and enforce Panel ordering (24yr long series on top)
 combined_summary <- bind_rows(res_24, res_19) %>%
   mutate(
-    Panel = if_else(years_set == "24yr", "Panel A: Long / 24-Year Series (1998–2021)", "Panel B: Short / 19-Year Series (2003–2021)"),
+    raw_mod_variant = mod_variant,  # Keep unshortened mechanism for conditional styling logic
+    Panel = factor(
+      if_else(years_set == "24yr", 
+              "Panel A: Long / 24-Year Series (1998–2021)", 
+              "Panel B: Short / 19-Year Series (2003–2021)"),
+      levels = c(
+        "Panel A: Long / 24-Year Series (1998–2021)", 
+        "Panel B: Short / 19-Year Series (2003–2021)"
+      )
+    ),
     Predator_Clean = case_when(
       predator %in% names(lookup_dict) ~ shorten_pred_label(lookup_dict[predator]),
       TRUE ~ shorten_pred_label(predator)
     ),
-    # Compact mechanism labels
+    # Compact mechanism labels for presentation
     mod_variant = gsub("Joint Temp \\+ AltPrey", "Joint Temp+Prey", mod_variant),
     mod_variant = gsub("AltPrey Buffered", "AltPrey Only", mod_variant),
     mod_variant = gsub("Temp Overlap Only", "Temp Only", mod_variant),
@@ -421,10 +350,17 @@ combined_summary <- bind_rows(res_24, res_19) %>%
     Base_Display = paste0(sprintf("%.2f", base_beta), " (", sprintf("%.2f", base_p), ")"),
     Mod_Display  = paste0(sprintf("%.2f", mod_beta), " (", sprintf("%.2f", mod_p), ")")
   ) %>%
-  arrange(years_set, mod_aic)
+  arrange(Panel, mod_aic)
 
 table_obj3_gt <- combined_summary %>%
-  select(Panel, Predator_Clean, Base_Display, base_aic, mod_variant, mod_prey, Mod_Display, mod_aic, delta_aic) %>%
+  select(
+    Panel, Predator_Clean, 
+    Base_Display, base_aic, 
+    mod_variant, mod_prey, 
+    Mod_Display, mod_aic, delta_aic,
+    # Hidden columns for evaluation in styling expressions
+    raw_mod_variant, base_beta, base_p, mod_beta, mod_p
+  ) %>%
   gt(groupname_col = "Panel") %>%
   tab_header(
     title = md("**Table 3. Effective Predation (P<sub>eff</sub>) vs. Nominal Biomass**"),
@@ -442,6 +378,7 @@ table_obj3_gt <- combined_summary %>%
     mod_aic        = md("**P<sub>eff</sub> AIC**"),
     delta_aic      = md("**&Delta;AIC**")
   ) %>%
+  cols_hide(columns = c(raw_mod_variant, base_beta, base_p, mod_beta, mod_p)) %>%
   cols_align(align = "left", columns = c(Predator_Clean, mod_variant, mod_prey)) %>%
   cols_align(align = "center", columns = c(Base_Display, base_aic, Mod_Display, mod_aic, delta_aic)) %>%
   cols_width(
@@ -454,15 +391,39 @@ table_obj3_gt <- combined_summary %>%
     mod_aic        ~ px(55),
     delta_aic      ~ px(48)
   ) %>%
+  # ----------------------------------------------------------------------------
+# CONDITIONAL CELL HIGHLIGHTING
+# ----------------------------------------------------------------------------
+# 1. Base beta green: Nominal Biomass selected AND base p <= 0.05 AND base beta < 0
+tab_style(
+  style = list(cell_fill(color = "#E8F5E9"), cell_text(color = "#1B5E20", weight = "bold")),
+  locations = cells_body(
+    columns = Base_Display,
+    rows = (raw_mod_variant == "Nominal Biomass (Base)" | mod_variant == "Base (Nominal)") & 
+      base_p <= 0.05 & 
+      base_beta < 0
+  )
+) %>%
+  # 2. Peff beta green: Mechanism is NOT Nominal Base AND mod p <= 0.05 AND mod beta < 0
   tab_style(
     style = list(cell_fill(color = "#E8F5E9"), cell_text(color = "#1B5E20", weight = "bold")),
     locations = cells_body(
-      columns = c(Mod_Display, delta_aic),
-      rows = str_detect(Mod_Display, "^-") & delta_aic < -2.0
+      columns = Mod_Display,
+      rows = (raw_mod_variant != "Nominal Biomass (Base)" & mod_variant != "Base (Nominal)") & 
+        mod_p <= 0.05 & 
+        mod_beta < 0
+    )
+  ) %>%
+  # 3. Delta AIC green: delta_aic is negative
+  tab_style(
+    style = list(cell_fill(color = "#E8F5E9"), cell_text(color = "#1B5E20", weight = "bold")),
+    locations = cells_body(
+      columns = delta_aic,
+      rows = delta_aic < 0
     )
   ) %>%
   tab_source_note(
-    source_note = md("P<sub>eff</sub> attenuates predation via temperature gating (P &times; SST) and/or alternative prey buffering (P &times; [1 &minus; AltPrey]). Shaded cells denote restored top-down control (&beta; < 0, p < 0.05) with &Delta;AIC &le; -2.0.")
+    source_note = md("P<sub>eff</sub> attenuates predation via temperature gating (P &times; SST) and/or alternative prey buffering (P &times; [1 &minus; AltPrey]). Shaded green cells highlight statistically significant negative top-down impacts (&beta; < 0, p &le; 0.05) or model improvements (&Delta;AIC < 0).")
   ) %>%
   tab_options(
     table.font.size            = px(8.5),
@@ -482,3 +443,63 @@ gtsave(table_obj3_gt, file.path(tbl_out_dir, "obj3_table1_peff_model_comparisons
 gtsave(table_obj3_gt, file.path(tbl_out_dir, "obj3_table1_peff_model_comparisons.png"), vwidth = 680, vheight = 920)
 
 cat("\nTightened Table 3 successfully exported to Outputs/tables/!\n")
+
+
+
+#Quarto prep-------
+# ------------------------------------------------------------------------------
+# STEP 4: EXPORT CLEAN DISPLAY CSVs FOR QUARTO (24yr Main + 19yr Supplement)
+# ------------------------------------------------------------------------------
+export_peff_display_csv <- function(sweep_df, out_csv_path) {
+  sweep_df %>%
+    mutate(
+      raw_mod_variant = mod_variant,
+      Predator_Clean = case_when(
+        predator %in% names(lookup_dict) ~ shorten_pred_label(lookup_dict[predator]),
+        TRUE ~ shorten_pred_label(predator)
+      ),
+      # Replace underscores with spaces so LaTeX never needs escaping
+      Predator_Clean = gsub("_", " ", Predator_Clean),
+      mod_prey_clean = gsub("_", " ", mod_prey),
+      
+      # Compact mechanism labels
+      mod_variant = gsub("Joint Temp \\+ AltPrey", "Joint Temp+Prey", mod_variant),
+      mod_variant = gsub("AltPrey Buffered", "AltPrey Only", mod_variant),
+      mod_variant = gsub("Temp Overlap Only", "Temp Only", mod_variant),
+      mod_variant = gsub("Nominal Biomass \\(Base\\)", "Base (Nominal)", mod_variant),
+      
+      base_str = paste0(sprintf("%.2f", base_beta), " (", sprintf("%.2f", base_p), ")"),
+      mod_str  = paste0(sprintf("%.2f", mod_beta), " (", sprintf("%.2f", mod_p), ")"),
+      daic_str = sprintf("%.2f", delta_aic),
+      
+      # Green = significant negative top-down or delta_aic < 0; Red = positive & p < 0.20
+      Base_Display = case_when(
+        (raw_mod_variant == "Nominal Biomass (Base)" | mod_variant == "Base (Nominal)") &
+          base_p <= 0.05 & base_beta < 0 ~ paste0("\\textcolor[HTML]{1B5E20}{\\textbf{", base_str, "}}"),
+        base_beta > 0 & base_p < 0.20   ~ paste0("\\textcolor[HTML]{B71C1C}{\\textbf{", base_str, "}}"),
+        TRUE                            ~ base_str
+      ),
+      Mod_Display = if_else(
+        (raw_mod_variant != "Nominal Biomass (Base)" & mod_variant != "Base (Nominal)") &
+          mod_p <= 0.05 & mod_beta < 0,
+        paste0("\\textcolor[HTML]{1B5E20}{\\textbf{", mod_str, "}}"),
+        mod_str
+      ),
+      Delta_Display = if_else(
+        delta_aic < 0,
+        paste0("\\textcolor[HTML]{1B5E20}{\\textbf{", daic_str, "}}"),
+        daic_str
+      ),
+      Base_AIC_Display = sprintf("%.2f", base_aic),
+      Mod_AIC_Display  = sprintf("%.2f", mod_aic)
+    ) %>%
+    arrange(mod_aic) %>%
+    select(
+      Predator_Clean, Base_Display, Base_AIC_Display,
+      mod_variant, mod_prey_clean, Mod_Display, Mod_AIC_Display, Delta_Display
+    ) %>%
+    write_csv(out_csv_path)
+}
+
+export_peff_display_csv(res_24, file.path(data_out_dir, "obj3_table_display_24yr.csv"))
+export_peff_display_csv(res_19, file.path(data_out_dir, "obj3_table_display_19yr.csv"))

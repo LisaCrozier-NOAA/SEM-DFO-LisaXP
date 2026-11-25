@@ -62,8 +62,12 @@ parse_cw_tokens <- function(node_key, cw) {
   unique(gsub("_[0-9]{4}$", "", raw_tokens))
 }
 
+cw_df[,1:6]
 raw_x05_tokens <- parse_cw_tokens("X05_DFA_abundSardine", cw_df)
 raw_x09_tokens <- parse_cw_tokens("X09_DFA_HakeAge5Plus", cw_df)
+raw_x12_tokens <- parse_cw_tokens("X12_DFA_EGOA_DFA_lowerTrophic", cw_df)
+raw_x13_tokens <- parse_cw_tokens("X13_DFA_WGOA_DFA_midTrophic", cw_df)
+raw_x15_tokens <- parse_cw_tokens("X15_DFA_halibutBiomassAge8plus_predAK_adultyr", cw_df)
 
 extract_complete_constituents <- function(all_df, token_list, node_label) {
   df_wide <- all_df %>%
@@ -90,6 +94,12 @@ extract_complete_constituents <- function(all_df, token_list, node_label) {
 
 df_x05_comp <- extract_complete_constituents(all_data, raw_x05_tokens, "Latent_05_PreyNCC")
 df_x09_comp <- extract_complete_constituents(all_data, raw_x09_tokens, "Latent_09_PredNCC")
+df_x12_comp <- extract_complete_constituents(all_data, raw_x05_tokens, "Latent_12_PreyNCC")
+df_x13_comp <- extract_complete_constituents(all_data, raw_x09_tokens, "Latent_13_PredNCC")
+df_x15_comp <- extract_complete_constituents(all_data, raw_x05_tokens, "Latent_15_PreyNCC")
+
+dfa_consituents<-cbind(df_x05_comp,df_x09_comp[,-1],df_x12_comp[,-1],df_x13_comp[,-1],df_x15_comp[,-1])
+head(dfa_consituents)
 
 df_x05_std <- df_x05_comp %>% mutate(across(-year, ~ scale_custom_bounds(.x, 0.0, 1.0)))
 df_x09_std <- df_x09_comp %>% mutate(across(-year, ~ scale_custom_bounds(.x, 0.0, 1.0)))
